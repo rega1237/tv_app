@@ -1,0 +1,37 @@
+# Flutter/Dart
+.dart_tool/
+.packages
+.buildlog/
+.flutter-plugins
+.flutter-plugins-dependencies
+.melos_tool/
+.pub-cache/
+
+# Builds
+build/
+flutter_native_splash.yaml.tmp/
+
+# IDEs
+.idea/
+.vscode/
+*.iml
+
+# iOS
+ios/Pods/
+ios/.generated/
+ios/Flutter/App.framework/
+ios/Flutter/Flutter.framework/
+ios/Flutter/Generated.xcconfig
+
+# Android
+android/.gradle/
+android/app/build/
+android/gradle/
+*.keystore
+
+# Web
+web/.dart_tool/
+web/.build/
+
+# Misc
+*.log
