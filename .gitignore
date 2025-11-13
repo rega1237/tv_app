@@ -28,6 +28,13 @@ android/.gradle/
 android/app/build/
 android/gradle/
 *.keystore
+android/app/google-services.json
+
+# Environment variables
+.env
+.env.local
+.env.development
+.env.production
 
 # Web
 web/.dart_tool/
