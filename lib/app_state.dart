@@ -42,10 +42,10 @@ class FFAppState extends ChangeNotifier {
         : prefs.remove('ff_loggedSucursal');
   }
 
-  bool _vertical = false;
-  bool get vertical => _vertical;
-  set vertical(bool value) {
-    _vertical = value;
+  double _rotationAngle = 0.0;
+  double get rotationAngle => _rotationAngle;
+  set rotationAngle(double value) {
+    _rotationAngle = value;
   }
 
   List<dynamic> _channelsData = [];

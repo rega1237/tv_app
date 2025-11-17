@@ -116,7 +116,7 @@ class _OrientationSelectionPageWidgetState
                                 order: const NumericFocusOrder(1.0),
                                 child: FFButtonWidget(
                                   onPressed: () async {
-                                    FFAppState().vertical = true;
+                                    FFAppState().rotationAngle = 270.0;
                                     safeSetState(() {});
                                     await Future.delayed(
                                       Duration(
@@ -191,7 +191,7 @@ class _OrientationSelectionPageWidgetState
                                 order: const NumericFocusOrder(2.0),
                                 child: FFButtonWidget(
                                   onPressed: () async {
-                                    FFAppState().vertical = false;
+                                    FFAppState().rotationAngle = 0.0;
                                     safeSetState(() {});
                                     await Future.delayed(
                                       Duration(

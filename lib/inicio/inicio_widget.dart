@@ -102,7 +102,7 @@ class _InicioWidgetState extends State<InicioWidget> {
                 alignment: AlignmentDirectional(0.0, 0.0),
                 child: Padding(
                   padding: EdgeInsets.all(valueOrDefault<double>(
-                    FFAppState().vertical ? 20.0 : 40.0,
+                    FFAppState().rotationAngle != 0.0 ? 20.0 : 40.0,
                     0.0,
                   )),
                   child: StreamBuilder<List<ChannelsBranchRecord>>(
@@ -169,7 +169,7 @@ class _InicioWidgetState extends State<InicioWidget> {
 
                               return Builder(
                                 builder: (context) {
-                                  if (!FFAppState().vertical) {
+                                  if (FFAppState().rotationAngle == 0.0) {
                                     return Column(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
@@ -547,8 +547,15 @@ class _InicioWidgetState extends State<InicioWidget> {
                                       ].divide(SizedBox(height: 5.0)),
                                     );
                                   } else {
+                                    final rotationAngle = FFAppState().rotationAngle;
+                                    int quarterTurns = 3; // Default to 3 for safety
+                                    if (rotationAngle == 90.0) {
+                                      quarterTurns = 1;
+                                    } else if (rotationAngle == 270.0) {
+                                      quarterTurns = 3;
+                                    }
                                     return RotatedBox(
-                                      quarterTurns: 3,
+                                      quarterTurns: quarterTurns,
                                       child: Container(
                                         width: MediaQuery.sizeOf(context).width * 0.9,
                                         height: MediaQuery.sizeOf(context).height * 0.9,
