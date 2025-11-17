@@ -1,3 +1,4 @@
+
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -5,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 import 'dart:async';
 import 'package:flutter/foundation.dart';
+import 'package:provider/provider.dart'; // Import para context.watch
 
 class PlayerPageWidget extends StatefulWidget {
   const PlayerPageWidget({
@@ -19,21 +21,22 @@ class PlayerPageWidget extends StatefulWidget {
 }
 
 class _PlayerPageWidgetState extends State<PlayerPageWidget> {
-  bool _isLoading = true;
-  String? _error;
   List<FilesRecord> _playbackQueue = [];
   int _currentFileIndex = 0;
   Timer? _pollingTimer;
 
   VideoPlayerController? _videoController;
-  // This key helps us to change the widget in the tree and force a rebuild
   Key _playerWidgetKey = UniqueKey();
 
   @override
   void initState() {
     super.initState();
     print('[PlayerPage] initState: Iniciando...');
-    _buildPlaybackQueue(); // Initial fetch
+    _initializePlayer();
+  }
+
+  Future<void> _initializePlayer() async {
+    await _buildPlaybackQueue(); // Initial fetch
     _pollingTimer = Timer.periodic(const Duration(seconds: 60), (timer) {
       print('[PlayerPage] Timer activado: Re-evaluando la cola de reproducción...');
       _buildPlaybackQueue();
@@ -50,8 +53,6 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> {
   }
 
   Future<void> _buildPlaybackQueue() async {
-    // This function now only builds the queue, it doesn't trigger playback.
-    // The playback loop will pick up the changes automatically.
     print('[PlayerPage] _buildPlaybackQueue: Iniciando búsqueda de contenido...');
     try {
       final channel = await ChannelsRecord.getDocumentOnce(widget.channelRef);
@@ -87,7 +88,6 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> {
           setState(() {
             _playbackQueue = files;
             _currentFileIndex = 0;
-            _playerWidgetKey = UniqueKey(); // Force recreation of the player widget
           });
         }
       }
@@ -98,60 +98,66 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> {
 
   Future<void> _playbackLoop() async {
     while (mounted) {
-      // If there's nothing to play, wait for a bit and re-check.
       if (_playbackQueue.isEmpty) {
         await Future.delayed(const Duration(seconds: 5));
         continue;
       }
 
-      // Reset index if it's out of bounds
       if (_currentFileIndex >= _playbackQueue.length) {
         _currentFileIndex = 0;
       }
 
       final fileToPlay = _playbackQueue[_currentFileIndex];
-      print('[PlayerPage] Reproduciendo archivo ${_currentFileIndex + 1}/${_playbackQueue.length}: ${fileToPlay.reference.id}');
+      print('[PlayerPage] Preparando archivo ${_currentFileIndex + 1}/${_playbackQueue.length}: ${fileToPlay.reference.id}');
       
-      Duration duration = const Duration(seconds: 15);
-
-      // Set the state to show the current file
+      await _videoController?.dispose();
+      _videoController = null;
       if (mounted) {
         setState(() {
-          _playerWidgetKey = UniqueKey(); // Assign a new key to force widget recreation
+          _playerWidgetKey = UniqueKey();
         });
       }
 
+      Duration duration = const Duration(seconds: 15);
+
       if (fileToPlay.fileType.startsWith('video/') && fileToPlay.fileUrlVideo.isNotEmpty) {
-        await _videoController?.dispose();
         _videoController = VideoPlayerController.networkUrl(Uri.parse(fileToPlay.fileUrlVideo));
         try {
           await _videoController!.initialize();
           duration = _videoController!.value.duration;
+          
+          if (mounted) {
+            setState(() {});
+          }
+
           _videoController!.setVolume(0.0);
           _videoController!.play();
           print('[PlayerPage] Video iniciado. Duración: ${duration.inSeconds} segundos.');
         } catch (e) {
           print('[PlayerPage] ERROR al inicializar video: $e. Saltando en 5s.');
           duration = const Duration(seconds: 5);
+          _videoController = null;
         }
       } else {
         print('[PlayerPage] Mostrando imagen. Duración: 15 segundos.');
       }
 
-      // Wait for the duration of the media
       await Future.delayed(duration);
 
-      // Move to the next file for the next iteration of the loop
       _currentFileIndex++;
     }
   }
 
   Widget _buildPlayer() {
     if (_playbackQueue.isEmpty) {
-      return Center(child: Text('No hay contenido programado para este momento.', style: TextStyle(color: Colors.white, fontSize: 18), textAlign: TextAlign.center));
+      return Center(child: Text('No hay contenido programado.', style: TextStyle(color: Colors.white)));
     }
 
-    final fileToPlay = _playbackQueue[_currentFileIndex % _playbackQueue.length];
+    if (_currentFileIndex >= _playbackQueue.length) {
+      return Center(child: CircularProgressIndicator());
+    }
+
+    final fileToPlay = _playbackQueue[_currentFileIndex];
     final fileType = fileToPlay.fileType.toLowerCase();
 
     if (fileType.startsWith('video/')) {
@@ -165,21 +171,35 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> {
       }
       return Center(child: CircularProgressIndicator());
     } else if (fileType.startsWith('image/')) {
-      return Image.network(fileToPlay.fileUrl, fit: BoxFit.contain);
+      return Center(child: Image.network(fileToPlay.fileUrl, fit: BoxFit.contain));
     } else {
-      return Center(child: Text('Formato no soportado: ${fileToPlay.fileType}', style: TextStyle(color: Colors.white, fontSize: 24)));
+      return Center(child: Text('Formato no soportado: ${fileToPlay.fileType}', style: TextStyle(color: Colors.white)));
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    // Use a KeyedSubtree to ensure the player widget rebuilds when the key changes
-    return Scaffold(
+    // Leemos el estado global para la rotación
+    context.watch<FFAppState>();
+    final rotationAngle = FFAppState().rotationAngle;
+    int quarterTurns = 0;
+    if (rotationAngle == 90.0) {
+      quarterTurns = 1;
+    } else if (rotationAngle == 270.0) {
+      quarterTurns = 3;
+    }
+
+    final playerScaffold = Scaffold(
       backgroundColor: Colors.black,
       body: KeyedSubtree(
         key: _playerWidgetKey,
         child: _buildPlayer(),
       ),
     );
+
+    // Aplicamos RotatedBox a todo el Scaffold solo si es necesario
+    return quarterTurns != 0
+        ? RotatedBox(quarterTurns: quarterTurns, child: playerScaffold)
+        : playerScaffold;
   }
 }
