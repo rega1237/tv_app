@@ -87,6 +87,28 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       errorBuilder: (context, state) => appStateNotifier.loggedIn
           ? InicioWidget()
           : OrientationSelectionPageWidget(),
+      redirect: (context, state) {
+        final loggedIn = appStateNotifier.loggedIn;
+        final publicRoutes = [
+          '/', // _initialize route
+          OrientationSelectionPageWidget.routePath,
+          LoginWidget.routePath,
+        ];
+        final isGoingToPublicRoute =
+            publicRoutes.contains(state.matchedLocation);
+
+        // If the user is logged in and tries to access a public-only route,
+        // redirect them to the home page.
+        if (loggedIn && isGoingToPublicRoute) {
+          return InicioWidget.routePath;
+        }
+
+        // If the user is NOT logged in and tries to access a protected route,
+        // the FFRoute's own redirect will handle it. We don't need to do anything here.
+
+        // No redirection needed.
+        return null;
+      },
       routes: [
         FFRoute(
           name: '_initialize',

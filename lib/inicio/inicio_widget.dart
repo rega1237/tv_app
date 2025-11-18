@@ -187,6 +187,22 @@ class _InicioWidgetState extends State<InicioWidget> {
                                             fit: BoxFit.cover,
                                           ),
                                         ),
+                                        TextButton.icon(
+                                          icon: Icon(Icons.screen_rotation_alt_outlined, color: Colors.white),
+                                          label: Text('Rotar Pantalla', style: TextStyle(color: Colors.white)),
+                                          onPressed: () {
+                                            setState(() {
+                                              double currentAngle = FFAppState().rotationAngle;
+                                              if (currentAngle == 0.0) {
+                                                FFAppState().rotationAngle = 270.0;
+                                              } else if (currentAngle == 270.0) {
+                                                FFAppState().rotationAngle = 90.0;
+                                              } else {
+                                                FFAppState().rotationAngle = 0.0;
+                                              }
+                                            });
+                                          },
+                                        ),
                                         Row(
                                           mainAxisSize: MainAxisSize.max,
                                           mainAxisAlignment:
@@ -574,6 +590,22 @@ class _InicioWidgetState extends State<InicioWidget> {
                                                     height: MediaQuery.sizeOf(context).height * 0.2,
                                                     fit: BoxFit.cover,
                                                   ),
+                                                ),
+                                                TextButton.icon(
+                                                  icon: Icon(Icons.screen_rotation_alt_outlined, color: Colors.white),
+                                                  label: Text('Rotar Pantalla', style: TextStyle(color: Colors.white)),
+                                                  onPressed: () {
+                                                    setState(() {
+                                                      double currentAngle = FFAppState().rotationAngle;
+                                                      if (currentAngle == 0.0) {
+                                                        FFAppState().rotationAngle = 270.0;
+                                                      } else if (currentAngle == 270.0) {
+                                                        FFAppState().rotationAngle = 90.0;
+                                                      } else {
+                                                        FFAppState().rotationAngle = 0.0;
+                                                      }
+                                                    });
+                                                  },
                                                 ),
                                                 Row(
                                                   mainAxisSize: MainAxisSize.max,

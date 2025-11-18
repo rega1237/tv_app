@@ -23,6 +23,7 @@ class FFAppState extends ChangeNotifier {
     _safeInit(() {
       _loggedSucursal =
           prefs.getString('ff_loggedSucursal')?.ref ?? _loggedSucursal;
+      _rotationAngle = prefs.getDouble('ff_rotationAngle') ?? _rotationAngle;
     });
   }
 
@@ -46,6 +47,7 @@ class FFAppState extends ChangeNotifier {
   double get rotationAngle => _rotationAngle;
   set rotationAngle(double value) {
     _rotationAngle = value;
+    prefs.setDouble('ff_rotationAngle', value);
   }
 
   List<dynamic> _channelsData = [];
