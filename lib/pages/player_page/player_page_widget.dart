@@ -163,9 +163,13 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> {
     if (fileType.startsWith('video/')) {
       if (_videoController != null && _videoController!.value.isInitialized) {
         return Center(
-          child: AspectRatio(
-            aspectRatio: _videoController!.value.aspectRatio,
-            child: VideoPlayer(_videoController!),
+          child: FittedBox(
+            fit: BoxFit.contain,
+            child: SizedBox(
+              width: _videoController!.value.size.width,
+              height: _videoController!.value.size.height,
+              child: VideoPlayer(_videoController!),
+            ),
           ),
         );
       }
