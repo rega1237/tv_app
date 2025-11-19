@@ -21,19 +21,24 @@ void main() async {
 
   await initFirebase();
 
-  await authManager.initialize();
+  // La función initialize() ahora devuelve el usuario directamente.
+  final initialUser = await authManager.initialize();
 
   final appState = FFAppState(); // Initialize FFAppState
   await appState.initializePersistedState();
 
   runApp(ChangeNotifierProvider(
     create: (context) => appState,
-    child: MyApp(),
+    // Pasamos el usuario inicial a nuestra App.
+    child: MyApp(initialUser: initialUser),
   ));
 }
 
 class MyApp extends StatefulWidget {
-  // This widget is the root of your application.
+  // El widget raíz ahora acepta el usuario inicial.
+  const MyApp({super.key, this.initialUser});
+  final Proyecto1608XproDigitalTVAuthUser? initialUser;
+
   @override
   State<MyApp> createState() => _MyAppState();
 
@@ -74,7 +79,15 @@ class _MyAppState extends State<MyApp> {
     super.initState();
 
     _appStateNotifier = AppStateNotifier.instance;
+
+    // Actualizamos el notificador con el usuario inicial ANTES de crear el router.
+    // Esto asegura que el router sepa el estado de login desde el primer momento.
+    if (widget.initialUser != null) {
+      _appStateNotifier.update(widget.initialUser!);
+    }
+
     _router = createRouter(_appStateNotifier);
+    
     userStream = proyecto1608XproDigitalTVAuthUserStream()
       ..listen((user) {
         _appStateNotifier.update(user);

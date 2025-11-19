@@ -1,4 +1,5 @@
 import '/backend/backend.dart';
+import '/auth/custom_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -88,7 +89,7 @@ class _InicioWidgetState extends State<InicioWidget> {
 
         final inicioSucursalRecord = snapshot.data!;
 
-        return GestureDetector(
+        final mainContent = GestureDetector(
           onTap: () {
             FocusScope.of(context).unfocus();
             FocusManager.instance.primaryFocus?.unfocus();
@@ -819,6 +820,32 @@ class _InicioWidgetState extends State<InicioWidget> {
               ),
             ),
           ),
+        );
+
+        final debugWidget = Positioned(
+          bottom: 10.0,
+          left: 10.0,
+          child: Container(
+            padding: EdgeInsets.all(8.0),
+            color: Colors.black.withOpacity(0.7),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('--- DEBUG INFO ---', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+                Text('User UID: ${currentUser?.uid ?? "null"}', style: TextStyle(color: Colors.white)),
+                Text('Logged In: ${loggedIn}', style: TextStyle(color: Colors.white)),
+                Text('Rotation Angle: ${FFAppState().rotationAngle}', style: TextStyle(color: Colors.white)),
+                Text('Sucursal Ref: ${FFAppState().loggedSucursal?.id ?? "null"}', style: TextStyle(color: Colors.white)),
+              ],
+            ),
+          ),
+        );
+
+        return Stack(
+          children: [
+            mainContent,
+            debugWidget,
+          ],
         );
       },
     );

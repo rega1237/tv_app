@@ -88,7 +88,7 @@ class CustomAuthManager {
   }
 
   late SharedPreferences _prefs;
-  Future initialize() async {
+  Future<Proyecto1608XproDigitalTVAuthUser?> initialize() async {
     _prefs = await SharedPreferences.getInstance();
 
     try {
@@ -103,7 +103,7 @@ class CustomAuthManager {
       if (kDebugMode) {
         print('Error initializing auth: $e');
       }
-      return;
+      return null;
     }
 
     final authTokenExists = authenticationToken != null;
@@ -114,6 +114,7 @@ class CustomAuthManager {
       uid: uid,
     );
     proyecto1608XproDigitalTVAuthUserSubject.add(updatedUser);
+    return updatedUser;
   }
 
   void persistAuthData() {

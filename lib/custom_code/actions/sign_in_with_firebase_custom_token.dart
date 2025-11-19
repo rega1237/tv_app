@@ -10,34 +10,47 @@ import 'package:flutter/material.dart';
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
 import 'package:firebase_auth/firebase_auth.dart';
+import '/auth/custom_auth/auth_util.dart'; // Import auth_util para acceder a authManager
 
-/// Set your action name, define your arguments and return parameter, and then
-/// add the boilerplate code using the green button on the right!
+/// This action signs in with a Firebase custom token and then updates the
+/// app's custom auth manager to reflect the new session state.
 Future<bool> signInWithFirebaseCustomToken(String customToken) async {
   try {
-    // Verifica si el token no está vacío
-    if (customToken == null || customToken.isEmpty) {
-      print('Custom token provided is null or empty.');
+    if (customToken.isEmpty) {
+      print('[CustomAction] Custom token provided is empty.');
       return false;
     }
 
-    // Intenta iniciar sesión con el Custom Token usando el SDK de Firebase
+    // Step 1: Sign in to Firebase Auth with the custom token.
+    // This authenticates the user with Firebase's backend.
     UserCredential userCredential =
         await FirebaseAuth.instance.signInWithCustomToken(customToken);
 
-    // Verifica si el inicio de sesión fue exitoso y si el UID está disponible
-    if (userCredential.user != null && userCredential.user!.uid.isNotEmpty) {
-      print(
-          'Successfully signed in with Custom Token. UID: ${userCredential.user!.uid}');
-      return true; // Éxito
+    final user = userCredential.user;
+
+    // Check if the Firebase sign-in was successful.
+    if (user != null && user.uid.isNotEmpty) {
+      print('[CustomAction] Successfully signed in to Firebase. UID: ${user.uid}');
+
+      // --- THE FIX ---
+      // Step 2: Update the app's custom auth manager with the new state.
+      // This updates the global `currentUser`, notifies listeners, and persists
+      // the session data to SharedPreferences for future app launches.
+      await authManager.signIn(
+        authenticationToken: customToken,
+        authUid: user.uid,
+      );
+      print('[CustomAction] CustomAuthManager updated successfully.');
+      
+      return true; // Return true indicating full success.
     } else {
-      print(
-          'Sign in with Custom Token completed, but user or UID is null/empty.');
-      return false; // Fallo
+      print('[CustomAction] Firebase sign in completed, but user or UID is null/empty.');
+      return false;
     }
   } catch (e) {
-    // Captura cualquier error durante el inicio de sesión
-    print('Error signing in with Custom Token: $e');
-    return false; // Fallo
+    print('[CustomAction] Error in signInWithFirebaseCustomToken: $e');
+    // If anything fails, make sure to sign out to prevent inconsistent states.
+    await authManager.signOut();
+    return false;
   }
 }
