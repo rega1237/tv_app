@@ -156,7 +156,7 @@ class _ButtonOrientationWidgetState extends State<ButtonOrientationWidget> {
                       ),
                     ),
                     Text(
-                      'Vetical',
+                      'Vertical',
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             font: GoogleFonts.inter(
                               fontWeight: FlutterFlowTheme.of(context)

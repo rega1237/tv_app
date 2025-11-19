@@ -190,7 +190,7 @@ class _InicioWidgetState extends State<InicioWidget> {
                                         ),
                                         TextButton.icon(
                                           icon: Icon(Icons.screen_rotation_alt_outlined, color: Colors.white),
-                                          label: Text('Rotar Pantalla', style: TextStyle(color: Colors.white)),
+                                          label: Text('Rotate Screen', style: TextStyle(color: Colors.white)),
                                           onPressed: () {
                                             setState(() {
                                               double currentAngle = FFAppState().rotationAngle;
@@ -594,7 +594,7 @@ class _InicioWidgetState extends State<InicioWidget> {
                                                 ),
                                                 TextButton.icon(
                                                   icon: Icon(Icons.screen_rotation_alt_outlined, color: Colors.white),
-                                                  label: Text('Rotar Pantalla', style: TextStyle(color: Colors.white)),
+                                                  label: Text('Rotate Screen', style: TextStyle(color: Colors.white)),
                                                   onPressed: () {
                                                     setState(() {
                                                       double currentAngle = FFAppState().rotationAngle;

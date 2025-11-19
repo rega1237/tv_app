@@ -52,7 +52,7 @@ class _PairingLoginWidgetState extends State<PairingLoginWidget> {
       if (mounted) {
         setState(() {
           _isLoading = false;
-          _errorMessage = "Error al crear sesión. Reinicia la app.";
+          _errorMessage = "Error creating session. Restart the app.";
         });
       }
     }
@@ -84,7 +84,7 @@ class _PairingLoginWidgetState extends State<PairingLoginWidget> {
           context.goNamed(InicioWidget.routeName);
         } else {
           if (mounted) {
-            setState(() => _errorMessage = "Fallo el login con el token. Intenta de nuevo.");
+            setState(() => _errorMessage = "Login with token failed. Try again.");
           }
         }
       }
@@ -140,7 +140,7 @@ class _PairingLoginWidgetState extends State<PairingLoginWidget> {
                             if (FFAppState().rotationAngle != 0.0)
                               TextButton.icon(
                                 icon: Icon(Icons.rotate_90_degrees_ccw, color: Colors.white),
-                                label: Text('Rotar', style: TextStyle(color: Colors.white)),
+                                label: Text('Rotate', style: TextStyle(color: Colors.white)),
                                 onPressed: () {
                                   // Actualizamos el estado global directamente
                                   setState(() {
@@ -152,7 +152,7 @@ class _PairingLoginWidgetState extends State<PairingLoginWidget> {
                             
                             SizedBox(height: 20),
 
-                            Text('Escanea el QR o ve a:',
+                            Text('Scan the QR or go to:',
                                 style:
                                     TextStyle(color: Colors.white, fontSize: 22)),
                             Text(_linkingUrlBase,
@@ -172,7 +172,7 @@ class _PairingLoginWidgetState extends State<PairingLoginWidget> {
                               ),
                             ),
                             SizedBox(height: 20),
-                            Text('O introduce el código manualmente:',
+                            Text('Or enter the code manually:',
                                 style:
                                     TextStyle(color: Colors.grey, fontSize: 18)),
                             SizedBox(height: 10),
@@ -203,7 +203,7 @@ class _PairingLoginWidgetState extends State<PairingLoginWidget> {
                           ],
                         ),
                       )
-                    : Text('No se pudo generar código de login.',
+                    : Text('Could not generate login code.',
                         style: TextStyle(color: Colors.red)),
       ),
     );

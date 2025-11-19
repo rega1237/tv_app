@@ -162,10 +162,10 @@ class _VerticalFocusGridState extends State<VerticalFocusGrid> {
     final itemsToUse = widget.items.isNotEmpty
         ? widget.items
         : [
-            {'name': 'Deportes', 'vertical': false},
-            {'name': 'Noticias', 'vertical': true},
-            {'name': 'Cine', 'vertical': false},
-            {'name': 'Música', 'vertical': true},
+            {'name': 'Sports', 'vertical': false},
+            {'name': 'News', 'vertical': true},
+            {'name': 'Movies', 'vertical': false},
+            {'name': 'Music', 'vertical': true},
             {'name': 'Kids', 'vertical': false},
             {'name': 'Docs', 'vertical': true},
           ];
@@ -173,7 +173,7 @@ class _VerticalFocusGridState extends State<VerticalFocusGrid> {
     if (itemsToUse.isEmpty) {
       return Center(
         child: Text(
-          'No hay canales disponibles',
+          'No channels available',
           style: TextStyle(color: widget.textColor),
         ),
       );

@@ -150,7 +150,7 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> {
 
   Widget _buildPlayer() {
     if (_playbackQueue.isEmpty) {
-      return Center(child: Text('No hay contenido programado.', style: TextStyle(color: Colors.white)));
+      return Center(child: Text('No content scheduled.', style: TextStyle(color: Colors.white)));
     }
 
     if (_currentFileIndex >= _playbackQueue.length) {
@@ -177,7 +177,7 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> {
     } else if (fileType.startsWith('image/')) {
       return Center(child: Image.network(fileToPlay.fileUrl, fit: BoxFit.contain));
     } else {
-      return Center(child: Text('Formato no soportado: ${fileToPlay.fileType}', style: TextStyle(color: Colors.white)));
+      return Center(child: Text('Unsupported format: ${fileToPlay.fileType}', style: TextStyle(color: Colors.white)));
     }
   }
 
