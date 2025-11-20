@@ -97,14 +97,17 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         final isGoingToPublicRoute =
             publicRoutes.contains(state.matchedLocation);
 
-        // If the user is logged in and tries to access a public-only route,
+        // If user is not logged in and is trying to access a protected route,
+        // redirect them to the very first screen of the app.
+        if (!loggedIn && !isGoingToPublicRoute) {
+          return OrientationSelectionPageWidget.routePath;
+        }
+
+        // If user is logged in and tries to access a public route,
         // redirect them to the home page.
         if (loggedIn && isGoingToPublicRoute) {
           return InicioWidget.routePath;
         }
-
-        // If the user is NOT logged in and tries to access a protected route,
-        // the FFRoute's own redirect will handle it. We don't need to do anything here.
 
         // No redirection needed.
         return null;
