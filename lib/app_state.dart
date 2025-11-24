@@ -50,6 +50,13 @@ class FFAppState extends ChangeNotifier {
     prefs.setDouble('ff_rotationAngle', value);
   }
 
+  bool _isSubscriptionActive = true;
+  bool get isSubscriptionActive => _isSubscriptionActive;
+  set isSubscriptionActive(bool value) {
+    _isSubscriptionActive = value;
+    notifyListeners();
+  }
+
   List<dynamic> _channelsData = [];
   List<dynamic> get channelsData => _channelsData;
   set channelsData(List<dynamic> value) {

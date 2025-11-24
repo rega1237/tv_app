@@ -10,6 +10,7 @@ import '/backend/schema/structs/index.dart';
 import '/auth/custom_auth/custom_auth_user_provider.dart';
 
 import '/main.dart';
+import '/pages/expired_subscription_page/expired_subscription_page_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/lat_lng.dart';
 import '/flutter_flow/place.dart';
@@ -85,10 +86,18 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       refreshListenable: appStateNotifier,
       navigatorKey: appNavigatorKey,
       errorBuilder: (context, state) => appStateNotifier.loggedIn
-          ? InicioWidget()
+          ? (FFAppState().isSubscriptionActive
+              ? InicioWidget()
+              : ExpiredSubscriptionPageWidget())
           : OrientationSelectionPageWidget(),
       redirect: (context, state) {
         final loggedIn = appStateNotifier.loggedIn;
+        final subscriptionActive = FFAppState().isSubscriptionActive;
+
+        print(
+          '[GoRouter Redirect] Location: ${state.matchedLocation}, LoggedIn: $loggedIn, SubscriptionActive: $subscriptionActive',
+        );
+
         final publicRoutes = [
           '/', // _initialize route
           OrientationSelectionPageWidget.routePath,
@@ -96,20 +105,31 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         ];
         final isGoingToPublicRoute =
             publicRoutes.contains(state.matchedLocation);
+        final isGoingToExpiredPage =
+            state.matchedLocation == ExpiredSubscriptionPageWidget.routePath;
 
-        // If user is not logged in and is trying to access a protected route,
-        // redirect them to the very first screen of the app.
+        // If user is not logged in and tries to access a protected route, redirect to login flow.
         if (!loggedIn && !isGoingToPublicRoute) {
           return OrientationSelectionPageWidget.routePath;
         }
 
-        // If user is logged in and tries to access a public route,
-        // redirect them to the home page.
-        if (loggedIn && isGoingToPublicRoute) {
-          return InicioWidget.routePath;
+        // If user is logged in...
+        if (loggedIn) {
+          // ...but their subscription is not active, force them to the expired page.
+          if (!subscriptionActive && !isGoingToExpiredPage) {
+            return ExpiredSubscriptionPageWidget.routePath;
+          }
+          // ...and their subscription IS active, but they are on the expired page, send them home.
+          if (subscriptionActive && isGoingToExpiredPage) {
+            return InicioWidget.routePath;
+          }
+          // ...and they are trying to go to a public page, send them home.
+          if (isGoingToPublicRoute) {
+            return InicioWidget.routePath;
+          }
         }
 
-        // No redirection needed.
+        // No redirection needed in all other cases.
         return null;
       },
       routes: [
@@ -117,7 +137,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: '_initialize',
           path: '/',
           builder: (context, _) => appStateNotifier.loggedIn
-              ? InicioWidget()
+              ? (FFAppState().isSubscriptionActive
+                  ? InicioWidget()
+                  : ExpiredSubscriptionPageWidget())
               : OrientationSelectionPageWidget(),
         ),
         FFRoute(
@@ -139,6 +161,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: OrientationSelectionPageWidget.routeName,
           path: OrientationSelectionPageWidget.routePath,
           builder: (context, params) => OrientationSelectionPageWidget(),
+        ),
+        FFRoute(
+          name: ExpiredSubscriptionPageWidget.routeName,
+          path: ExpiredSubscriptionPageWidget.routePath,
+          builder: (context, params) => ExpiredSubscriptionPageWidget(),
         ),
         FFRoute(
           name: 'PlayerPage',
