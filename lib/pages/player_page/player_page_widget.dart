@@ -1,4 +1,3 @@
-
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -6,7 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 import 'dart:async';
 import 'package:flutter/foundation.dart';
-import 'package:provider/provider.dart'; // Import para context.watch
+import 'package:provider/provider.dart';
+import 'dart:io';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart'; // Import for Cache Manager
 
 class PlayerPageWidget extends StatefulWidget {
   const PlayerPageWidget({
@@ -26,7 +27,6 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> {
   Timer? _pollingTimer;
 
   VideoPlayerController? _videoController;
-  Key _playerWidgetKey = UniqueKey();
 
   @override
   void initState() {
@@ -64,21 +64,19 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> {
       final now = DateTime.now();
       final activePlaylists = playlists.where((p) => p.schedule != null && now.isAfter(p.schedule!.startDate!) && now.isBefore(p.schedule!.endDate!)).toList();
       
-      if (activePlaylists.isEmpty) {
-        if (mounted) setState(() => _playbackQueue = []);
-        return;
+      List<FilesRecord> files = [];
+      if (activePlaylists.isNotEmpty) {
+        final dayOfWeek = now.weekday;
+        final timeInMinutes = now.hour * 60 + now.minute;
+        
+        final futureIndividualLists = activePlaylists.map((p) => queryPlaylistIndividualsRecordOnce(parent: p.reference, queryBuilder: (q) => q.where('activeDays', arrayContains: dayOfWeek))).toList();
+        final listOfIndividualLists = await Future.wait(futureIndividualLists);
+        final allActiveIndividualsNow = listOfIndividualLists.expand((list) => list).where((i) => timeInMinutes >= i.startHour && timeInMinutes <= i.endHour).toList();
+
+        final allFileRefs = allActiveIndividualsNow.expand((i) => i.filesRefs).toList();
+        final fileFutures = allFileRefs.map((ref) => FilesRecord.getDocumentOnce(ref));
+        files = (await Future.wait(fileFutures)).where((f) => f != null).cast<FilesRecord>().toList();
       }
-
-      final dayOfWeek = now.weekday;
-      final timeInMinutes = now.hour * 60 + now.minute;
-      
-      final futureIndividualLists = activePlaylists.map((p) => queryPlaylistIndividualsRecordOnce(parent: p.reference, queryBuilder: (q) => q.where('activeDays', arrayContains: dayOfWeek))).toList();
-      final listOfIndividualLists = await Future.wait(futureIndividualLists);
-      final allActiveIndividualsNow = listOfIndividualLists.expand((list) => list).where((i) => timeInMinutes >= i.startHour && timeInMinutes <= i.endHour).toList();
-
-      final allFileRefs = allActiveIndividualsNow.expand((i) => i.filesRefs).toList();
-      final fileFutures = allFileRefs.map((ref) => FilesRecord.getDocumentOnce(ref));
-      final files = (await Future.wait(fileFutures)).where((f) => f != null).cast<FilesRecord>().toList();
 
       if (mounted) {
         final isNewQueueDifferent = !listEquals(_playbackQueue.map((f) => f.reference).toList(), files.map((f) => f.reference).toList());
@@ -99,6 +97,14 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> {
   Future<void> _playbackLoop() async {
     while (mounted) {
       if (_playbackQueue.isEmpty) {
+        if (_videoController != null) {
+          await _videoController?.dispose();
+          if (mounted) {
+            setState(() {
+              _videoController = null;
+            });
+          }
+        }
         await Future.delayed(const Duration(seconds: 5));
         continue;
       }
@@ -110,82 +116,104 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> {
       final fileToPlay = _playbackQueue[_currentFileIndex];
       print('[PlayerPage] Preparando archivo ${_currentFileIndex + 1}/${_playbackQueue.length}: ${fileToPlay.reference.id}');
       
-      await _videoController?.dispose();
-      _videoController = null;
-      if (mounted) {
-        setState(() {
-          _playerWidgetKey = UniqueKey();
-        });
-      }
+      VideoPlayerController? newController;
+      Duration nextDuration = const Duration(seconds: 15);
+      bool isSingleVideoLoop = false;
 
-      Duration duration = const Duration(seconds: 15);
-
-      if (fileToPlay.fileType.startsWith('video/') && fileToPlay.fileUrlVideo.isNotEmpty) {
-        _videoController = VideoPlayerController.networkUrl(Uri.parse(fileToPlay.fileUrlVideo));
-        try {
-          await _videoController!.initialize();
-          duration = _videoController!.value.duration;
+      try {
+        if (fileToPlay.fileType.startsWith('video/') && fileToPlay.fileUrlVideo.isNotEmpty) {
+          print('[PlayerPage] Obteniendo video desde caché/red...');
+          var file = await DefaultCacheManager().getSingleFile(fileToPlay.fileUrlVideo);
+          print('[PlayerPage] Video listo desde el archivo local: ${file.path}');
           
-          if (mounted) {
-            setState(() {});
+          newController = VideoPlayerController.file(file);
+          await newController.initialize();
+          nextDuration = newController.value.duration;
+          
+          if (_playbackQueue.length == 1) {
+            newController.setLooping(true);
+            isSingleVideoLoop = true;
+            print('[PlayerPage] Video único detectado. Activando loop nativo.');
           }
-
-          _videoController!.setVolume(0.0);
-          _videoController!.play();
-          print('[PlayerPage] Video iniciado. Duración: ${duration.inSeconds} segundos.');
-        } catch (e) {
-          print('[PlayerPage] ERROR al inicializar video: $e. Saltando en 5s.');
-          duration = const Duration(seconds: 5);
-          _videoController = null;
+        } else if (fileToPlay.fileType.startsWith('image/')) {
+          print('[PlayerPage] Mostrando imagen. Duración: 15 segundos.');
+        } else {
+          print('[PlayerPage] Formato no soportado. Duración: 5 segundos.');
+          nextDuration = const Duration(seconds: 5);
         }
-      } else {
-        print('[PlayerPage] Mostrando imagen. Duración: 15 segundos.');
+      } catch (e) {
+        print('[PlayerPage] ERROR al inicializar el nuevo medio: $e. Saltando en 5s.');
+        nextDuration = const Duration(seconds: 5);
+        _currentFileIndex++;
+        await Future.delayed(nextDuration);
+        continue;
       }
 
-      await Future.delayed(duration);
+      if (!mounted) return;
 
+      final oldController = _videoController;
+      
+      setState(() {
+        _videoController = newController;
+      });
+
+      if (oldController != null) {
+        Future.delayed(const Duration(milliseconds: 50), () => oldController.dispose());
+      }
+      
+      _videoController?.play();
+      print('[PlayerPage] Nuevo medio iniciado.');
+
+      if (isSingleVideoLoop) {
+        await Completer<void>().future;
+      }
+
+      await Future.delayed(nextDuration);
       _currentFileIndex++;
     }
   }
 
   Widget _buildPlayer() {
+    // Comprobación prioritaria: si no hay nada en la cola, mostrar mensaje.
     if (_playbackQueue.isEmpty) {
-      return Center(child: Text('No content scheduled.', style: TextStyle(color: Colors.white)));
+      return Center(
+        child: Text(
+          'No content scheduled.',
+          style: FlutterFlowTheme.of(context).bodyMedium.override(
+                fontFamily: 'Readex Pro',
+                color: Colors.white,
+                fontSize: 24.0,
+              ),
+        ),
+      );
     }
 
-    if (_currentFileIndex >= _playbackQueue.length) {
-      return Center(child: CircularProgressIndicator());
+    final currentController = _videoController;
+
+    if (currentController != null && currentController.value.isInitialized) {
+      return Center(
+        child: AspectRatio(
+          aspectRatio: currentController.value.aspectRatio,
+          child: VideoPlayer(currentController),
+        ),
+      );
     }
-
-    final fileToPlay = _playbackQueue[_currentFileIndex];
-    final fileType = fileToPlay.fileType.toLowerCase();
-
-    if (fileType.startsWith('video/')) {
-      if (_videoController != null && _videoController!.value.isInitialized) {
-        return Center(
-          child: FittedBox(
-            fit: BoxFit.contain,
-            child: SizedBox(
-              width: _videoController!.value.size.width,
-              height: _videoController!.value.size.height,
-              child: VideoPlayer(_videoController!),
-            ),
-          ),
-        );
+    
+    if (_playbackQueue.isNotEmpty && _currentFileIndex < _playbackQueue.length) {
+      final fileToPlay = _playbackQueue[_currentFileIndex];
+      if (fileToPlay.fileType.startsWith('image/')) {
+        return Center(child: Image.network(fileToPlay.fileUrl, fit: BoxFit.contain));
       }
-      return Center(child: CircularProgressIndicator());
-    } else if (fileType.startsWith('image/')) {
-      return Center(child: Image.network(fileToPlay.fileUrl, fit: BoxFit.contain));
-    } else {
-      return Center(child: Text('Unsupported format: ${fileToPlay.fileType}', style: TextStyle(color: Colors.white)));
     }
+
+    return Center(child: CircularProgressIndicator());
   }
 
   @override
   Widget build(BuildContext context) {
-    // Leemos el estado global para la rotación
     context.watch<FFAppState>();
     final rotationAngle = FFAppState().rotationAngle;
+
     int quarterTurns = 0;
     if (rotationAngle == 90.0) {
       quarterTurns = 1;
@@ -195,13 +223,9 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> {
 
     final playerScaffold = Scaffold(
       backgroundColor: Colors.black,
-      body: KeyedSubtree(
-        key: _playerWidgetKey,
-        child: _buildPlayer(),
-      ),
+      body: _buildPlayer(),
     );
 
-    // Aplicamos RotatedBox a todo el Scaffold solo si es necesario
     return quarterTurns != 0
         ? RotatedBox(quarterTurns: quarterTurns, child: playerScaffold)
         : playerScaffold;
