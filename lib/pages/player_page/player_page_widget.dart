@@ -62,7 +62,17 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> {
       final playlists = (await Future.wait(playlistFutures)).where((p) => p != null).cast<PlaylistRecord>().toList();
 
       final now = DateTime.now();
-      final activePlaylists = playlists.where((p) => p.schedule != null && now.isAfter(p.schedule!.startDate!) && now.isBefore(p.schedule!.endDate!)).toList();
+      final activePlaylists = playlists.where((p) {
+        if (p.schedule == null || p.schedule!.startDate == null || p.schedule!.endDate == null) {
+          return false;
+        }
+        // La fecha de fin debe ser inclusiva. El playlist es válido DURANTE todo el endDate.
+        // Por lo tanto, la fecha de expiración real es al inicio del día SIGUIENTE.
+        final endDate = p.schedule!.endDate!;
+        final expiryDate = DateTime(endDate.year, endDate.month, endDate.day + 1);
+        
+        return now.isAfter(p.schedule!.startDate!) && now.isBefore(expiryDate);
+      }).toList();
       
       List<FilesRecord> files = [];
       if (activePlaylists.isNotEmpty) {
