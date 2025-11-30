@@ -27,6 +27,7 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> {
   Timer? _pollingTimer;
 
   VideoPlayerController? _videoController;
+  Completer<void>? _loopCompleter;
 
   @override
   void initState() {
@@ -93,6 +94,8 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> {
         print('[PlayerPage] ¿La nueva cola es diferente a la actual? $isNewQueueDifferent');
         if (isNewQueueDifferent) {
           print('[PlayerPage] Nueva cola detectada. Actualizando lista de ${files.length} archivos.');
+          // Despertamos el loop si estaba en una espera infinita.
+          _loopCompleter?.complete();
           setState(() {
             _playbackQueue = files;
             _currentFileIndex = 0;
@@ -175,7 +178,8 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> {
       print('[PlayerPage] Nuevo medio iniciado.');
 
       if (isSingleVideoLoop) {
-        await Completer<void>().future;
+        _loopCompleter = Completer<void>();
+        await _loopCompleter!.future;
       }
 
       await Future.delayed(nextDuration);
