@@ -42,6 +42,24 @@ class _InicioWidgetState extends State<InicioWidget> {
     _model = createModel(context, () => InicioModel());
 
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      final appState = FFAppState();
+      if (appState.initialRedirectPending && appState.lastChannelRef != null) {
+        // Desactivamos la bandera para que esto solo ocurra una vez por sesión.
+        appState.initialRedirectPending = false;
+        // Usamos 'pushNamed' para que la pantalla de Inicio quede en la pila de navegación.
+        context.pushNamed(
+          'PlayerPage',
+          queryParameters: {
+            'channelRef': serializeParam(
+              appState.lastChannelRef,
+              ParamType.DocumentReference,
+            ),
+          }.withoutNulls,
+        );
+        // Salimos para no ejecutar el resto de la carga de datos de esta página.
+        return;
+      }
+
       _model.sucursal = await queryChannelsBranchRecordOnce(
         queryBuilder: (channelsBranchRecord) => channelsBranchRecord.where(
           'branch_ref',

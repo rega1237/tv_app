@@ -99,6 +99,12 @@ class FFAppState extends ChangeNotifier {
   void insertAtIndexInChannelsData(int index, dynamic value) {
     channelsData.insert(index, value);
   }
+
+  bool _initialRedirectPending = true;
+  bool get initialRedirectPending => _initialRedirectPending;
+  set initialRedirectPending(bool value) {
+    _initialRedirectPending = value;
+  }
 }
 
 void _safeInit(Function() initializeField) {

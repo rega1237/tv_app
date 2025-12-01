@@ -93,21 +93,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       redirect: (context, state) {
         final loggedIn = appStateNotifier.loggedIn;
         final subscriptionActive = FFAppState().isSubscriptionActive;
-        final lastChannelRef = FFAppState().lastChannelRef;
-
-        // --- LÓGICA DE REDIRECCIÓN CORREGIDA ---
-        final isGoingHome = state.matchedLocation == '/' ||
-            state.matchedLocation == InicioWidget.routePath;
-
-        if (loggedIn &&
-            subscriptionActive &&
-            isGoingHome &&
-            lastChannelRef != null) {
-          print(
-              '[GoRouter Redirect] Last channel found. Redirecting to PlayerPage.');
-          return '/player'; // Redirigir a la ruta del reproductor
-        }
-        // --- FIN DE LA NUEVA LÓGICA ---
 
         print(
           '[GoRouter Redirect] Location: ${state.matchedLocation}, LoggedIn: $loggedIn, SubscriptionActive: $subscriptionActive',
