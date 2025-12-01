@@ -63,17 +63,21 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> {
       final playlistFutures = channel.playlistRef.map((ref) => PlaylistRecord.getDocumentOnce(ref));
       final playlists = (await Future.wait(playlistFutures)).where((p) => p != null).cast<PlaylistRecord>().toList();
 
-      final now = DateTime.now();
+      final now = DateTime.now().toUtc(); // Convertir la hora actual a UTC
       final activePlaylists = playlists.where((p) {
         if (p.schedule == null || p.schedule!.startDate == null || p.schedule!.endDate == null) {
           return false;
         }
-        // La fecha de fin debe ser inclusiva. El playlist es válido DURANTE todo el endDate.
-        // Por lo tanto, la fecha de expiración real es al inicio del día SIGUIENTE.
-        final endDate = p.schedule!.endDate!;
-        final expiryDate = DateTime(endDate.year, endDate.month, endDate.day + 1);
         
-        return now.isAfter(p.schedule!.startDate!) && now.isBefore(expiryDate);
+        // Convertir las fechas del playlist a UTC para una comparación consistente
+        final startDate = p.schedule!.startDate!.toUtc();
+        final endDate = p.schedule!.endDate!.toUtc();
+
+        // La fecha de fin debe ser inclusiva. El playlist es válido DURANTE todo el endDate.
+        // Por lo tanto, la fecha de expiración real es al inicio del día SIGUIENTE (en UTC).
+        final expiryDate = DateTime.utc(endDate.year, endDate.month, endDate.day + 1);
+        
+        return now.isAfter(startDate) && now.isBefore(expiryDate);
       }).toList();
       
       List<FilesRecord> files = [];
