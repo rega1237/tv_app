@@ -32,6 +32,7 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> {
   @override
   void initState() {
     super.initState();
+    FFAppState().lastChannelRef = widget.channelRef;
     print('[PlayerPage] initState: Iniciando...');
     _initializePlayer();
   }

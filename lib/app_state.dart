@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import '/backend/backend.dart';
-import '/backend/schema/structs/index.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'flutter_flow/flutter_flow_util.dart';
-import 'dart:convert';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class FFAppState extends ChangeNotifier {
   static FFAppState _instance = FFAppState._internal();
@@ -14,16 +12,19 @@ class FFAppState extends ChangeNotifier {
 
   FFAppState._internal();
 
-  static void reset() {
-    _instance = FFAppState._internal();
-  }
-
+  // El método initializePersistedState es el correcto para cargar datos.
   Future initializePersistedState() async {
     prefs = await SharedPreferences.getInstance();
     _safeInit(() {
       _loggedSucursal =
           prefs.getString('ff_loggedSucursal')?.ref ?? _loggedSucursal;
       _rotationAngle = prefs.getDouble('ff_rotationAngle') ?? _rotationAngle;
+      
+      // --- LÓGICA DE CARGA AÑADIDA AQUÍ ---
+      final lastChannelPath = prefs.getString('ff_lastChannelRef');
+      if (lastChannelPath != null && lastChannelPath.isNotEmpty) {
+        _lastChannelRef = FirebaseFirestore.instance.doc(lastChannelPath);
+      }
     });
   }
 
@@ -47,7 +48,20 @@ class FFAppState extends ChangeNotifier {
   double get rotationAngle => _rotationAngle;
   set rotationAngle(double value) {
     _rotationAngle = value;
+    // --- CORREGIDO para usar 'prefs' ---
     prefs.setDouble('ff_rotationAngle', value);
+  }
+
+  DocumentReference? _lastChannelRef;
+  DocumentReference? get lastChannelRef => _lastChannelRef;
+  set lastChannelRef(DocumentReference? value) {
+    _lastChannelRef = value;
+    // --- CORREGIDO para usar 'prefs' ---
+    if (value != null) {
+      prefs.setString('ff_lastChannelRef', value.path);
+    } else {
+      prefs.remove('ff_lastChannelRef');
+    }
   }
 
   bool _isSubscriptionActive = true;

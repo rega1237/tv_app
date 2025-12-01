@@ -93,6 +93,21 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       redirect: (context, state) {
         final loggedIn = appStateNotifier.loggedIn;
         final subscriptionActive = FFAppState().isSubscriptionActive;
+        final lastChannelRef = FFAppState().lastChannelRef;
+
+        // --- LÓGICA DE REDIRECCIÓN CORREGIDA ---
+        final isGoingHome = state.matchedLocation == '/' ||
+            state.matchedLocation == InicioWidget.routePath;
+
+        if (loggedIn &&
+            subscriptionActive &&
+            isGoingHome &&
+            lastChannelRef != null) {
+          print(
+              '[GoRouter Redirect] Last channel found. Redirecting to PlayerPage.');
+          return '/player'; // Redirigir a la ruta del reproductor
+        }
+        // --- FIN DE LA NUEVA LÓGICA ---
 
         print(
           '[GoRouter Redirect] Location: ${state.matchedLocation}, LoggedIn: $loggedIn, SubscriptionActive: $subscriptionActive',
@@ -170,13 +185,23 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'PlayerPage',
           path: '/player',
-          builder: (context, params) => PlayerPageWidget(
-            channelRef: params.getParam(
+          builder: (context, params) {
+            // --- LÓGICA DE BUILDER CORREGIDA ---
+            // Intenta obtener el 'channelRef' de los parámetros de la ruta.
+            var channelRef = params.getParam<DocumentReference?>(
               'channelRef',
               ParamType.DocumentReference,
               collectionNamePath: ['channels_branch', 'channels'],
-            ),
-          ),
+            );
+            // Si no viene en los parámetros (porque es una redirección), tómalo del AppState.
+            channelRef ??= FFAppState().lastChannelRef;
+
+            // Si por alguna razón sigue siendo nulo, redirige a la página de inicio para evitar un error.
+            if (channelRef == null) {
+              return InicioWidget();
+            }
+            return PlayerPageWidget(channelRef: channelRef);
+          },
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
