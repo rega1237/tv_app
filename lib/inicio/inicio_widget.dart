@@ -35,11 +35,22 @@ class _InicioWidgetState extends State<InicioWidget> {
 
   bool _isConfirmingLogout = false;
   Timer? _logoutConfirmationTimer;
+  Timer? _clockTimer;
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => InicioModel());
+
+    // --- LÓGICA DEL RELOJ EN VIVO ---
+    // Inicia un temporizador que se ejecuta cada segundo.
+    _clockTimer = Timer.periodic(Duration(seconds: 1), (timer) {
+      // Llamar a setState() fuerza la reconstrucción del widget, actualizando la hora.
+      if (mounted) {
+        setState(() {});
+      }
+    });
+    // --- FIN DE LA LÓGICA DEL RELOJ ---
 
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       final appState = FFAppState();
@@ -81,6 +92,7 @@ class _InicioWidgetState extends State<InicioWidget> {
   void dispose() {
     _model.dispose();
     _logoutConfirmationTimer?.cancel();
+    _clockTimer?.cancel();
     super.dispose();
   }
 
