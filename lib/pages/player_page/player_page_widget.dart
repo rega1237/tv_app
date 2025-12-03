@@ -63,29 +63,35 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> {
       final playlistFutures = channel.playlistRef.map((ref) => PlaylistRecord.getDocumentOnce(ref));
       final playlists = (await Future.wait(playlistFutures)).where((p) => p != null).cast<PlaylistRecord>().toList();
 
-      final now = DateTime.now().toUtc(); // Convertir la hora actual a UTC
+      // Usamos la hora local para las comparaciones de hora del día (startHour/endHour)
+      final localNow = DateTime.now();
+      final timeInMinutes = localNow.hour * 60 + localNow.minute;
+      final dayOfWeek = localNow.weekday;
+
+      // Usamos la hora UTC para las comparaciones de fecha (startDate/endDate) para evitar problemas de zona horaria
+      final utcNow = localNow.toUtc();
       final activePlaylists = playlists.where((p) {
-        if (p.schedule == null || p.schedule!.startDate == null || p.schedule!.endDate == null) {
+        if (p.schedule == null ||
+            p.schedule!.startDate == null ||
+            p.schedule!.endDate == null) {
           return false;
         }
-        
-        // Convertir las fechas del playlist a UTC para una comparación consistente
+
         final startDate = p.schedule!.startDate!.toUtc();
         final endDate = p.schedule!.endDate!.toUtc();
+        final expiryDate =
+            DateTime.utc(endDate.year, endDate.month, endDate.day + 1);
 
-        // La fecha de fin debe ser inclusiva. El playlist es válido DURANTE todo el endDate.
-        // Por lo tanto, la fecha de expiración real es al inicio del día SIGUIENTE (en UTC).
-        final expiryDate = DateTime.utc(endDate.year, endDate.month, endDate.day + 1);
-        
-        return now.isAfter(startDate) && now.isBefore(expiryDate);
+        return utcNow.isAfter(startDate) && utcNow.isBefore(expiryDate);
       }).toList();
-      
+
       List<FilesRecord> files = [];
       if (activePlaylists.isNotEmpty) {
-        final dayOfWeek = now.weekday;
-        final timeInMinutes = now.hour * 60 + now.minute;
-        
-        final futureIndividualLists = activePlaylists.map((p) => queryPlaylistIndividualsRecordOnce(parent: p.reference, queryBuilder: (q) => q.where('activeDays', arrayContains: dayOfWeek))).toList();
+        final futureIndividualLists = activePlaylists
+            .map((p) => queryPlaylistIndividualsRecordOnce(
+                parent: p.reference,
+                queryBuilder: (q) => q.where('activeDays', arrayContains: dayOfWeek)))
+            .toList();
         final listOfIndividualLists = await Future.wait(futureIndividualLists);
         final allActiveIndividualsNow = listOfIndividualLists.expand((list) => list).where((i) => timeInMinutes >= i.startHour && timeInMinutes <= i.endHour).toList();
 
@@ -98,13 +104,38 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> {
         final isNewQueueDifferent = !listEquals(_playbackQueue.map((f) => f.reference).toList(), files.map((f) => f.reference).toList());
         print('[PlayerPage] ¿La nueva cola es diferente a la actual? $isNewQueueDifferent');
         if (isNewQueueDifferent) {
-          print('[PlayerPage] Nueva cola detectada. Actualizando lista de ${files.length} archivos.');
-          // Despertamos el loop si estaba en una espera infinita.
+          print(
+              '[PlayerPage] Nueva cola detectada. Reiniciando el reproductor...');
+
+          // 1. Cancelamos los procesos antiguos.
+          _pollingTimer?.cancel();
           _loopCompleter?.complete();
-          setState(() {
-            _playbackQueue = files;
-            _currentFileIndex = 0;
-          });
+          await _videoController?.dispose();
+
+          // 2. Actualizamos el estado con la nueva lista de archivos.
+          if (mounted) {
+            setState(() {
+              _videoController = null;
+              _playbackQueue = files; // Usamos la nueva lista, no una vacía.
+              _currentFileIndex = 0;
+            });
+          }
+
+          // Esperamos un instante para que el setState se procese.
+          await Future.delayed(const Duration(milliseconds: 50));
+
+          // 3. Reiniciamos los procesos directamente, sin recursión.
+          if (mounted) {
+            _pollingTimer =
+                Timer.periodic(const Duration(seconds: 60), (timer) {
+              print(
+                  '[PlayerPage] Timer activado: Re-evaluando la cola de reproducción...');
+              _buildPlaybackQueue();
+            });
+            _playbackLoop();
+          }
+          // Salimos de la función para no continuar con el flujo antiguo.
+          return;
         }
       }
     } catch (e, s) {
