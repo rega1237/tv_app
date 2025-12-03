@@ -170,15 +170,19 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> {
       bool isSingleVideoLoop = false;
 
       try {
-        if (fileToPlay.fileType.startsWith('video/') && fileToPlay.fileUrlVideo.isNotEmpty) {
+        if (fileToPlay.fileType.startsWith('video/') &&
+            fileToPlay.fileUrlVideo.isNotEmpty) {
           print('[PlayerPage] Obteniendo video desde caché/red...');
-          var file = await DefaultCacheManager().getSingleFile(fileToPlay.fileUrlVideo);
+          var file =
+              await DefaultCacheManager().getSingleFile(fileToPlay.fileUrlVideo);
           print('[PlayerPage] Video listo desde el archivo local: ${file.path}');
-          
+
           newController = VideoPlayerController.file(file);
-          await newController.initialize();
+          // --- SOLUCIÓN: Añadimos un Timeout de 30 segundos ---
+          await newController.initialize().timeout(const Duration(seconds: 30));
+
           nextDuration = newController.value.duration;
-          
+
           if (_playbackQueue.length == 1) {
             newController.setLooping(true);
             isSingleVideoLoop = true;
@@ -191,10 +195,15 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> {
           nextDuration = const Duration(seconds: 5);
         }
       } catch (e) {
-        print('[PlayerPage] ERROR al inicializar el nuevo medio: $e. Saltando en 5s.');
-        nextDuration = const Duration(seconds: 5);
+        // --- SOLUCIÓN: Manejo de error mejorado ---
+        if (e is TimeoutException) {
+          print(
+              '[PlayerPage] ERROR: El video tardó demasiado en inicializar (>30s). Saltando...');
+        } else {
+          print('[PlayerPage] ERROR al inicializar el nuevo medio: $e. Saltando...');
+        }
         _currentFileIndex++;
-        await Future.delayed(nextDuration);
+        await Future.delayed(const Duration(seconds: 1));
         continue;
       }
 
@@ -213,13 +222,44 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> {
       _videoController?.play();
       print('[PlayerPage] Nuevo medio iniciado.');
 
-      if (isSingleVideoLoop) {
-        _loopCompleter = Completer<void>();
-        await _loopCompleter!.future;
+      // --- LÓGICA DE ESPERA INTELIGENTE Y UNIFICADA ---
+      if (_videoController != null && _videoController!.value.isInitialized) {
+        // Caso 1: Es un video que NO está en loop.
+        if (!_videoController!.value.isLooping) {
+          final completer = Completer<void>();
+          late final VoidCallback listener;
+          listener = () {
+            if (!mounted || _videoController == null || !_videoController!.value.isInitialized) {
+              if(!completer.isCompleted) completer.complete();
+              return;
+            }
+            // Comprobamos si la posición ha alcanzado o superado la duración.
+            if (_videoController!.value.position >= _videoController!.value.duration) {
+              if (!completer.isCompleted) {
+                print('[PlayerPage] Video terminado. Pasando al siguiente.');
+                completer.complete();
+                _videoController!.removeListener(listener);
+              }
+            }
+          };
+          _videoController!.addListener(listener);
+          await completer.future;
+        } else {
+          // Caso 2: Es un video único en loop. Esperamos hasta que nos interrumpan.
+          _loopCompleter = Completer<void>();
+          await _loopCompleter!.future;
+        }
+      } else {
+        // Caso 3: Es una imagen. Usamos el temporizador simple.
+        await Future.delayed(nextDuration);
       }
 
-      await Future.delayed(nextDuration);
-      _currentFileIndex++;
+      // Si el loop fue interrumpido por un cambio de playlist, no incrementamos el índice.
+      if (_loopCompleter?.isCompleted ?? false) {
+        _loopCompleter = null; // Reseteamos para la próxima vez.
+      } else {
+        _currentFileIndex++;
+      }
     }
   }
 
