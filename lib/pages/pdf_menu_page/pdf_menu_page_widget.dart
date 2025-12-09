@@ -75,10 +75,12 @@ class _PdfMenuPageWidgetState extends State<PdfMenuPageWidget> {
       backgroundColor: Colors.black,
       body: _buildBody(),
     );
-    return WillPopScope(
-      onWillPop: () async {
-        context.goNamedAuth(InicioWidget.routeName, mounted);
-        return false;
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (didPop, result) {
+        if (!didPop) {
+          context.goNamedAuth(InicioWidget.routeName, mounted);
+        }
       },
       child: scaffold,
     );
