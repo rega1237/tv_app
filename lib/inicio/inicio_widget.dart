@@ -249,13 +249,13 @@ class _InicioWidgetState extends State<InicioWidget> {
                                               BorderRadius.circular(8.0),
                                           child: Image.asset(
                                             'assets/images/logoxpro-01.png',
-                                            width: MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.3,
-                                            height: MediaQuery.sizeOf(context)
-                                                    .height *
-                                                0.2,
-                                            fit: BoxFit.cover,
+                                            width: MediaQuery.sizeOf(context).width *
+                                                (MediaQuery.sizeOf(context).width >
+                                                        MediaQuery.sizeOf(context).height
+                                                    ? 0.3
+                                                    : 0.5),
+                                            fit: BoxFit.contain,
+                                            alignment: Alignment.center,
                                           ),
                                         ),
                                         _buildActionButtons(),
@@ -523,9 +523,13 @@ class _InicioWidgetState extends State<InicioWidget> {
                                                   borderRadius: BorderRadius.circular(8.0),
                                                   child: Image.asset(
                                                     'assets/images/logoxpro-01.png',
-                                                    width: MediaQuery.sizeOf(context).width * 0.3,
-                                                    height: MediaQuery.sizeOf(context).height * 0.2,
-                                                    fit: BoxFit.cover,
+                                                    width: MediaQuery.sizeOf(context).height *
+                                                        (MediaQuery.sizeOf(context).height >
+                                                                MediaQuery.sizeOf(context).width
+                                                            ? 0.3
+                                                            : 0.5),
+                                                    fit: BoxFit.contain,
+                                                    alignment: Alignment.center,
                                                   ),
                                                 ),
                                                 _buildActionButtons(),
