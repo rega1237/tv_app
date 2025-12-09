@@ -1,6 +1,7 @@
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/nav/nav.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_pdfview/flutter_pdfview.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
@@ -74,7 +75,13 @@ class _PdfMenuPageWidgetState extends State<PdfMenuPageWidget> {
       backgroundColor: Colors.black,
       body: _buildBody(),
     );
-    return scaffold;
+    return WillPopScope(
+      onWillPop: () async {
+        context.goNamedAuth(InicioWidget.routeName, mounted);
+        return false;
+      },
+      child: scaffold,
+    );
   }
 
   Widget _buildBody() {
