@@ -19,6 +19,7 @@ import 'serialization_util.dart';
 
 import '/index.dart';
 import '/pages/player_page/player_page_widget.dart';
+import '/pages/pdf_menu_page/pdf_menu_page_widget.dart';
 
 export 'package:go_router/go_router.dart';
 export 'serialization_util.dart';
@@ -187,7 +188,15 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             }
             return PlayerPageWidget(channelRef: channelRef);
           },
-        )
+        ),
+        FFRoute(
+          name: PdfMenuPageWidget.routeName,
+          path: PdfMenuPageWidget.routePath,
+          builder: (context, params) {
+            final pdfFiles = params.state.extraMap['pdfFiles'] as List<FilesRecord>?;
+            return PdfMenuPageWidget(pdfFiles: pdfFiles);
+          },
+        ),
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
 

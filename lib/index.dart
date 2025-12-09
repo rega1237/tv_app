@@ -4,3 +4,4 @@ export '/login/login_widget.dart' show LoginWidget;
 export '/inicio/inicio_widget.dart' show InicioWidget;
 export '/orientation_selection_page/orientation_selection_page_widget.dart'
     show OrientationSelectionPageWidget;
+export '/pages/pdf_menu_page/pdf_menu_page_widget.dart' show PdfMenuPageWidget;

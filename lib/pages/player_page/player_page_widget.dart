@@ -28,6 +28,7 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> {
 
   VideoPlayerController? _videoController;
   Completer<void>? _loopCompleter;
+  bool _navigatedToPdf = false;
 
   @override
   void initState() {
@@ -38,12 +39,13 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> {
   }
 
   Future<void> _initializePlayer() async {
-    await _buildPlaybackQueue(); // Initial fetch
+    await _buildPlaybackQueue();
+    if (_navigatedToPdf) return;
     _pollingTimer = Timer.periodic(const Duration(seconds: 60), (timer) {
       print('[PlayerPage] Timer activado: Re-evaluando la cola de reproducción...');
       _buildPlaybackQueue();
     });
-    _playbackLoop(); // Start the infinite playback loop
+    _playbackLoop();
   }
 
   @override
@@ -84,6 +86,40 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> {
 
         return utcNow.isAfter(startDate) && utcNow.isBefore(expiryDate);
       }).toList();
+
+      PlaylistRecord? menuPlaylist;
+      for (final p in activePlaylists) {
+        if (p.isMenu) {
+          menuPlaylist = p;
+          break;
+        }
+      }
+
+      if (menuPlaylist != null) {
+        final individuals = await queryPlaylistIndividualsRecordOnce(
+            parent: menuPlaylist.reference,
+            queryBuilder: (q) => q.where('activeDays', arrayContains: dayOfWeek));
+        final allRefs = individuals.expand((i) => i.filesRefs).toList();
+        final fileFutures = allRefs.map((ref) => FilesRecord.getDocumentOnce(ref));
+        final menuFiles = (await Future.wait(fileFutures)).where((f) => f != null).cast<FilesRecord>().toList();
+        final pdfFiles = menuFiles.where((f) {
+          final t = f.fileType.toLowerCase();
+          final u = f.fileUrl.toLowerCase();
+          final g = f.fileUrlGeneric.toLowerCase();
+          return t.contains('pdf') || u.endsWith('.pdf') || g.endsWith('.pdf');
+        }).toList();
+        _pollingTimer?.cancel();
+        _loopCompleter?.complete();
+        await _videoController?.dispose();
+        _navigatedToPdf = true;
+        if (!mounted) return;
+        context.goNamedAuth(
+          'PdfMenuPage',
+          mounted,
+          extra: {'pdfFiles': pdfFiles},
+        );
+        return;
+      }
 
       List<FilesRecord> files = [];
       if (activePlaylists.isNotEmpty) {

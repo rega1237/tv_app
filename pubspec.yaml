@@ -84,6 +84,7 @@ dependencies:
   url_launcher_windows: 3.1.4
   video_player: ^2.8.6
   xml: 6.5.0
+  flutter_pdfview: ^1.3.1
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -160,4 +161,3 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
-
