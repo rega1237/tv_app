@@ -99,6 +99,7 @@ class _InicioWidgetState extends State<InicioWidget> {
   void _handleLogout() {
     if (_isConfirmingLogout) {
       _logoutConfirmationTimer?.cancel();
+      FFAppState().lastChannelRef = null;
       authManager.signOut();
     } else {
       setState(() {
@@ -147,7 +148,7 @@ class _InicioWidgetState extends State<InicioWidget> {
             color: FlutterFlowTheme.of(context).error,
           ),
           label: Text(
-            _isConfirmingLogout ? '¿Confirmar?' : 'Cerrar Sesión',
+            _isConfirmingLogout ? '¿Confirm?' : 'Sign Out',
             style: TextStyle(color: FlutterFlowTheme.of(context).error),
           ),
           onPressed: _handleLogout,

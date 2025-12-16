@@ -110,6 +110,9 @@ class _PdfMenuPageWidgetState extends State<PdfMenuPageWidget> {
           swipeHorizontal: true,
           pageSnap: true,
           pageFling: true,
+          fitPolicy: FitPolicy.BOTH,
+          autoSpacing: true,
+          backgroundColor: Colors.black,
           onRender: (pages) {
             setState(() {
               _pages = pages ?? _pages;

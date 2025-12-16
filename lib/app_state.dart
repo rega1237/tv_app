@@ -20,7 +20,6 @@ class FFAppState extends ChangeNotifier {
           prefs.getString('ff_loggedSucursal')?.ref ?? _loggedSucursal;
       _rotationAngle = prefs.getDouble('ff_rotationAngle') ?? _rotationAngle;
       
-      // --- LÓGICA DE CARGA AÑADIDA AQUÍ ---
       final lastChannelPath = prefs.getString('ff_lastChannelRef');
       if (lastChannelPath != null && lastChannelPath.isNotEmpty) {
         _lastChannelRef = FirebaseFirestore.instance.doc(lastChannelPath);
