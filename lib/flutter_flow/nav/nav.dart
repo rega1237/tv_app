@@ -99,6 +99,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           '[GoRouter Redirect] Location: ${state.matchedLocation}, LoggedIn: $loggedIn, SubscriptionActive: $subscriptionActive',
         );
 
+        if (state.matchedLocation == '/') {
+          return null;
+        }
+
         final publicRoutes = [
           '/', // _initialize route
           OrientationSelectionPageWidget.routePath,
@@ -137,11 +141,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) => appStateNotifier.loggedIn
-              ? (FFAppState().isSubscriptionActive
-                  ? InicioWidget()
-                  : ExpiredSubscriptionPageWidget())
-              : OrientationSelectionPageWidget(),
+          builder: (context, _) => LoadingPageWidget(),
         ),
         FFRoute(
           name: HomePageWidget.routeName,

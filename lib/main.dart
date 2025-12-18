@@ -9,7 +9,6 @@ import 'package:flutter_web_plugins/url_strategy.dart';
 import 'auth/custom_auth/auth_util.dart';
 import 'auth/custom_auth/custom_auth_user_provider.dart';
 
-import 'backend/firebase/firebase_config.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -22,42 +21,10 @@ void main() async {
   GoRouter.optionURLReflectsImperativeAPIs = true;
   usePathUrlStrategy();
 
-  await initFirebase();
-
-  final initialUser = await authManager.initialize();
-
+  final initialUser = Proyecto1608XproDigitalTVAuthUser(loggedIn: false);
   final appState = FFAppState();
-  await appState.initializePersistedState();
 
-  if (initialUser != null && initialUser.loggedIn) {
-    print('[Startup] User is logged in. Checking subscription...');
-    final sucursalRef = appState.loggedSucursal;
-    if (sucursalRef != null) {
-      try {
-        final subs = await querySubscriptionRecordOnce(
-          queryBuilder: (q) => q.where('sucursalRef', isEqualTo: sucursalRef),
-          singleRecord: true,
-        );
-        final sub = subs.firstOrNull;
-        if (sub == null ||
-            (functions.daysUntilSubscriptionEnds(sub.endDate!) ?? 0) <= 0) {
-          print('[Startup] Subscription is EXPIRED or not found.');
-          appState.isSubscriptionActive = false;
-        } else {
-          print('[Startup] Subscription is ACTIVE.');
-          appState.isSubscriptionActive = true;
-        }
-      } catch (e) {
-        print('[Startup] Error checking subscription: $e');
-        appState.isSubscriptionActive = false;
-      }
-    } else {
-      print('[Startup] No sucursal reference found. Subscription is INACTIVE.');
-      appState.isSubscriptionActive = false;
-    }
-  } else {
-    print('[Startup] No user logged in.');
-  }
+  print('[Startup] Booting...');
 
   runApp(ChangeNotifierProvider(
     create: (context) => appState,
@@ -135,10 +102,7 @@ class _MyAppState extends State<MyApp> {
       _startSubscriptionMonitoring();
     }
 
-    Future.delayed(
-      Duration(milliseconds: 1000),
-      () => _appStateNotifier.stopShowingSplashImage(),
-    );
+    _appStateNotifier.stopShowingSplashImage();
   }
 
   void _startSubscriptionMonitoring() {

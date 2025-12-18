@@ -28,6 +28,28 @@ class InicioWidget extends StatefulWidget {
   State<InicioWidget> createState() => _InicioWidgetState();
 }
 
+class _LiveClockText extends StatelessWidget {
+  const _LiveClockText({required this.pattern, required this.style});
+
+  final String pattern;
+  final TextStyle style;
+
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder<DateTime>(
+      stream: Stream<DateTime>.periodic(
+        const Duration(seconds: 1),
+        (_) => DateTime.now(),
+      ),
+      initialData: DateTime.now(),
+      builder: (context, snapshot) {
+        final now = snapshot.data ?? DateTime.now();
+        return Text(DateFormat(pattern).format(now), style: style);
+      },
+    );
+  }
+}
+
 class _InicioWidgetState extends State<InicioWidget> {
   late InicioModel _model;
 
@@ -35,22 +57,11 @@ class _InicioWidgetState extends State<InicioWidget> {
 
   bool _isConfirmingLogout = false;
   Timer? _logoutConfirmationTimer;
-  Timer? _clockTimer;
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => InicioModel());
-
-    // --- LÓGICA DEL RELOJ EN VIVO ---
-    // Inicia un temporizador que se ejecuta cada segundo.
-    _clockTimer = Timer.periodic(Duration(seconds: 1), (timer) {
-      // Llamar a setState() fuerza la reconstrucción del widget, actualizando la hora.
-      if (mounted) {
-        setState(() {});
-      }
-    });
-    // --- FIN DE LA LÓGICA DEL RELOJ ---
 
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       final appState = FFAppState();
@@ -92,7 +103,6 @@ class _InicioWidgetState extends State<InicioWidget> {
   void dispose() {
     _model.dispose();
     _logoutConfirmationTimer?.cancel();
-    _clockTimer?.cancel();
     super.dispose();
   }
 
@@ -299,9 +309,8 @@ class _InicioWidgetState extends State<InicioWidget> {
                                                         letterSpacing: 0.0,
                                                       ),
                                                 ),
-                                                Text(
-                                                  dateTimeFormat("M/d h:mm a",
-                                                      getCurrentTimestamp),
+                                                _LiveClockText(
+                                                  pattern: 'M/d h:mm a',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .headlineMedium
@@ -559,11 +568,15 @@ class _InicioWidgetState extends State<InicioWidget> {
                                                                 letterSpacing: 0.0,
                                                               ),
                                                         ),
-                                                        Text(
-                                                          DateFormat('MMM d h:mm a').format(getCurrentTimestamp),
-                                                          style: FlutterFlowTheme.of(context).headlineMedium.override(
-                                                                font: GoogleFonts.interTight(),
-                                                                color: FlutterFlowTheme.of(context).vividGreen,
+                                                        _LiveClockText(
+                                                          pattern: 'MMM d h:mm a',
+                                                          style: FlutterFlowTheme.of(context)
+                                                              .headlineMedium
+                                                              .override(
+                                                                font: GoogleFonts
+                                                                    .interTight(),
+                                                                color: FlutterFlowTheme.of(context)
+                                                                    .vividGreen,
                                                                 fontSize: 15.0,
                                                                 letterSpacing: 0.0,
                                                               ),
