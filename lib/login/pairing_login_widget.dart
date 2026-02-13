@@ -21,8 +21,7 @@ class _PairingLoginWidgetState extends State<PairingLoginWidget> {
   bool _isLoading = true;
   String? _errorMessage;
 
-  final String _linkingUrlBase =
-      'https://poyecto1592-firemex-sou-t7ugew.web.app/link';
+  final String _linkingUrlBase = 'https://qr.xprodigitalmenu.com/';
 
   @override
   void initState() {
