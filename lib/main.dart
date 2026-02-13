@@ -11,10 +11,7 @@ import 'auth/custom_auth/custom_auth_user_provider.dart';
 
 import '/backend/backend.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
-import '/flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
-import 'flutter_flow/nav/nav.dart';
-import 'index.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,8 +20,6 @@ void main() async {
 
   final initialUser = Proyecto1608XproDigitalTVAuthUser(loggedIn: false);
   final appState = FFAppState();
-
-  print('[Startup] Booting...');
 
   runApp(ChangeNotifierProvider(
     create: (context) => appState,
@@ -37,10 +32,10 @@ class MyApp extends StatefulWidget {
   final Proyecto1608XproDigitalTVAuthUser? initialUser;
 
   @override
-  State<MyApp> createState() => _MyAppState();
+  State<MyApp> createState() => MyAppState();
 
-  static _MyAppState of(BuildContext context) =>
-      context.findAncestorStateOfType<_MyAppState>()!;
+  static MyAppState of(BuildContext context) =>
+      context.findAncestorStateOfType<MyAppState>()!;
 }
 
 class MyAppScrollBehavior extends MaterialScrollBehavior {
@@ -51,14 +46,14 @@ class MyAppScrollBehavior extends MaterialScrollBehavior {
       };
 }
 
-class _MyAppState extends State<MyApp> {
+class MyAppState extends State<MyApp> {
   ThemeMode _themeMode = ThemeMode.system;
 
   late AppStateNotifier _appStateNotifier;
   late GoRouter _router;
 
   late Stream<Proyecto1608XproDigitalTVAuthUser> userStream;
-  
+
   StreamSubscription? _subscriptionListener;
   Timer? _dailyCheckTimer;
 
@@ -87,7 +82,7 @@ class _MyAppState extends State<MyApp> {
     }
 
     _router = createRouter(_appStateNotifier);
-    
+
     userStream = proyecto1608XproDigitalTVAuthUserStream()
       ..listen((user) {
         _appStateNotifier.update(user);
@@ -106,12 +101,10 @@ class _MyAppState extends State<MyApp> {
   }
 
   void _startSubscriptionMonitoring() {
-    print('[Subscription] Starting monitoring...');
     _stopSubscriptionMonitoring();
 
     final sucursalRef = FFAppState().loggedSucursal;
     if (sucursalRef == null) {
-      print('[Subscription] Monitoring stopped: sucursalRef is null.');
       return;
     }
 
@@ -126,13 +119,12 @@ class _MyAppState extends State<MyApp> {
       if (sub != null && sub.endDate != null) {
         isActive = (functions.daysUntilSubscriptionEnds(sub.endDate!) ?? 0) > 0;
       }
-      print('[Subscription] Real-time update. Subscription active: $isActive');
       if (FFAppState().isSubscriptionActive != isActive) {
         FFAppState().isSubscriptionActive = isActive;
         // --- LA CORRECCIÓN ---
         // Notificamos manualmente al listener del router para forzar la redirección.
+        // ignore: invalid_use_of_protected_member, invalid_use_of_visible_for_testing_member
         _appStateNotifier.notifyListeners();
-        print('[Subscription] Notifying router of state change.');
       }
     });
 
@@ -140,29 +132,28 @@ class _MyAppState extends State<MyApp> {
   }
 
   void _stopSubscriptionMonitoring() {
-    print('[Subscription] Stopping monitoring...');
     _subscriptionListener?.cancel();
     _dailyCheckTimer?.cancel();
   }
 
   void _performDailyCheck() {
-    print('[Subscription] Performing daily check...');
     final sucursalRef = FFAppState().loggedSucursal;
     if (sucursalRef != null) {
-       querySubscriptionRecordOnce(
+      querySubscriptionRecordOnce(
         queryBuilder: (q) => q.where('sucursalRef', isEqualTo: sucursalRef),
         singleRecord: true,
       ).then((subs) {
         final sub = subs.firstOrNull;
         bool isActive = false;
         if (sub != null && sub.endDate != null) {
-          isActive = (functions.daysUntilSubscriptionEnds(sub.endDate!) ?? 0) > 0;
+          isActive =
+              (functions.daysUntilSubscriptionEnds(sub.endDate!) ?? 0) > 0;
         }
         if (FFAppState().isSubscriptionActive != isActive) {
           FFAppState().isSubscriptionActive = isActive;
           // --- LA CORRECCIÓN ---
+          // ignore: invalid_use_of_protected_member, invalid_use_of_visible_for_testing_member
           _appStateNotifier.notifyListeners();
-          print('[Subscription] Notifying router of daily check state change.');
         }
       });
     }
@@ -175,7 +166,6 @@ class _MyAppState extends State<MyApp> {
     final targetTime = DateTime(now.year, now.month, now.day + 1, 0, 1);
     final timeUntilTarget = targetTime.difference(now);
 
-    print('[Subscription] Next daily check scheduled in ${timeUntilTarget.inHours} hours.');
     _dailyCheckTimer = Timer(timeUntilTarget, _performDailyCheck);
   }
 
@@ -195,7 +185,7 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       title: 'Proyecto 1608 XproDigital - TV',
       scrollBehavior: MyAppScrollBehavior(),
-      localizationsDelegates: [
+      localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,

@@ -56,7 +56,7 @@ class _LoginWidgetState extends State<LoginWidget> {
         // El cuerpo del Scaffold ahora es simplemente nuestro nuevo widget.
         // Ya no hay `Builder` ni `if/else` para la orientación, porque
         // el `PairingLoginWidget` maneja eso internamente.
-        body: PairingLoginWidget(),
+        body: const PairingLoginWidget(),
       ),
     );
   }

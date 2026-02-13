@@ -1,15 +1,7 @@
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
-import '/custom_code/actions/index.dart' as actions;
-import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
-import 'dart:math' as math;
 import 'login_widget.dart' show LoginWidget;
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 
 class LoginModel extends FlutterFlowModel<LoginWidget> {
   ///  State fields for stateful widgets in this page.
@@ -24,7 +16,7 @@ class LoginModel extends FlutterFlowModel<LoginWidget> {
   late bool passwordVisibility1;
   String? Function(BuildContext, String?)? textController2Validator;
   // Stores action output result for [Custom Action - loginSucursalAction] action in signInbutton widget.
-  dynamic? tokenSucursalFromLogin;
+  dynamic tokenSucursalFromLogin;
   // Stores action output result for [Custom Action - signInWithFirebaseCustomToken] action in signInbutton widget.
   bool? firebaseLoginSuccess;
   // State field(s) for TextField widget.
@@ -37,7 +29,7 @@ class LoginModel extends FlutterFlowModel<LoginWidget> {
   late bool passwordVisibility2;
   String? Function(BuildContext, String?)? textController4Validator;
   // Stores action output result for [Custom Action - loginSucursalAction] action in signInbutton widget.
-  dynamic? tokenSucursalFromLoginVertical;
+  dynamic tokenSucursalFromLoginVertical;
   // Stores action output result for [Custom Action - signInWithFirebaseCustomToken] action in signInbutton widget.
   bool? firebaseLoginSuccessVertical;
 

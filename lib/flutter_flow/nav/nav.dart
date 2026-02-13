@@ -1,25 +1,17 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import '/backend/backend.dart';
-import '/backend/schema/structs/index.dart';
 
 import '/auth/custom_auth/custom_auth_user_provider.dart';
 
-import '/main.dart';
 import '/pages/expired_subscription_page/expired_subscription_page_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/lat_lng.dart';
-import '/flutter_flow/place.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'serialization_util.dart';
 
 import '/index.dart';
 import '/pages/player_page/player_page_widget.dart';
-import '/pages/pdf_menu_page/pdf_menu_page_widget.dart';
 
 export 'package:go_router/go_router.dart';
 export 'serialization_util.dart';
@@ -88,16 +80,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       navigatorKey: appNavigatorKey,
       errorBuilder: (context, state) => appStateNotifier.loggedIn
           ? (FFAppState().isSubscriptionActive
-              ? InicioWidget()
-              : ExpiredSubscriptionPageWidget())
-          : OrientationSelectionPageWidget(),
+              ? const InicioWidget()
+              : const ExpiredSubscriptionPageWidget())
+          : const OrientationSelectionPageWidget(),
       redirect: (context, state) {
         final loggedIn = appStateNotifier.loggedIn;
         final subscriptionActive = FFAppState().isSubscriptionActive;
-
-        print(
-          '[GoRouter Redirect] Location: ${state.matchedLocation}, LoggedIn: $loggedIn, SubscriptionActive: $subscriptionActive',
-        );
 
         if (state.matchedLocation == '/') {
           return null;
@@ -141,32 +129,32 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) => LoadingPageWidget(),
+          builder: (context, _) => const LoadingPageWidget(),
         ),
         FFRoute(
           name: HomePageWidget.routeName,
           path: HomePageWidget.routePath,
-          builder: (context, params) => HomePageWidget(),
+          builder: (context, params) => const HomePageWidget(),
         ),
         FFRoute(
           name: LoginWidget.routeName,
           path: LoginWidget.routePath,
-          builder: (context, params) => LoginWidget(),
+          builder: (context, params) => const LoginWidget(),
         ),
         FFRoute(
           name: InicioWidget.routeName,
           path: InicioWidget.routePath,
-          builder: (context, params) => InicioWidget(),
+          builder: (context, params) => const InicioWidget(),
         ),
         FFRoute(
           name: OrientationSelectionPageWidget.routeName,
           path: OrientationSelectionPageWidget.routePath,
-          builder: (context, params) => OrientationSelectionPageWidget(),
+          builder: (context, params) => const OrientationSelectionPageWidget(),
         ),
         FFRoute(
           name: ExpiredSubscriptionPageWidget.routeName,
           path: ExpiredSubscriptionPageWidget.routePath,
-          builder: (context, params) => ExpiredSubscriptionPageWidget(),
+          builder: (context, params) => const ExpiredSubscriptionPageWidget(),
         ),
         FFRoute(
           name: 'PlayerPage',
@@ -184,7 +172,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
 
             // Si por alguna razón sigue siendo nulo, redirige a la página de inicio para evitar un error.
             if (channelRef == null) {
-              return InicioWidget();
+              return const InicioWidget();
             }
             return PlayerPageWidget(channelRef: channelRef);
           },
@@ -193,7 +181,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: PdfMenuPageWidget.routeName,
           path: PdfMenuPageWidget.routePath,
           builder: (context, params) {
-            final pdfFiles = params.state.extraMap['pdfFiles'] as List<FilesRecord>?;
+            final pdfFiles =
+                params.state.extraMap['pdfFiles'] as List<FilesRecord>?;
             return PdfMenuPageWidget(pdfFiles: pdfFiles);
           },
         ),
@@ -434,7 +423,8 @@ class TransitionInfo {
   final Duration duration;
   final Alignment? alignment;
 
-  static TransitionInfo appDefault() => TransitionInfo(hasTransition: false);
+  static TransitionInfo appDefault() =>
+      const TransitionInfo(hasTransition: false);
 }
 
 class RootPageContext {

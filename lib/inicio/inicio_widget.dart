@@ -2,18 +2,14 @@ import '/backend/backend.dart';
 import '/auth/custom_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:async';
-import 'dart:ui';
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:intl/intl.dart';
 
 import 'inicio_model.dart';
 export 'inicio_model.dart';
@@ -132,8 +128,8 @@ class _InicioWidgetState extends State<InicioWidget> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         TextButton.icon(
-          icon: Icon(Icons.screen_rotation_alt_outlined, color: Colors.white),
-          label: Text('Rotar Pantalla', style: TextStyle(color: Colors.white)),
+          icon: const Icon(Icons.screen_rotation_alt_outlined, color: Colors.white),
+          label: const Text('Rotar Pantalla', style: TextStyle(color: Colors.white)),
           onPressed: () {
             if (_isConfirmingLogout) {
               _logoutConfirmationTimer?.cancel();
@@ -151,7 +147,7 @@ class _InicioWidgetState extends State<InicioWidget> {
             });
           },
         ),
-        SizedBox(width: 20),
+        const SizedBox(width: 20),
         TextButton.icon(
           icon: Icon(
             _isConfirmingLogout ? Icons.check_circle_outline : Icons.logout,
@@ -204,7 +200,7 @@ class _InicioWidgetState extends State<InicioWidget> {
             body: SafeArea(
               top: true,
               child: Align(
-                alignment: AlignmentDirectional(0.0, 0.0),
+                alignment: const AlignmentDirectional(0.0, 0.0),
                 child: Padding(
                   padding: EdgeInsets.all(valueOrDefault<double>(
                     FFAppState().rotationAngle != 0.0 ? 20.0 : 40.0,
@@ -221,7 +217,7 @@ class _InicioWidgetState extends State<InicioWidget> {
                     ),
                     builder: (context, snapshot) {
                       if (!snapshot.hasData) {
-                        return Center(child: CircularProgressIndicator());
+                        return const Center(child: CircularProgressIndicator());
                       }
                       List<ChannelsBranchRecord>
                           containerChannelsBranchRecordList = snapshot.data!;
@@ -234,16 +230,16 @@ class _InicioWidgetState extends State<InicioWidget> {
                               : null;
 
                       return Container(
-                        decoration: BoxDecoration(),
+                        decoration: const BoxDecoration(),
                         child: Padding(
-                          padding: EdgeInsets.all(20.0),
+                          padding: const EdgeInsets.all(20.0),
                           child: StreamBuilder<List<ChannelsRecord>>(
                             stream: queryChannelsRecord(
                               parent: containerChannelsBranchRecord?.reference,
                             ),
                             builder: (context, snapshot) {
                               if (!snapshot.hasData) {
-                                return Center(child: CircularProgressIndicator());
+                                return const Center(child: CircularProgressIndicator());
                               }
                               List<ChannelsRecord>
                                   conditionalBuilderChannelsRecordList =
@@ -325,7 +321,7 @@ class _InicioWidgetState extends State<InicioWidget> {
                                                         letterSpacing: 0.0,
                                                       ),
                                                 ),
-                                              ].divide(SizedBox(width: 5.0)),
+                                              ].divide(const SizedBox(width: 5.0)),
                                             ),
                                             StreamBuilder<
                                                 List<SubscriptionRecord>>(
@@ -429,7 +425,7 @@ class _InicioWidgetState extends State<InicioWidget> {
                                                 child: GridView.builder(
                                                   padding: EdgeInsets.zero,
                                                   gridDelegate:
-                                                      SliverGridDelegateWithFixedCrossAxisCount(
+                                                      const SliverGridDelegateWithFixedCrossAxisCount(
                                                     crossAxisCount: 2,
                                                     crossAxisSpacing: 10.0,
                                                     mainAxisSpacing: 10.0,
@@ -444,7 +440,7 @@ class _InicioWidgetState extends State<InicioWidget> {
                                                     final horizontalGridItem =
                                                         horizontalGrid[
                                                             horizontalGridIndex];
-                                                    return Container(
+                                                    return SizedBox(
                                                       width: 1.0,
                                                       height: 1.0,
                                                       child: custom_widgets
@@ -492,7 +488,7 @@ class _InicioWidgetState extends State<InicioWidget> {
                                                             }.withoutNulls,
                                                             extra: <String, dynamic>{
                                                               kTransitionInfoKey:
-                                                                  TransitionInfo(
+                                                                  const TransitionInfo(
                                                                 hasTransition: true,
                                                                 transitionType:
                                                                     PageTransitionType
@@ -512,7 +508,7 @@ class _InicioWidgetState extends State<InicioWidget> {
                                             },
                                           ),
                                         ),
-                                      ].divide(SizedBox(height: 5.0)),
+                                      ].divide(const SizedBox(height: 5.0)),
                                     );
                                   } else {
                                     final rotationAngle = FFAppState().rotationAngle;
@@ -522,7 +518,7 @@ class _InicioWidgetState extends State<InicioWidget> {
                                       child: Container(
                                         width: MediaQuery.sizeOf(context).width * 0.9,
                                         height: MediaQuery.sizeOf(context).height * 0.9,
-                                        decoration: BoxDecoration(),
+                                        decoration: const BoxDecoration(),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
@@ -581,7 +577,7 @@ class _InicioWidgetState extends State<InicioWidget> {
                                                                 letterSpacing: 0.0,
                                                               ),
                                                         ),
-                                                      ].divide(SizedBox(width: 5.0)),
+                                                      ].divide(const SizedBox(width: 5.0)),
                                                     ),
                                                     StreamBuilder<List<SubscriptionRecord>>(
                                                       stream: querySubscriptionRecord(
@@ -593,7 +589,7 @@ class _InicioWidgetState extends State<InicioWidget> {
                                                       ),
                                                       builder: (context, snapshot) {
                                                         if (!snapshot.hasData) {
-                                                          return Center(child: CircularProgressIndicator());
+                                                          return const Center(child: CircularProgressIndicator());
                                                         }
                                                         List<SubscriptionRecord> rowSubscriptionRecordList = snapshot.data!;
                                                         if (snapshot.data!.isEmpty) {
@@ -628,9 +624,9 @@ class _InicioWidgetState extends State<InicioWidget> {
                                                         );
                                                       },
                                                     ),
-                                                  ].divide(SizedBox(width: 20.0)),
+                                                  ].divide(const SizedBox(width: 20.0)),
                                                 ),
-                                              ].divide(SizedBox(height: 5.0)),
+                                              ].divide(const SizedBox(height: 5.0)),
                                             ),
                                             Expanded(
                                               child: StreamBuilder<List<ChannelsRecord>>(
@@ -639,13 +635,13 @@ class _InicioWidgetState extends State<InicioWidget> {
                                                 ),
                                                 builder: (context, snapshot) {
                                                   if (!snapshot.hasData) {
-                                                    return Center(child: CircularProgressIndicator());
+                                                    return const Center(child: CircularProgressIndicator());
                                                   }
                                                   List<ChannelsRecord> containerChannelsRecordList = snapshot.data!;
 
                                                   return Container(
-                                                    decoration: BoxDecoration(),
-                                                    child: Container(
+                                                    decoration: const BoxDecoration(),
+                                                    child: SizedBox(
                                                       width: MediaQuery.sizeOf(context).width * 0.9,
                                                       height: MediaQuery.sizeOf(context).height * 0.9,
                                                       child: custom_widgets.VerticalFocusGrid(
@@ -677,7 +673,7 @@ class _InicioWidgetState extends State<InicioWidget> {
                                                             }.withoutNulls,
                                                             extra: <String, dynamic>{
                                                               kTransitionInfoKey:
-                                                                  TransitionInfo(
+                                                                  const TransitionInfo(
                                                                 hasTransition: true,
                                                                 transitionType:
                                                                     PageTransitionType

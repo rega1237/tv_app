@@ -1,22 +1,16 @@
 // Automatic FlutterFlow imports
-import '/backend/backend.dart';
-import '/backend/schema/structs/index.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/flutter_flow_util.dart';
-import 'index.dart'; // Imports other custom widgets
-import '/custom_code/actions/index.dart'; // Imports custom actions
-import '/flutter_flow/custom_functions.dart'; // Imports custom functions
+// Imports other custom widgets
+// Imports custom actions
+// Imports custom functions
 import 'package:flutter/material.dart';
 // Begin custom widget code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
-
-import 'package:flutter/services.dart';
 
 import 'dart:math' as math;
 
 class FocusableHighlightBox extends StatefulWidget {
   const FocusableHighlightBox({
-    Key? key,
+    super.key,
     this.width,
     this.height,
     this.iconName,
@@ -31,7 +25,7 @@ class FocusableHighlightBox extends StatefulWidget {
     this.onTapAction,
     this.autofocus = false,
     this.rotate = false,
-  }) : super(key: key);
+  });
 
   final double? width;
   final double? height;
@@ -49,7 +43,7 @@ class FocusableHighlightBox extends StatefulWidget {
   final bool rotate;
 
   @override
-  _FocusableHighlightBoxState createState() => _FocusableHighlightBoxState();
+  State<FocusableHighlightBox> createState() => _FocusableHighlightBoxState();
 }
 
 class _FocusableHighlightBoxState extends State<FocusableHighlightBox> {
@@ -157,7 +151,7 @@ class _FocusableHighlightBoxState extends State<FocusableHighlightBox> {
                   color: currentIconColor,
                 ),
               ),
-              if (widget.textLabel != null) SizedBox(height: 8),
+              if (widget.textLabel != null) const SizedBox(height: 8),
               if (widget.textLabel != null)
                 Text(
                   widget.textLabel!,

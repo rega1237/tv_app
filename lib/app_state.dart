@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'flutter_flow/flutter_flow_util.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 class FFAppState extends ChangeNotifier {
-  static FFAppState _instance = FFAppState._internal();
+  static final FFAppState _instance = FFAppState._internal();
 
   factory FFAppState() {
     return _instance;
@@ -19,7 +18,7 @@ class FFAppState extends ChangeNotifier {
       _loggedSucursal =
           prefs.getString('ff_loggedSucursal')?.ref ?? _loggedSucursal;
       _rotationAngle = prefs.getDouble('ff_rotationAngle') ?? _rotationAngle;
-      
+
       final lastChannelPath = prefs.getString('ff_lastChannelRef');
       if (lastChannelPath != null && lastChannelPath.isNotEmpty) {
         _lastChannelRef = FirebaseFirestore.instance.doc(lastChannelPath);
@@ -70,11 +69,7 @@ class FFAppState extends ChangeNotifier {
     notifyListeners();
   }
 
-  List<dynamic> _channelsData = [];
-  List<dynamic> get channelsData => _channelsData;
-  set channelsData(List<dynamic> value) {
-    _channelsData = value;
-  }
+  List<dynamic> channelsData = [];
 
   void addToChannelsData(dynamic value) {
     channelsData.add(value);
@@ -92,28 +87,18 @@ class FFAppState extends ChangeNotifier {
     int index,
     dynamic Function(dynamic) updateFn,
   ) {
-    channelsData[index] = updateFn(_channelsData[index]);
+    channelsData[index] = updateFn(channelsData[index]);
   }
 
   void insertAtIndexInChannelsData(int index, dynamic value) {
     channelsData.insert(index, value);
   }
 
-  bool _initialRedirectPending = true;
-  bool get initialRedirectPending => _initialRedirectPending;
-  set initialRedirectPending(bool value) {
-    _initialRedirectPending = value;
-  }
+  bool initialRedirectPending = true;
 }
 
 void _safeInit(Function() initializeField) {
   try {
     initializeField();
-  } catch (_) {}
-}
-
-Future _safeInitAsync(Function() initializeField) async {
-  try {
-    await initializeField();
   } catch (_) {}
 }

@@ -25,7 +25,7 @@ dynamic deserializeStructParam<T>(
   if (param == null) {
     return null;
   } else if (isList) {
-    final paramValues;
+    final dynamic paramValues;
     try {
       paramValues = param is Iterable ? param : json.decode(param);
     } catch (e) {
@@ -57,8 +57,8 @@ List<T>? getStructList<T>(
     value is! List
         ? null
         : value
-            .where((e) => e is Map<String, dynamic>)
-            .map((e) => structBuilder(e as Map<String, dynamic>))
+            .whereType<Map<String, dynamic>>()
+            .map((e) => structBuilder(e))
             .toList();
 
 Color? getSchemaColor(dynamic value) => value is String

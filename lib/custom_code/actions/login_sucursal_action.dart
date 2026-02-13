@@ -1,11 +1,7 @@
 // Automatic FlutterFlow imports
-import '/backend/backend.dart';
-import '/backend/schema/structs/index.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'index.dart'; // Imports other custom actions
-import '/flutter_flow/custom_functions.dart'; // Imports custom functions
-import 'package:flutter/material.dart';
+// Imports other custom actions
+// Imports custom functions
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
@@ -49,13 +45,10 @@ Future<dynamic> loginSucursalAction(
       return responseData;
     } else {
       // Error (401, 404, 500, etc.)
-      print('Falló el login de sucursal. Código: ${response.statusCode}');
-      print('Respuesta: ${response.body}');
       return null; // Devuelve null si el login falla
     }
   } catch (e) {
     // Error de red u otra excepción
-    print('Excepción en loginSucursalAction: $e');
     return null;
   }
 }
