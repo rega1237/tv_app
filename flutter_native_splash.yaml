@@ -1,9 +1,17 @@
 flutter_native_splash:
   color: "#14181B"
-  color_dark: "#FFFFFF"
+  color_dark: "#14181B"
+  image: assets/images/app_launcher_icon.png
+  image_dark: assets/images/app_launcher_icon.png
+  android_gravity: center
+  ios_content_mode: scaleAspectFit
   android_12:
     color: "#14181B"
-    color_dark: "#FFFFFF"
+    color_dark: "#14181B"
+    image: assets/images/app_launcher_icon.png
+    image_dark: assets/images/app_launcher_icon.png
+    icon_background_color: "#14181B"
+    icon_background_color_dark: "#14181B"
   android: true
   ios: true
   web: true

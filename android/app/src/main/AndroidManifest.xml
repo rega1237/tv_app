@@ -2,12 +2,18 @@
     package="com.mycompany.proyecto1608xprodigitaltv"
     xmlns:tools="http://schemas.android.com/tools">
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-feature android:name="android.software.leanback" android:required="false"/>
+    <uses-feature android:name="android.hardware.type.television" android:required="false"/>
+    <uses-feature android:name="android.hardware.touchscreen" android:required="false"/>
 
 
     <application
-        android:label="Proyecto 1608 XproDigital - TV"
+        android:label="Xpro Digital Menu"
         tools:replace="android:label"
         android:icon="@mipmap/launcher_icon"
+        android:roundIcon="@mipmap/launcher_icon"
+        android:logo="@mipmap/launcher_icon"
+        android:banner="@drawable/banner_tv"
         android:requestLegacyExternalStorage="true">
 
         <activity
@@ -17,7 +23,8 @@
             android:theme="@style/LaunchTheme"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
             android:hardwareAccelerated="true"
-            android:windowSoftInputMode="adjustResize">
+            android:windowSoftInputMode="adjustResize"
+            android:banner="@drawable/banner_tv">
             <!-- Specifies an Android theme to apply to this Activity as soon as
                  the Android process has started. This theme is visible to the user
                  while the Flutter UI initializes. After that, this theme continues
@@ -38,6 +45,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LEANBACK_LAUNCHER"/>
             </intent-filter>
             <!-- Deep linking -->
             <meta-data android:name="flutter_deeplinking_enabled" android:value="true" />

@@ -1,11 +1,9 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
 import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'orientation_selection_page_model.dart';
 export 'orientation_selection_page_model.dart';
 
@@ -43,7 +41,7 @@ class _OrientationSelectionPageWidgetState
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    final mainContent = GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
         FocusManager.instance.primaryFocus?.unfocus();
@@ -60,7 +58,7 @@ class _OrientationSelectionPageWidgetState
             children: [
               Container(
                 height: MediaQuery.sizeOf(context).height * 0.7,
-                decoration: BoxDecoration(),
+                decoration: const BoxDecoration(),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -97,7 +95,7 @@ class _OrientationSelectionPageWidgetState
                     ),
                     Container(
                       width: MediaQuery.sizeOf(context).width * 0.8,
-                      decoration: BoxDecoration(),
+                      decoration: const BoxDecoration(),
                       child: FocusTraversalGroup(
                         policy: OrderedTraversalPolicy(),
                         child: Wrap(
@@ -116,18 +114,20 @@ class _OrientationSelectionPageWidgetState
                                 order: const NumericFocusOrder(1.0),
                                 child: FFButtonWidget(
                                   onPressed: () async {
-                                    FFAppState().vertical = true;
+                                    FFAppState().rotationAngle = 270.0;
                                     safeSetState(() {});
                                     await Future.delayed(
-                                      Duration(
+                                      const Duration(
                                         milliseconds: 100,
                                       ),
                                     );
 
-                                    context.pushNamed(LoginWidget.routeName);
+                                    if (context.mounted) {
+                                      context.pushNamed(LoginWidget.routeName);
+                                    }
                                   },
                                   text: 'Vertical',
-                                  icon: Icon(
+                                  icon: const Icon(
                                     Icons.crop_portrait,
                                     size: 40.0,
                                   ),
@@ -136,10 +136,12 @@ class _OrientationSelectionPageWidgetState
                                         MediaQuery.sizeOf(context).width * 0.3,
                                     height:
                                         MediaQuery.sizeOf(context).height * 0.3,
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        16.0, 0.0, 16.0, 0.0),
-                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
+                                    padding:
+                                        const EdgeInsetsDirectional.fromSTEB(
+                                            16.0, 0.0, 16.0, 0.0),
+                                    iconPadding:
+                                        const EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 0.0, 0.0),
                                     color:
                                         FlutterFlowTheme.of(context).darkGreen,
                                     textStyle: FlutterFlowTheme.of(context)
@@ -191,18 +193,20 @@ class _OrientationSelectionPageWidgetState
                                 order: const NumericFocusOrder(2.0),
                                 child: FFButtonWidget(
                                   onPressed: () async {
-                                    FFAppState().vertical = false;
+                                    FFAppState().rotationAngle = 0.0;
                                     safeSetState(() {});
                                     await Future.delayed(
-                                      Duration(
+                                      const Duration(
                                         milliseconds: 100,
                                       ),
                                     );
 
-                                    context.pushNamed(LoginWidget.routeName);
+                                    if (context.mounted) {
+                                      context.pushNamed(LoginWidget.routeName);
+                                    }
                                   },
                                   text: 'Horizontal',
-                                  icon: Icon(
+                                  icon: const Icon(
                                     Icons.crop_landscape,
                                     size: 40.0,
                                   ),
@@ -211,10 +215,12 @@ class _OrientationSelectionPageWidgetState
                                         MediaQuery.sizeOf(context).width * 0.3,
                                     height:
                                         MediaQuery.sizeOf(context).height * 0.3,
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        16.0, 0.0, 16.0, 0.0),
-                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
+                                    padding:
+                                        const EdgeInsetsDirectional.fromSTEB(
+                                            16.0, 0.0, 16.0, 0.0),
+                                    iconPadding:
+                                        const EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 0.0, 0.0),
                                     color:
                                         FlutterFlowTheme.of(context).darkGreen,
                                     textStyle: FlutterFlowTheme.of(context)
@@ -264,7 +270,7 @@ class _OrientationSelectionPageWidgetState
                         ),
                       ),
                     ),
-                  ].divide(SizedBox(height: 10.0)),
+                  ].divide(const SizedBox(height: 10.0)),
                 ),
               ),
             ],
@@ -272,5 +278,7 @@ class _OrientationSelectionPageWidgetState
         ),
       ),
     );
+
+    return mainContent;
   }
 }

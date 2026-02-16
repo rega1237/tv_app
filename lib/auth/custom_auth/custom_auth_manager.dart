@@ -11,7 +11,6 @@ const _kAuthTokenKey = '_auth_authentication_token_';
 const _kRefreshTokenKey = '_auth_refresh_token_';
 const _kTokenExpirationKey = '_auth_token_expiration_';
 const _kUidKey = '_auth_uid_';
-const _kUserDataKey = '_auth_user_data_';
 
 class CustomAuthManager {
   // Auth session attributes
@@ -75,7 +74,7 @@ class CustomAuthManager {
     this.authenticationToken = authenticationToken;
     this.refreshToken = refreshToken;
     this.tokenExpiration = tokenExpiration;
-    this.uid = authUid;
+    uid = authUid;
 
     // Update the current user stream.
     final updatedUser = Proyecto1608XproDigitalTVAuthUser(
@@ -88,7 +87,7 @@ class CustomAuthManager {
   }
 
   late SharedPreferences _prefs;
-  Future initialize() async {
+  Future<Proyecto1608XproDigitalTVAuthUser?> initialize() async {
     _prefs = await SharedPreferences.getInstance();
 
     try {
@@ -103,7 +102,7 @@ class CustomAuthManager {
       if (kDebugMode) {
         print('Error initializing auth: $e');
       }
-      return;
+      return null;
     }
 
     final authTokenExists = authenticationToken != null;
@@ -114,6 +113,7 @@ class CustomAuthManager {
       uid: uid,
     );
     proyecto1608XproDigitalTVAuthUserSubject.add(updatedUser);
+    return updatedUser;
   }
 
   void persistAuthData() {

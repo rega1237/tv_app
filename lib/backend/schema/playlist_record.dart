@@ -3,16 +3,15 @@ import 'dart:async';
 import 'package:collection/collection.dart';
 
 import '/backend/schema/util/firestore_util.dart';
-import '/backend/schema/util/schema_util.dart';
 
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
 class PlaylistRecord extends FirestoreRecord {
   PlaylistRecord._(
-    DocumentReference reference,
-    Map<String, dynamic> data,
-  ) : super(reference, data) {
+    super.reference,
+    super.data,
+  ) {
     _initializeFields();
   }
 
@@ -61,6 +60,11 @@ class PlaylistRecord extends FirestoreRecord {
   bool get isSchedule => _isSchedule ?? false;
   bool hasIsSchedule() => _isSchedule != null;
 
+  // "is_menu" field.
+  bool? _isMenu;
+  bool get isMenu => _isMenu ?? false;
+  bool hasIsMenu() => _isMenu != null;
+
   void _initializeFields() {
     _name = snapshotData['name'] as String?;
     _clientRef = snapshotData['client_ref'] as DocumentReference?;
@@ -74,6 +78,7 @@ class PlaylistRecord extends FirestoreRecord {
     _playlistBranchRef =
         snapshotData['playlist_branch_ref'] as DocumentReference?;
     _isSchedule = snapshotData['is_schedule'] as bool?;
+    _isMenu = snapshotData['is_menu'] as bool?;
   }
 
   static CollectionReference get collection =>
@@ -120,6 +125,7 @@ Map<String, dynamic> createPlaylistRecordData({
   ScheduleStruct? schedule,
   DocumentReference? playlistBranchRef,
   bool? isSchedule,
+  bool? isMenu,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -132,6 +138,7 @@ Map<String, dynamic> createPlaylistRecordData({
       'schedule': ScheduleStruct().toMap(),
       'playlist_branch_ref': playlistBranchRef,
       'is_schedule': isSchedule,
+      'is_menu': isMenu,
     }.withoutNulls,
   );
 
@@ -154,7 +161,8 @@ class PlaylistRecordDocumentEquality implements Equality<PlaylistRecord> {
         e1?.createdAt == e2?.createdAt &&
         e1?.schedule == e2?.schedule &&
         e1?.playlistBranchRef == e2?.playlistBranchRef &&
-        e1?.isSchedule == e2?.isSchedule;
+        e1?.isSchedule == e2?.isSchedule &&
+        e1?.isMenu == e2?.isMenu;
   }
 
   @override
@@ -167,7 +175,8 @@ class PlaylistRecordDocumentEquality implements Equality<PlaylistRecord> {
         e?.createdAt,
         e?.schedule,
         e?.playlistBranchRef,
-        e?.isSchedule
+        e?.isSchedule,
+        e?.isMenu
       ]);
 
   @override

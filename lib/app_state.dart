@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import '/backend/backend.dart';
-import '/backend/schema/structs/index.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'flutter_flow/flutter_flow_util.dart';
-import 'dart:convert';
 
 class FFAppState extends ChangeNotifier {
-  static FFAppState _instance = FFAppState._internal();
+  static final FFAppState _instance = FFAppState._internal();
 
   factory FFAppState() {
     return _instance;
@@ -14,15 +11,18 @@ class FFAppState extends ChangeNotifier {
 
   FFAppState._internal();
 
-  static void reset() {
-    _instance = FFAppState._internal();
-  }
-
+  // El método initializePersistedState es el correcto para cargar datos.
   Future initializePersistedState() async {
     prefs = await SharedPreferences.getInstance();
     _safeInit(() {
       _loggedSucursal =
           prefs.getString('ff_loggedSucursal')?.ref ?? _loggedSucursal;
+      _rotationAngle = prefs.getDouble('ff_rotationAngle') ?? _rotationAngle;
+
+      final lastChannelPath = prefs.getString('ff_lastChannelRef');
+      if (lastChannelPath != null && lastChannelPath.isNotEmpty) {
+        _lastChannelRef = FirebaseFirestore.instance.doc(lastChannelPath);
+      }
     });
   }
 
@@ -42,17 +42,34 @@ class FFAppState extends ChangeNotifier {
         : prefs.remove('ff_loggedSucursal');
   }
 
-  bool _vertical = false;
-  bool get vertical => _vertical;
-  set vertical(bool value) {
-    _vertical = value;
+  double _rotationAngle = 0.0;
+  double get rotationAngle => _rotationAngle;
+  set rotationAngle(double value) {
+    _rotationAngle = value;
+    // --- CORREGIDO para usar 'prefs' ---
+    prefs.setDouble('ff_rotationAngle', value);
   }
 
-  List<dynamic> _channelsData = [];
-  List<dynamic> get channelsData => _channelsData;
-  set channelsData(List<dynamic> value) {
-    _channelsData = value;
+  DocumentReference? _lastChannelRef;
+  DocumentReference? get lastChannelRef => _lastChannelRef;
+  set lastChannelRef(DocumentReference? value) {
+    _lastChannelRef = value;
+    // --- CORREGIDO para usar 'prefs' ---
+    if (value != null) {
+      prefs.setString('ff_lastChannelRef', value.path);
+    } else {
+      prefs.remove('ff_lastChannelRef');
+    }
   }
+
+  bool _isSubscriptionActive = true;
+  bool get isSubscriptionActive => _isSubscriptionActive;
+  set isSubscriptionActive(bool value) {
+    _isSubscriptionActive = value;
+    notifyListeners();
+  }
+
+  List<dynamic> channelsData = [];
 
   void addToChannelsData(dynamic value) {
     channelsData.add(value);
@@ -70,22 +87,18 @@ class FFAppState extends ChangeNotifier {
     int index,
     dynamic Function(dynamic) updateFn,
   ) {
-    channelsData[index] = updateFn(_channelsData[index]);
+    channelsData[index] = updateFn(channelsData[index]);
   }
 
   void insertAtIndexInChannelsData(int index, dynamic value) {
     channelsData.insert(index, value);
   }
+
+  bool initialRedirectPending = true;
 }
 
 void _safeInit(Function() initializeField) {
   try {
     initializeField();
-  } catch (_) {}
-}
-
-Future _safeInitAsync(Function() initializeField) async {
-  try {
-    await initializeField();
   } catch (_) {}
 }

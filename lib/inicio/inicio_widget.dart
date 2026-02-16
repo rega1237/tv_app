@@ -1,17 +1,15 @@
 import '/backend/backend.dart';
+import '/auth/custom_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
+import 'dart:async';
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:intl/intl.dart';
 
 import 'inicio_model.dart';
 export 'inicio_model.dart';
@@ -26,18 +24,60 @@ class InicioWidget extends StatefulWidget {
   State<InicioWidget> createState() => _InicioWidgetState();
 }
 
+class _LiveClockText extends StatelessWidget {
+  const _LiveClockText({required this.pattern, required this.style});
+
+  final String pattern;
+  final TextStyle style;
+
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder<DateTime>(
+      stream: Stream<DateTime>.periodic(
+        const Duration(seconds: 1),
+        (_) => DateTime.now(),
+      ),
+      initialData: DateTime.now(),
+      builder: (context, snapshot) {
+        final now = snapshot.data ?? DateTime.now();
+        return Text(DateFormat(pattern).format(now), style: style);
+      },
+    );
+  }
+}
+
 class _InicioWidgetState extends State<InicioWidget> {
   late InicioModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  bool _isConfirmingLogout = false;
+  Timer? _logoutConfirmationTimer;
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => InicioModel());
 
-    // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      final appState = FFAppState();
+      if (appState.initialRedirectPending && appState.lastChannelRef != null) {
+        // Desactivamos la bandera para que esto solo ocurra una vez por sesión.
+        appState.initialRedirectPending = false;
+        // Usamos 'pushNamed' para que la pantalla de Inicio quede en la pila de navegación.
+        context.pushNamed(
+          'PlayerPage',
+          queryParameters: {
+            'channelRef': serializeParam(
+              appState.lastChannelRef,
+              ParamType.DocumentReference,
+            ),
+          }.withoutNulls,
+        );
+        // Salimos para no ejecutar el resto de la carga de datos de esta página.
+        return;
+      }
+
       _model.sucursal = await queryChannelsBranchRecordOnce(
         queryBuilder: (channelsBranchRecord) => channelsBranchRecord.where(
           'branch_ref',
@@ -58,7 +98,69 @@ class _InicioWidgetState extends State<InicioWidget> {
   @override
   void dispose() {
     _model.dispose();
+    _logoutConfirmationTimer?.cancel();
     super.dispose();
+  }
+
+  void _handleLogout() {
+    if (_isConfirmingLogout) {
+      _logoutConfirmationTimer?.cancel();
+      FFAppState().lastChannelRef = null;
+      authManager.signOut();
+    } else {
+      setState(() {
+        _isConfirmingLogout = true;
+      });
+      _logoutConfirmationTimer?.cancel();
+      _logoutConfirmationTimer = Timer(const Duration(seconds: 4), () {
+        if (mounted) {
+          setState(() {
+            _isConfirmingLogout = false;
+          });
+        }
+      });
+    }
+  }
+
+  Widget _buildActionButtons() {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        TextButton.icon(
+          icon: const Icon(Icons.screen_rotation_alt_outlined, color: Colors.white),
+          label: const Text('Rotar Pantalla', style: TextStyle(color: Colors.white)),
+          onPressed: () {
+            if (_isConfirmingLogout) {
+              _logoutConfirmationTimer?.cancel();
+              _isConfirmingLogout = false;
+            }
+            setState(() {
+              double currentAngle = FFAppState().rotationAngle;
+              if (currentAngle == 0.0) {
+                FFAppState().rotationAngle = 270.0;
+              } else if (currentAngle == 270.0) {
+                FFAppState().rotationAngle = 90.0;
+              } else {
+                FFAppState().rotationAngle = 0.0;
+              }
+            });
+          },
+        ),
+        const SizedBox(width: 20),
+        TextButton.icon(
+          icon: Icon(
+            _isConfirmingLogout ? Icons.check_circle_outline : Icons.logout,
+            color: FlutterFlowTheme.of(context).error,
+          ),
+          label: Text(
+            _isConfirmingLogout ? '¿Confirm?' : 'Sign Out',
+            style: TextStyle(color: FlutterFlowTheme.of(context).error),
+          ),
+          onPressed: _handleLogout,
+        ),
+      ],
+    );
   }
 
   @override
@@ -68,7 +170,6 @@ class _InicioWidgetState extends State<InicioWidget> {
     return StreamBuilder<SucursalRecord>(
       stream: SucursalRecord.getDocument(FFAppState().loggedSucursal!),
       builder: (context, snapshot) {
-        // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
           return Scaffold(
             backgroundColor: FlutterFlowTheme.of(context).primaryText,
@@ -99,10 +200,10 @@ class _InicioWidgetState extends State<InicioWidget> {
             body: SafeArea(
               top: true,
               child: Align(
-                alignment: AlignmentDirectional(0.0, 0.0),
+                alignment: const AlignmentDirectional(0.0, 0.0),
                 child: Padding(
                   padding: EdgeInsets.all(valueOrDefault<double>(
-                    FFAppState().vertical ? 20.0 : 40.0,
+                    FFAppState().rotationAngle != 0.0 ? 20.0 : 40.0,
                     0.0,
                   )),
                   child: StreamBuilder<List<ChannelsBranchRecord>>(
@@ -115,23 +216,11 @@ class _InicioWidgetState extends State<InicioWidget> {
                       singleRecord: true,
                     ),
                     builder: (context, snapshot) {
-                      // Customize what your widget looks like when it's loading.
                       if (!snapshot.hasData) {
-                        return Center(
-                          child: SizedBox(
-                            width: 50.0,
-                            height: 50.0,
-                            child: CircularProgressIndicator(
-                              valueColor: AlwaysStoppedAnimation<Color>(
-                                FlutterFlowTheme.of(context).primary,
-                              ),
-                            ),
-                          ),
-                        );
+                        return const Center(child: CircularProgressIndicator());
                       }
                       List<ChannelsBranchRecord>
                           containerChannelsBranchRecordList = snapshot.data!;
-                      // Return an empty Container when the item does not exist.
                       if (snapshot.data!.isEmpty) {
                         return Container();
                       }
@@ -141,27 +230,16 @@ class _InicioWidgetState extends State<InicioWidget> {
                               : null;
 
                       return Container(
-                        decoration: BoxDecoration(),
+                        decoration: const BoxDecoration(),
                         child: Padding(
-                          padding: EdgeInsets.all(20.0),
+                          padding: const EdgeInsets.all(20.0),
                           child: StreamBuilder<List<ChannelsRecord>>(
                             stream: queryChannelsRecord(
                               parent: containerChannelsBranchRecord?.reference,
                             ),
                             builder: (context, snapshot) {
-                              // Customize what your widget looks like when it's loading.
                               if (!snapshot.hasData) {
-                                return Center(
-                                  child: SizedBox(
-                                    width: 50.0,
-                                    height: 50.0,
-                                    child: CircularProgressIndicator(
-                                      valueColor: AlwaysStoppedAnimation<Color>(
-                                        FlutterFlowTheme.of(context).primary,
-                                      ),
-                                    ),
-                                  ),
-                                );
+                                return const Center(child: CircularProgressIndicator());
                               }
                               List<ChannelsRecord>
                                   conditionalBuilderChannelsRecordList =
@@ -169,7 +247,7 @@ class _InicioWidgetState extends State<InicioWidget> {
 
                               return Builder(
                                 builder: (context) {
-                                  if (!FFAppState().vertical) {
+                                  if (FFAppState().rotationAngle == 0.0) {
                                     return Column(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
@@ -178,15 +256,16 @@ class _InicioWidgetState extends State<InicioWidget> {
                                               BorderRadius.circular(8.0),
                                           child: Image.asset(
                                             'assets/images/logoxpro-01.png',
-                                            width: MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.3,
-                                            height: MediaQuery.sizeOf(context)
-                                                    .height *
-                                                0.2,
-                                            fit: BoxFit.cover,
+                                            width: MediaQuery.sizeOf(context).width *
+                                                (MediaQuery.sizeOf(context).width >
+                                                        MediaQuery.sizeOf(context).height
+                                                    ? 0.3
+                                                    : 0.5),
+                                            fit: BoxFit.contain,
+                                            alignment: Alignment.center,
                                           ),
                                         ),
+                                        _buildActionButtons(),
                                         Row(
                                           mainAxisSize: MainAxisSize.max,
                                           mainAxisAlignment:
@@ -199,33 +278,12 @@ class _InicioWidgetState extends State<InicioWidget> {
                                                   .headlineMedium
                                                   .override(
                                                     font:
-                                                        GoogleFonts.interTight(
-                                                      fontWeight:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .headlineMedium
-                                                              .fontWeight,
-                                                      fontStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .headlineMedium
-                                                              .fontStyle,
-                                                    ),
+                                                        GoogleFonts.interTight(),
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .vividGreen,
                                                     fontSize: 13.0,
                                                     letterSpacing: 0.0,
-                                                    fontWeight:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .headlineMedium
-                                                            .fontWeight,
-                                                    fontStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .headlineMedium
-                                                            .fontStyle,
                                                   ),
                                             ),
                                             Row(
@@ -238,75 +296,32 @@ class _InicioWidgetState extends State<InicioWidget> {
                                                       .headlineMedium
                                                       .override(
                                                         font: GoogleFonts
-                                                            .interTight(
-                                                          fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .headlineMedium
-                                                                  .fontWeight,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .headlineMedium
-                                                                  .fontStyle,
-                                                        ),
+                                                            .interTight(),
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .lightGray,
                                                         fontSize: 13.0,
                                                         letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .headlineMedium
-                                                                .fontWeight,
-                                                        fontStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .headlineMedium
-                                                                .fontStyle,
                                                       ),
                                                 ),
-                                                Text(
-                                                  dateTimeFormat("M/d h:mm a",
-                                                      getCurrentTimestamp),
+                                                _LiveClockText(
+                                                  pattern: 'M/d h:mm a',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .headlineMedium
                                                       .override(
                                                         font: GoogleFonts
-                                                            .interTight(
-                                                          fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .headlineMedium
-                                                                  .fontWeight,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .headlineMedium
-                                                                  .fontStyle,
-                                                        ),
+                                                            .interTight(),
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .vividGreen,
                                                         fontSize: 13.0,
                                                         letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .headlineMedium
-                                                                .fontWeight,
-                                                        fontStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .headlineMedium
-                                                                .fontStyle,
                                                       ),
                                                 ),
-                                              ].divide(SizedBox(width: 5.0)),
+                                              ].divide(const SizedBox(width: 5.0)),
                                             ),
                                             StreamBuilder<
                                                 List<SubscriptionRecord>>(
@@ -323,7 +338,6 @@ class _InicioWidgetState extends State<InicioWidget> {
                                                 singleRecord: true,
                                               ),
                                               builder: (context, snapshot) {
-                                                // Customize what your widget looks like when it's loading.
                                                 if (!snapshot.hasData) {
                                                   return Center(
                                                     child: SizedBox(
@@ -345,7 +359,6 @@ class _InicioWidgetState extends State<InicioWidget> {
                                                 List<SubscriptionRecord>
                                                     rowSubscriptionRecordList =
                                                     snapshot.data!;
-                                                // Return an empty Container when the item does not exist.
                                                 if (snapshot.data!.isEmpty) {
                                                   return Container();
                                                 }
@@ -368,30 +381,13 @@ class _InicioWidgetState extends State<InicioWidget> {
                                                               .headlineMedium
                                                               .override(
                                                                 font: GoogleFonts
-                                                                    .interTight(
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .headlineMedium
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .headlineMedium
-                                                                      .fontStyle,
-                                                                ),
+                                                                    .interTight(),
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .lightGray,
                                                                 fontSize: 13.0,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                fontWeight: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .headlineMedium
-                                                                    .fontWeight,
-                                                                fontStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .headlineMedium
-                                                                    .fontStyle,
                                                               ),
                                                     ),
                                                     Text(
@@ -402,30 +398,13 @@ class _InicioWidgetState extends State<InicioWidget> {
                                                               .headlineMedium
                                                               .override(
                                                                 font: GoogleFonts
-                                                                    .interTight(
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .headlineMedium
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .headlineMedium
-                                                                      .fontStyle,
-                                                                ),
+                                                                    .interTight(),
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .vividGreen,
                                                                 fontSize: 13.0,
                                                                 letterSpacing:
                                                                     0.0,
-                                                                fontWeight: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .headlineMedium
-                                                                    .fontWeight,
-                                                                fontStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .headlineMedium
-                                                                    .fontStyle,
                                                               ),
                                                     ),
                                                   ],
@@ -440,14 +419,13 @@ class _InicioWidgetState extends State<InicioWidget> {
                                               final horizontalGrid =
                                                   conditionalBuilderChannelsRecordList
                                                       .toList();
-
                                               return FocusTraversalGroup(
                                                 policy:
                                                     OrderedTraversalPolicy(),
                                                 child: GridView.builder(
                                                   padding: EdgeInsets.zero,
                                                   gridDelegate:
-                                                      SliverGridDelegateWithFixedCrossAxisCount(
+                                                      const SliverGridDelegateWithFixedCrossAxisCount(
                                                     crossAxisCount: 2,
                                                     crossAxisSpacing: 10.0,
                                                     mainAxisSpacing: 10.0,
@@ -462,27 +440,13 @@ class _InicioWidgetState extends State<InicioWidget> {
                                                     final horizontalGridItem =
                                                         horizontalGrid[
                                                             horizontalGridIndex];
-                                                    return Container(
-                                                      width: MediaQuery.sizeOf(
-                                                                  context)
-                                                              .width *
-                                                          1.0,
-                                                      height: MediaQuery.sizeOf(
-                                                                  context)
-                                                              .height *
-                                                          1.0,
+                                                    return SizedBox(
+                                                      width: 1.0,
+                                                      height: 1.0,
                                                       child: custom_widgets
                                                           .FocusableHighlightBox(
-                                                        width:
-                                                            MediaQuery.sizeOf(
-                                                                        context)
-                                                                    .width *
-                                                                1.0,
-                                                        height:
-                                                            MediaQuery.sizeOf(
-                                                                        context)
-                                                                    .height *
-                                                                1.0,
+                                                        width: 1.0,
+                                                        height: 1.0,
                                                         iconName: 'live_tv',
                                                         iconSize: 50.0,
                                                         textLabel:
@@ -524,7 +488,7 @@ class _InicioWidgetState extends State<InicioWidget> {
                                                             }.withoutNulls,
                                                             extra: <String, dynamic>{
                                                               kTransitionInfoKey:
-                                                                  TransitionInfo(
+                                                                  const TransitionInfo(
                                                                 hasTransition: true,
                                                                 transitionType:
                                                                     PageTransitionType
@@ -544,15 +508,17 @@ class _InicioWidgetState extends State<InicioWidget> {
                                             },
                                           ),
                                         ),
-                                      ].divide(SizedBox(height: 5.0)),
+                                      ].divide(const SizedBox(height: 5.0)),
                                     );
                                   } else {
+                                    final rotationAngle = FFAppState().rotationAngle;
+                                    int quarterTurns = rotationAngle == 90.0 ? 1 : 3;
                                     return RotatedBox(
-                                      quarterTurns: 3,
+                                      quarterTurns: quarterTurns,
                                       child: Container(
                                         width: MediaQuery.sizeOf(context).width * 0.9,
                                         height: MediaQuery.sizeOf(context).height * 0.9,
-                                        decoration: BoxDecoration(),
+                                        decoration: const BoxDecoration(),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
@@ -563,11 +529,16 @@ class _InicioWidgetState extends State<InicioWidget> {
                                                   borderRadius: BorderRadius.circular(8.0),
                                                   child: Image.asset(
                                                     'assets/images/logoxpro-01.png',
-                                                    width: MediaQuery.sizeOf(context).width * 0.3,
-                                                    height: MediaQuery.sizeOf(context).height * 0.2,
-                                                    fit: BoxFit.cover,
+                                                    width: MediaQuery.sizeOf(context).height *
+                                                        (MediaQuery.sizeOf(context).height >
+                                                                MediaQuery.sizeOf(context).width
+                                                            ? 0.3
+                                                            : 0.5),
+                                                    fit: BoxFit.contain,
+                                                    alignment: Alignment.center,
                                                   ),
                                                 ),
+                                                _buildActionButtons(),
                                                 Row(
                                                   mainAxisSize: MainAxisSize.max,
                                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -575,15 +546,10 @@ class _InicioWidgetState extends State<InicioWidget> {
                                                     Text(
                                                       'Welcome ${inicioSucursalRecord.name}!',
                                                       style: FlutterFlowTheme.of(context).headlineMedium.override(
-                                                            font: GoogleFonts.interTight(
-                                                              fontWeight: FlutterFlowTheme.of(context).headlineMedium.fontWeight,
-                                                              fontStyle: FlutterFlowTheme.of(context).headlineMedium.fontStyle,
-                                                            ),
+                                                            font: GoogleFonts.interTight(),
                                                             color: FlutterFlowTheme.of(context).vividGreen,
                                                             fontSize: 15.0,
                                                             letterSpacing: 0.0,
-                                                            fontWeight: FlutterFlowTheme.of(context).headlineMedium.fontWeight,
-                                                            fontStyle: FlutterFlowTheme.of(context).headlineMedium.fontStyle,
                                                           ),
                                                     ),
                                                     Row(
@@ -592,31 +558,26 @@ class _InicioWidgetState extends State<InicioWidget> {
                                                         Text(
                                                           'Time:',
                                                           style: FlutterFlowTheme.of(context).headlineMedium.override(
-                                                                font: GoogleFonts.interTight(
-                                                                  fontWeight: FlutterFlowTheme.of(context).headlineMedium.fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(context).headlineMedium.fontStyle,
-                                                                ),
+                                                                font: GoogleFonts.interTight(),
                                                                 color: FlutterFlowTheme.of(context).lightGray,
                                                                 fontSize: 15.0,
                                                                 letterSpacing: 0.0,
-                                                                fontWeight: FlutterFlowTheme.of(context).headlineMedium.fontWeight,
-                                                                fontStyle: FlutterFlowTheme.of(context).headlineMedium.fontStyle,
                                                               ),
                                                         ),
-                                                                                                                  Text(
-                                                                                                                    DateFormat('MMM d h:mm a').format(getCurrentTimestamp),
-                                                                                                                    style: FlutterFlowTheme.of(context).headlineMedium.override(
-                                                                                                                          font: GoogleFonts.interTight(
-                                                                                                                            fontWeight: FlutterFlowTheme.of(context).headlineMedium.fontWeight,
-                                                                                                                            fontStyle: FlutterFlowTheme.of(context).headlineMedium.fontStyle,
-                                                                                                                          ),
-                                                                                                                          color: FlutterFlowTheme.of(context).vividGreen,
-                                                                                                                          fontSize: 15.0,
-                                                                                                                          letterSpacing: 0.0,
-                                                                                                                          fontWeight: FlutterFlowTheme.of(context).headlineMedium.fontWeight,
-                                                                                                                          fontStyle: FlutterFlowTheme.of(context).headlineMedium.fontStyle,
-                                                                                                                        ),
-                                                                                                                  ),                                                      ].divide(SizedBox(width: 5.0)),
+                                                        _LiveClockText(
+                                                          pattern: 'MMM d h:mm a',
+                                                          style: FlutterFlowTheme.of(context)
+                                                              .headlineMedium
+                                                              .override(
+                                                                font: GoogleFonts
+                                                                    .interTight(),
+                                                                color: FlutterFlowTheme.of(context)
+                                                                    .vividGreen,
+                                                                fontSize: 15.0,
+                                                                letterSpacing: 0.0,
+                                                              ),
+                                                        ),
+                                                      ].divide(const SizedBox(width: 5.0)),
                                                     ),
                                                     StreamBuilder<List<SubscriptionRecord>>(
                                                       stream: querySubscriptionRecord(
@@ -627,22 +588,10 @@ class _InicioWidgetState extends State<InicioWidget> {
                                                         singleRecord: true,
                                                       ),
                                                       builder: (context, snapshot) {
-                                                        // Customize what your widget looks like when it's loading.
                                                         if (!snapshot.hasData) {
-                                                          return Center(
-                                                            child: SizedBox(
-                                                              width: 50.0,
-                                                              height: 50.0,
-                                                              child: CircularProgressIndicator(
-                                                                valueColor: AlwaysStoppedAnimation<Color>(
-                                                                  FlutterFlowTheme.of(context).primary,
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          );
+                                                          return const Center(child: CircularProgressIndicator());
                                                         }
                                                         List<SubscriptionRecord> rowSubscriptionRecordList = snapshot.data!;
-                                                        // Return an empty Container when the item does not exist.
                                                         if (snapshot.data!.isEmpty) {
                                                           return Container();
                                                         }
@@ -656,38 +605,28 @@ class _InicioWidgetState extends State<InicioWidget> {
                                                             Text(
                                                               'Days left: ',
                                                               style: FlutterFlowTheme.of(context).headlineMedium.override(
-                                                                    font: GoogleFonts.interTight(
-                                                                      fontWeight: FlutterFlowTheme.of(context).headlineMedium.fontWeight,
-                                                                      fontStyle: FlutterFlowTheme.of(context).headlineMedium.fontStyle,
-                                                                    ),
+                                                                    font: GoogleFonts.interTight(),
                                                                     color: FlutterFlowTheme.of(context).lightGray,
                                                                     fontSize: 15.0,
                                                                     letterSpacing: 0.0,
-                                                                    fontWeight: FlutterFlowTheme.of(context).headlineMedium.fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(context).headlineMedium.fontStyle,
                                                                   ),
                                                             ),
                                                             Text(
                                                               '${functions.daysUntilSubscriptionEnds(rowSubscriptionRecord!.endDate!).toString()} Days',
                                                               style: FlutterFlowTheme.of(context).headlineMedium.override(
-                                                                    font: GoogleFonts.interTight(
-                                                                      fontWeight: FlutterFlowTheme.of(context).headlineMedium.fontWeight,
-                                                                      fontStyle: FlutterFlowTheme.of(context).headlineMedium.fontStyle,
-                                                                    ),
+                                                                    font: GoogleFonts.interTight(),
                                                                     color: FlutterFlowTheme.of(context).vividGreen,
                                                                     fontSize: 15.0,
                                                                     letterSpacing: 0.0,
-                                                                    fontWeight: FlutterFlowTheme.of(context).headlineMedium.fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(context).headlineMedium.fontStyle,
                                                                   ),
                                                             ),
                                                           ],
                                                         );
                                                       },
                                                     ),
-                                                  ].divide(SizedBox(width: 20.0)),
+                                                  ].divide(const SizedBox(width: 20.0)),
                                                 ),
-                                              ].divide(SizedBox(height: 5.0)),
+                                              ].divide(const SizedBox(height: 5.0)),
                                             ),
                                             Expanded(
                                               child: StreamBuilder<List<ChannelsRecord>>(
@@ -695,25 +634,14 @@ class _InicioWidgetState extends State<InicioWidget> {
                                                   parent: containerChannelsBranchRecord?.reference,
                                                 ),
                                                 builder: (context, snapshot) {
-                                                  // Customize what your widget looks like when it's loading.
                                                   if (!snapshot.hasData) {
-                                                    return Center(
-                                                      child: SizedBox(
-                                                        width: 50.0,
-                                                        height: 50.0,
-                                                        child: CircularProgressIndicator(
-                                                          valueColor: AlwaysStoppedAnimation<Color>(
-                                                            FlutterFlowTheme.of(context).primary,
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    );
+                                                    return const Center(child: CircularProgressIndicator());
                                                   }
                                                   List<ChannelsRecord> containerChannelsRecordList = snapshot.data!;
 
                                                   return Container(
-                                                    decoration: BoxDecoration(),
-                                                    child: Container(
+                                                    decoration: const BoxDecoration(),
+                                                    child: SizedBox(
                                                       width: MediaQuery.sizeOf(context).width * 0.9,
                                                       height: MediaQuery.sizeOf(context).height * 0.9,
                                                       child: custom_widgets.VerticalFocusGrid(
@@ -745,7 +673,7 @@ class _InicioWidgetState extends State<InicioWidget> {
                                                             }.withoutNulls,
                                                             extra: <String, dynamic>{
                                                               kTransitionInfoKey:
-                                                                  TransitionInfo(
+                                                                  const TransitionInfo(
                                                                 hasTransition: true,
                                                                 transitionType:
                                                                     PageTransitionType

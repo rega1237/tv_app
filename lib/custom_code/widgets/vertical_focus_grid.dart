@@ -1,11 +1,7 @@
 // Automatic FlutterFlow imports
-import '/backend/backend.dart';
-import '/backend/schema/structs/index.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/flutter_flow_util.dart';
-import '/custom_code/widgets/index.dart'; // Imports other custom widgets
-import '/custom_code/actions/index.dart'; // Imports custom actions
-import '/flutter_flow/custom_functions.dart'; // Imports custom functions
+// Imports other custom widgets
+// Imports custom actions
+// Imports custom functions
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -16,7 +12,7 @@ import 'dart:math' as math;
 
 class VerticalFocusGrid extends StatefulWidget {
   const VerticalFocusGrid({
-    Key? key,
+    super.key,
     this.width,
     this.height,
     this.iconName = 'live_tv',
@@ -33,7 +29,7 @@ class VerticalFocusGrid extends StatefulWidget {
     this.childAspectRatio = 1.0,
     this.items = const [],
     this.onItemTap,
-  }) : super(key: key);
+  });
 
   final double? width;
   final double? height;
@@ -58,7 +54,6 @@ class VerticalFocusGrid extends StatefulWidget {
 
 class _VerticalFocusGridState extends State<VerticalFocusGrid> {
   List<FocusNode> _focusNodes = [];
-  int _currentFocusIndex = 0;
 
   @override
   void initState() {
@@ -86,52 +81,52 @@ class _VerticalFocusGridState extends State<VerticalFocusGrid> {
       itemsCount,
       (index) => FocusNode(
         debugLabel: 'Item $index',
-                            onKey: (node, event) {
-                              if (event is! RawKeyDownEvent) return KeyEventResult.ignored;
-                  
-                              final itemsCount =
-                                  widget.items.isNotEmpty ? widget.items.length : 6;
-                              int newIndex = index;
-                  
-                              // Linear navigation: Up/Left for previous, Down/Right for next.
-                              if (event.logicalKey == LogicalKeyboardKey.arrowUp ||
-                                  event.logicalKey == LogicalKeyboardKey.arrowLeft) {
-                                newIndex = _getPreviousIndex(index);
-                              } else if (event.logicalKey == LogicalKeyboardKey.arrowDown ||
-                                  event.logicalKey == LogicalKeyboardKey.arrowRight) {
-                                newIndex = _getNextIndex(index, itemsCount);
-                              } else if (event.logicalKey == LogicalKeyboardKey.enter ||
-                                  event.logicalKey == LogicalKeyboardKey.select) {
-                                _handleItemTap(index);
-                                return KeyEventResult.handled;
-                              }
-                  
-                              if (newIndex != index) {
-                                _focusNodes[newIndex].requestFocus();
-                                _currentFocusIndex = newIndex;
-                                return KeyEventResult.handled;
-                              }
-                  
-                              return KeyEventResult.ignored;
-                            },
-                          ));
-                  
-                      if (_focusNodes.isNotEmpty) {
-                        // Request focus in a post-frame callback to ensure the widget is built.
-                        WidgetsBinding.instance
-                            .addPostFrameCallback((_) => _focusNodes[0].requestFocus());
-                      }
-                    }
-                  
-                    int _getNextIndex(int currentIndex, int itemsCount) {
-                      final newIndex = currentIndex + 1;
-                      return newIndex < itemsCount ? newIndex : currentIndex;
-                    }
-                  
-                    int _getPreviousIndex(int currentIndex) {
-                      final newIndex = currentIndex - 1;
-                      return newIndex >= 0 ? newIndex : currentIndex;
-                    }
+        onKeyEvent: (node, event) {
+          if (event is! KeyDownEvent) return KeyEventResult.ignored;
+
+          final itemsCount = widget.items.isNotEmpty ? widget.items.length : 6;
+          int newIndex = index;
+
+          // Linear navigation: Up/Left for previous, Down/Right for next.
+          if (event.logicalKey == LogicalKeyboardKey.arrowUp ||
+              event.logicalKey == LogicalKeyboardKey.arrowLeft) {
+            newIndex = _getPreviousIndex(index);
+          } else if (event.logicalKey == LogicalKeyboardKey.arrowDown ||
+              event.logicalKey == LogicalKeyboardKey.arrowRight) {
+            newIndex = _getNextIndex(index, itemsCount);
+          } else if (event.logicalKey == LogicalKeyboardKey.enter ||
+              event.logicalKey == LogicalKeyboardKey.select) {
+            _handleItemTap(index);
+            return KeyEventResult.handled;
+          }
+
+          if (newIndex != index) {
+            _focusNodes[newIndex].requestFocus();
+            return KeyEventResult.handled;
+          }
+
+          return KeyEventResult.ignored;
+        },
+      ),
+    );
+
+    if (_focusNodes.isNotEmpty) {
+      // Request focus in a post-frame callback to ensure the widget is built.
+      WidgetsBinding.instance
+          .addPostFrameCallback((_) => _focusNodes[0].requestFocus());
+    }
+  }
+
+  int _getNextIndex(int currentIndex, int itemsCount) {
+    final newIndex = currentIndex + 1;
+    return newIndex < itemsCount ? newIndex : currentIndex;
+  }
+
+  int _getPreviousIndex(int currentIndex) {
+    final newIndex = currentIndex - 1;
+    return newIndex >= 0 ? newIndex : currentIndex;
+  }
+
   void _handleItemTap(int index) {
     if (widget.onItemTap != null) {
       final item = widget.items.isNotEmpty
@@ -162,10 +157,10 @@ class _VerticalFocusGridState extends State<VerticalFocusGrid> {
     final itemsToUse = widget.items.isNotEmpty
         ? widget.items
         : [
-            {'name': 'Deportes', 'vertical': false},
-            {'name': 'Noticias', 'vertical': true},
-            {'name': 'Cine', 'vertical': false},
-            {'name': 'Música', 'vertical': true},
+            {'name': 'Sports', 'vertical': false},
+            {'name': 'News', 'vertical': true},
+            {'name': 'Movies', 'vertical': false},
+            {'name': 'Music', 'vertical': true},
             {'name': 'Kids', 'vertical': false},
             {'name': 'Docs', 'vertical': true},
           ];
@@ -173,7 +168,7 @@ class _VerticalFocusGridState extends State<VerticalFocusGrid> {
     if (itemsToUse.isEmpty) {
       return Center(
         child: Text(
-          'No hay canales disponibles',
+          'No channels available',
           style: TextStyle(color: widget.textColor),
         ),
       );
@@ -242,8 +237,9 @@ class _VerticalFocusGridState extends State<VerticalFocusGrid> {
         // Intentar acceder a la propiedad 'vertical'
         final dynamic verticalValue = _getProperty(item, 'vertical');
         if (verticalValue is bool) return verticalValue;
-        if (verticalValue is String)
+        if (verticalValue is String) {
           return verticalValue.toLowerCase() == 'true';
+        }
         if (verticalValue is num) return verticalValue == 1;
         return false;
       } catch (e) {
@@ -288,7 +284,7 @@ class _VerticalFocusGridState extends State<VerticalFocusGrid> {
         }
       }
     } catch (e) {
-      print('Error getting property $propertyName: $e');
+      // Ignore error
     }
     return null;
   }
@@ -296,7 +292,6 @@ class _VerticalFocusGridState extends State<VerticalFocusGrid> {
 
 class _FocusableItem extends StatefulWidget {
   const _FocusableItem({
-    Key? key,
     required this.focusNode,
     this.iconName,
     this.iconSize = 30.0,
@@ -310,7 +305,7 @@ class _FocusableItem extends StatefulWidget {
     this.onTapAction,
     this.autofocus = false,
     this.rotate = false,
-  }) : super(key: key);
+  });
 
   final FocusNode focusNode;
   final String? iconName;
@@ -420,7 +415,7 @@ class __FocusableItemState extends State<_FocusableItem> {
       child: GestureDetector(
         onTap: _handleTap,
         child: Container(
-          margin: EdgeInsets.all(4),
+          margin: const EdgeInsets.all(4),
           decoration: BoxDecoration(
             color: currentBackgroundColor,
             borderRadius: BorderRadius.circular(8.0),
@@ -439,7 +434,7 @@ class __FocusableItemState extends State<_FocusableItem> {
                   color: currentIconColor,
                 ),
               ),
-              if (widget.textLabel != null) SizedBox(height: 8),
+              if (widget.textLabel != null) const SizedBox(height: 8),
               if (widget.textLabel != null)
                 Text(
                   widget.textLabel!,

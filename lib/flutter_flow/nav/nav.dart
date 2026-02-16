@@ -1,20 +1,14 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import '/backend/backend.dart';
-import '/backend/schema/structs/index.dart';
 
 import '/auth/custom_auth/custom_auth_user_provider.dart';
 
-import '/main.dart';
+import '/pages/expired_subscription_page/expired_subscription_page_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/lat_lng.dart';
-import '/flutter_flow/place.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'serialization_util.dart';
 
 import '/index.dart';
 import '/pages/player_page/player_page_widget.dart';
@@ -85,47 +79,113 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       refreshListenable: appStateNotifier,
       navigatorKey: appNavigatorKey,
       errorBuilder: (context, state) => appStateNotifier.loggedIn
-          ? InicioWidget()
-          : OrientationSelectionPageWidget(),
+          ? (FFAppState().isSubscriptionActive
+              ? const InicioWidget()
+              : const ExpiredSubscriptionPageWidget())
+          : const OrientationSelectionPageWidget(),
+      redirect: (context, state) {
+        final loggedIn = appStateNotifier.loggedIn;
+        final subscriptionActive = FFAppState().isSubscriptionActive;
+
+        if (state.matchedLocation == '/') {
+          return null;
+        }
+
+        final publicRoutes = [
+          '/', // _initialize route
+          OrientationSelectionPageWidget.routePath,
+          LoginWidget.routePath,
+        ];
+        final isGoingToPublicRoute =
+            publicRoutes.contains(state.matchedLocation);
+        final isGoingToExpiredPage =
+            state.matchedLocation == ExpiredSubscriptionPageWidget.routePath;
+
+        // If user is not logged in and tries to access a protected route, redirect to login flow.
+        if (!loggedIn && !isGoingToPublicRoute) {
+          return OrientationSelectionPageWidget.routePath;
+        }
+
+        // If user is logged in...
+        if (loggedIn) {
+          // ...but their subscription is not active, force them to the expired page.
+          if (!subscriptionActive && !isGoingToExpiredPage) {
+            return ExpiredSubscriptionPageWidget.routePath;
+          }
+          // ...and their subscription IS active, but they are on the expired page, send them home.
+          if (subscriptionActive && isGoingToExpiredPage) {
+            return InicioWidget.routePath;
+          }
+          // ...and they are trying to go to a public page, send them home.
+          if (isGoingToPublicRoute) {
+            return InicioWidget.routePath;
+          }
+        }
+
+        // No redirection needed in all other cases.
+        return null;
+      },
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) => appStateNotifier.loggedIn
-              ? InicioWidget()
-              : OrientationSelectionPageWidget(),
+          builder: (context, _) => const LoadingPageWidget(),
         ),
         FFRoute(
           name: HomePageWidget.routeName,
           path: HomePageWidget.routePath,
-          builder: (context, params) => HomePageWidget(),
+          builder: (context, params) => const HomePageWidget(),
         ),
         FFRoute(
           name: LoginWidget.routeName,
           path: LoginWidget.routePath,
-          builder: (context, params) => LoginWidget(),
+          builder: (context, params) => const LoginWidget(),
         ),
         FFRoute(
           name: InicioWidget.routeName,
           path: InicioWidget.routePath,
-          builder: (context, params) => InicioWidget(),
+          builder: (context, params) => const InicioWidget(),
         ),
         FFRoute(
           name: OrientationSelectionPageWidget.routeName,
           path: OrientationSelectionPageWidget.routePath,
-          builder: (context, params) => OrientationSelectionPageWidget(),
+          builder: (context, params) => const OrientationSelectionPageWidget(),
+        ),
+        FFRoute(
+          name: ExpiredSubscriptionPageWidget.routeName,
+          path: ExpiredSubscriptionPageWidget.routePath,
+          builder: (context, params) => const ExpiredSubscriptionPageWidget(),
         ),
         FFRoute(
           name: 'PlayerPage',
           path: '/player',
-          builder: (context, params) => PlayerPageWidget(
-            channelRef: params.getParam(
+          builder: (context, params) {
+            // --- LÓGICA DE BUILDER CORREGIDA ---
+            // Intenta obtener el 'channelRef' de los parámetros de la ruta.
+            var channelRef = params.getParam<DocumentReference?>(
               'channelRef',
               ParamType.DocumentReference,
               collectionNamePath: ['channels_branch', 'channels'],
-            ),
-          ),
-        )
+            );
+            // Si no viene en los parámetros (porque es una redirección), tómalo del AppState.
+            channelRef ??= FFAppState().lastChannelRef;
+
+            // Si por alguna razón sigue siendo nulo, redirige a la página de inicio para evitar un error.
+            if (channelRef == null) {
+              return const InicioWidget();
+            }
+            return PlayerPageWidget(channelRef: channelRef);
+          },
+        ),
+        FFRoute(
+          name: PdfMenuPageWidget.routeName,
+          path: PdfMenuPageWidget.routePath,
+          builder: (context, params) {
+            final pdfFiles =
+                params.state.extraMap['pdfFiles'] as List<FilesRecord>?;
+            return PdfMenuPageWidget(pdfFiles: pdfFiles);
+          },
+        ),
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
 
@@ -363,7 +423,8 @@ class TransitionInfo {
   final Duration duration;
   final Alignment? alignment;
 
-  static TransitionInfo appDefault() => TransitionInfo(hasTransition: false);
+  static TransitionInfo appDefault() =>
+      const TransitionInfo(hasTransition: false);
 }
 
 class RootPageContext {
