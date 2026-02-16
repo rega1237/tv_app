@@ -30,6 +30,7 @@ if (keystorePropertiesFile.exists()) {
     keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 }
 
+
 android {
     namespace "com.mycompany.proyecto1608xprodigitaltv"
     compileSdkVersion 35
@@ -82,11 +83,38 @@ android {
     }
 }
 
-flutter {
-    source '../..'
-}
+
 
 dependencies {
     coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.1.4'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:2.1.0"
+}
+
+gradle.projectsEvaluated {
+    tasks.withType(JavaCompile) {
+        doFirst {
+            System.err.println "HOOK: Checking/Patching GeneratedPluginRegistrant.java..."
+            def file = project.file("src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java")
+            if (file.exists()) {
+                def content = file.text
+                def needsPatch = false
+                if (!content.contains("import androidx.annotation.NonNull;")) {
+                    content = content.replace("package io.flutter.plugins;", "package io.flutter.plugins;\nimport androidx.annotation.Keep;\nimport androidx.annotation.NonNull;\nimport io.flutter.Log;")
+                    needsPatch = true
+                }
+                if (content.contains("Log.e(") && !content.contains("android.util.Log.e(")) {
+                    content = content.replace("Log.e(", "android.util.Log.e(")
+                    needsPatch = true
+                }
+                if (needsPatch) {
+                    file.write(content)
+                    System.err.println "HOOK: Patched GeneratedPluginRegistrant.java with imports and Log fixes."
+                } else {
+                    System.err.println "HOOK: No patching needed for GeneratedPluginRegistrant.java."
+                }
+            } else {
+                System.err.println "HOOK: GeneratedPluginRegistrant.java not found at: " + file.absolutePath
+            }
+        }
+    }
 }

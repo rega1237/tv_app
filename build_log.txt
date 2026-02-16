@@ -1,0 +1,1417 @@
+[ +177 ms] executing: sysctl hw.optional.arm64
+[   +8 ms] Exit code 1 from: sysctl hw.optional.arm64
+[        ] sysctl: unknown oid 'hw.optional.arm64'
+[  +11 ms] Artifact Instance of 'MaterialFonts' is not required, skipping update.
+[        ] Artifact Instance of 'GradleWrapper' is not required, skipping update.
+[        ] Artifact Instance of 'AndroidGenSnapshotArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'AndroidInternalBuildArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IOSEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterWebSdk' is not required, skipping update.
+[   +1 ms] Artifact Instance of 'LegacyCanvasKitRemover' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterSdk' is not required, skipping update.
+[        ] Artifact Instance of 'WindowsEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'MacOSEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'LinuxEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'LinuxFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'MacOSFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterRunnerSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterRunnerDebugSymbols' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FontSubsetArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'PubDependencies' is not required, skipping update.
+[  +15 ms] Artifact Instance of 'AndroidGenSnapshotArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'AndroidInternalBuildArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IOSEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterWebSdk' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterEngineStamp' is not required, skipping update.
+[        ] Artifact Instance of 'LegacyCanvasKitRemover' is not required, skipping update.
+[   +2 ms] Artifact Instance of 'WindowsEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'MacOSEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'LinuxEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'LinuxFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'MacOSFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterRunnerSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterRunnerDebugSymbols' is not required, skipping update.
+[  +49 ms] Artifact Instance of 'MaterialFonts' is not required, skipping update.
+[        ] Artifact Instance of 'GradleWrapper' is not required, skipping update.
+[   +2 ms] Artifact Instance of 'AndroidInternalBuildArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IOSEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterWebSdk' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterEngineStamp' is not required, skipping update.
+[        ] Artifact Instance of 'LegacyCanvasKitRemover' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterSdk' is not required, skipping update.
+[        ] Artifact Instance of 'WindowsEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'MacOSEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'LinuxEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'LinuxFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'MacOSFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterRunnerSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterRunnerDebugSymbols' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FontSubsetArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'PubDependencies' is not required, skipping update.
+[  +90 ms] Skipping pub get: version match.
+[ +140 ms] Found plugin video_player at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/video_player-2.10.0/
+[   +6 ms] Found plugin video_player_web at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/video_player_web-2.4.0/
+[   +8 ms] Found plugin video_player_avfoundation at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/video_player_avfoundation-2.8.5/
+[   +4 ms] Found plugin video_player_android at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/video_player_android-2.8.17/
+[   +5 ms] Found plugin url_launcher_windows at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/url_launcher_windows-3.1.4/
+[   +4 ms] Found plugin url_launcher_web at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/url_launcher_web-2.4.1/
+[   +1 ms] Found plugin url_launcher_macos at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/url_launcher_macos-3.2.2/
+[   +2 ms] Found plugin url_launcher_linux at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/url_launcher_linux-3.2.1/
+[   +2 ms] Found plugin url_launcher_ios at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/url_launcher_ios-6.3.3/
+[   +2 ms] Found plugin url_launcher_android at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.16/
+[   +2 ms] Found plugin url_launcher at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/url_launcher-6.3.1/
+[  +14 ms] Found plugin sqflite at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/sqflite-2.3.3+1/
+[   +5 ms] Found plugin shared_preferences_windows at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/shared_preferences_windows-2.4.1/
+[   +4 ms] Found plugin path_provider_windows at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0/
+[   +7 ms] Found plugin shared_preferences_web at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/shared_preferences_web-2.4.3/
+[   +2 ms] Found plugin shared_preferences_linux at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/shared_preferences_linux-2.4.1/
+[   +2 ms] Found plugin path_provider_linux at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/
+[   +3 ms] Found plugin shared_preferences_foundation at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/shared_preferences_foundation-2.5.4/
+[   +1 ms] Found plugin shared_preferences_android at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/shared_preferences_android-2.4.10/
+[   +4 ms] Found plugin shared_preferences at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/shared_preferences-2.5.3/
+[   +9 ms] Found plugin path_provider_foundation at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/
+[   +2 ms] Found plugin path_provider_android at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/path_provider_android-2.2.10/
+[   +2 ms] Found plugin path_provider at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/path_provider-2.1.4/
+[  +15 ms] Found plugin flutter_pdfview at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/flutter_pdfview-1.4.3/
+[   +1 ms] Found plugin flutter_native_splash at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/flutter_native_splash-2.4.1/
+[  +10 ms] Found plugin firebase_performance_web at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/firebase_performance_web-0.1.7+13/
+[   +2 ms] Found plugin firebase_core at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/firebase_core-3.14.0/
+[   +2 ms] Found plugin firebase_core_web at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/firebase_core_web-2.23.0/
+[   +3 ms] Found plugin firebase_performance at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/firebase_performance-0.10.1+7/
+[   +1 ms] Found plugin firebase_auth at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/firebase_auth-5.6.0/
+[   +1 ms] Found plugin firebase_auth_web at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/firebase_auth_web-5.15.0/
+[   +4 ms] Found plugin cloud_functions at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/cloud_functions-5.5.2/
+[   +1 ms] Found plugin cloud_functions_web at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/cloud_functions_web-4.11.2/
+[   +2 ms] Found plugin cloud_firestore_web at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/cloud_firestore_web-4.4.9/
+[   +7 ms] Found plugin cloud_firestore at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/cloud_firestore-5.6.9/
+[  +73 ms] Found plugin video_player at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/video_player-2.10.0/
+[   +1 ms] Found plugin video_player_web at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/video_player_web-2.4.0/
+[   +4 ms] Found plugin video_player_avfoundation at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/video_player_avfoundation-2.8.5/
+[   +1 ms] Found plugin video_player_android at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/video_player_android-2.8.17/
+[   +2 ms] Found plugin url_launcher_windows at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/url_launcher_windows-3.1.4/
+[   +1 ms] Found plugin url_launcher_web at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/url_launcher_web-2.4.1/
+[        ] Found plugin url_launcher_macos at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/url_launcher_macos-3.2.2/
+[   +1 ms] Found plugin url_launcher_linux at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/url_launcher_linux-3.2.1/
+[   +1 ms] Found plugin url_launcher_ios at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/url_launcher_ios-6.3.3/
+[        ] Found plugin url_launcher_android at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.16/
+[        ] Found plugin url_launcher at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/url_launcher-6.3.1/
+[   +4 ms] Found plugin sqflite at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/sqflite-2.3.3+1/
+[   +1 ms] Found plugin shared_preferences_windows at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/shared_preferences_windows-2.4.1/
+[   +1 ms] Found plugin path_provider_windows at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0/
+[   +3 ms] Found plugin shared_preferences_web at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/shared_preferences_web-2.4.3/
+[        ] Found plugin shared_preferences_linux at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/shared_preferences_linux-2.4.1/
+[   +1 ms] Found plugin path_provider_linux at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/
+[   +2 ms] Found plugin shared_preferences_foundation at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/shared_preferences_foundation-2.5.4/
+[   +1 ms] Found plugin shared_preferences_android at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/shared_preferences_android-2.4.10/
+[        ] Found plugin shared_preferences at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/shared_preferences-2.5.3/
+[   +4 ms] Found plugin path_provider_foundation at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/
+[   +1 ms] Found plugin path_provider_android at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/path_provider_android-2.2.10/
+[        ] Found plugin path_provider at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/path_provider-2.1.4/
+[   +7 ms] Found plugin flutter_pdfview at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/flutter_pdfview-1.4.3/
+[        ] Found plugin flutter_native_splash at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/flutter_native_splash-2.4.1/
+[   +5 ms] Found plugin firebase_performance_web at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/firebase_performance_web-0.1.7+13/
+[   +1 ms] Found plugin firebase_core at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/firebase_core-3.14.0/
+[        ] Found plugin firebase_core_web at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/firebase_core_web-2.23.0/
+[   +2 ms] Found plugin firebase_performance at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/firebase_performance-0.10.1+7/
+[   +1 ms] Found plugin firebase_auth at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/firebase_auth-5.6.0/
+[        ] Found plugin firebase_auth_web at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/firebase_auth_web-5.15.0/
+[   +2 ms] Found plugin cloud_functions at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/cloud_functions-5.5.2/
+[   +1 ms] Found plugin cloud_functions_web at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/cloud_functions_web-4.11.2/
+[   +1 ms] Found plugin cloud_firestore_web at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/cloud_firestore_web-4.4.9/
+[   +1 ms] Found plugin cloud_firestore at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/cloud_firestore-5.6.9/
+[  +19 ms] Skipping generating web_plugin_registrant.dart because it is up-to-date.
+[  +28 ms] Found plugin video_player at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/video_player-2.10.0/
+[   +1 ms] Found plugin video_player_web at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/video_player_web-2.4.0/
+[   +3 ms] Found plugin video_player_avfoundation at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/video_player_avfoundation-2.8.5/
+[        ] Found plugin video_player_android at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/video_player_android-2.8.17/
+[   +1 ms] Found plugin url_launcher_windows at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/url_launcher_windows-3.1.4/
+[   +1 ms] Found plugin url_launcher_web at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/url_launcher_web-2.4.1/
+[        ] Found plugin url_launcher_macos at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/url_launcher_macos-3.2.2/
+[        ] Found plugin url_launcher_linux at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/url_launcher_linux-3.2.1/
+[        ] Found plugin url_launcher_ios at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/url_launcher_ios-6.3.3/
+[        ] Found plugin url_launcher_android at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.16/
+[   +1 ms] Found plugin url_launcher at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/url_launcher-6.3.1/
+[   +5 ms] Found plugin sqflite at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/sqflite-2.3.3+1/
+[        ] Found plugin shared_preferences_windows at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/shared_preferences_windows-2.4.1/
+[   +1 ms] Found plugin path_provider_windows at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/path_provider_windows-2.3.0/
+[   +3 ms] Found plugin shared_preferences_web at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/shared_preferences_web-2.4.3/
+[        ] Found plugin shared_preferences_linux at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/shared_preferences_linux-2.4.1/
+[        ] Found plugin path_provider_linux at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/
+[   +1 ms] Found plugin shared_preferences_foundation at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/shared_preferences_foundation-2.5.4/
+[        ] Found plugin shared_preferences_android at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/shared_preferences_android-2.4.10/
+[        ] Found plugin shared_preferences at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/shared_preferences-2.5.3/
+[   +3 ms] Found plugin path_provider_foundation at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.0/
+[        ] Found plugin path_provider_android at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/path_provider_android-2.2.10/
+[        ] Found plugin path_provider at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/path_provider-2.1.4/
+[   +7 ms] Found plugin flutter_pdfview at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/flutter_pdfview-1.4.3/
+[        ] Found plugin flutter_native_splash at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/flutter_native_splash-2.4.1/
+[   +5 ms] Found plugin firebase_performance_web at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/firebase_performance_web-0.1.7+13/
+[   +1 ms] Found plugin firebase_core at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/firebase_core-3.14.0/
+[        ] Found plugin firebase_core_web at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/firebase_core_web-2.23.0/
+[   +1 ms] Found plugin firebase_performance at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/firebase_performance-0.10.1+7/
+[        ] Found plugin firebase_auth at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/firebase_auth-5.6.0/
+[        ] Found plugin firebase_auth_web at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/firebase_auth_web-5.15.0/
+[   +3 ms] Found plugin cloud_functions at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/cloud_functions-5.5.2/
+[   +1 ms] Found plugin cloud_functions_web at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/cloud_functions_web-4.11.2/
+[   +2 ms] Found plugin cloud_firestore_web at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/cloud_firestore_web-4.4.9/
+[   +2 ms] Found plugin cloud_firestore at /Users/rafaelguzman/.pub-cache/hosted/pub.dev/cloud_firestore-5.6.9/
+[  +18 ms] Generating /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java
+[  +14 ms] Skipping generating generated_plugin_registrant.h because it is up-to-date.
+[   +2 ms] Skipping generating generated_plugin_registrant.cc because it is up-to-date.
+[   +2 ms] Skipping generating generated_plugins.cmake because it is up-to-date.
+[   +2 ms] Skipping generating GeneratedPluginRegistrant.h because it is up-to-date.
+[   +1 ms] Skipping generating GeneratedPluginRegistrant.m because it is up-to-date.
+[  +13 ms] executing: sysctl hw.optional.arm64
+[   +7 ms] Exit code 1 from: sysctl hw.optional.arm64
+[        ] sysctl: unknown oid 'hw.optional.arm64'
+[        ] executing: xcrun xcodebuild -version
+[ +164 ms] Exit code 0 from: xcrun xcodebuild -version
+[        ] Xcode 16.2
+           Build version 16C5032a
+[ +140 ms] executing: /usr/bin/plutil -convert xml1 -o - /Applications/Android Studio.app/Contents/Info.plist
+[  +15 ms] Exit code 0 from: /usr/bin/plutil -convert xml1 -o - /Applications/Android Studio.app/Contents/Info.plist
+[        ] <?xml version="1.0" encoding="UTF-8"?>
+           <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+           <plist version="1.0">
+           <dict>
+           	<key>CFBundleDevelopmentRegion</key>
+           	<string>English</string>
+           	<key>CFBundleDocumentTypes</key>
+           	<array>
+           		<dict>
+           			<key>CFBundleTypeExtensions</key>
+           			<array>
+           				<string>ipr</string>
+           			</array>
+           			<key>CFBundleTypeIconFile</key>
+           			<string>studio.icns</string>
+           			<key>CFBundleTypeName</key>
+           			<string>Android Studio Project File</string>
+           			<key>CFBundleTypeRole</key>
+           			<string>Editor</string>
+           		</dict>
+           		<dict>
+           			<key>CFBundleTypeExtensions</key>
+           			<array>
+           				<string>*</string>
+           			</array>
+           			<key>CFBundleTypeName</key>
+           			<string>All documents</string>
+           			<key>CFBundleTypeOSTypes</key>
+           			<array>
+           				<string>****</string>
+           			</array>
+           			<key>CFBundleTypeRole</key>
+           			<string>Editor</string>
+           			<key>LSTypeIsPackage</key>
+           			<false/>
+           		</dict>
+           	</array>
+           	<key>CFBundleExecutable</key>
+           	<string>studio</string>
+           	<key>CFBundleGetInfoString</key>
+           	<string>Android Studio 2025.2, build AI-252.25557.131.2521.14344949. Copyright JetBrains s.r.o., (c) 2000-2025</string>
+           	<key>CFBundleIconFile</key>
+           	<string>studio.icns</string>
+           	<key>CFBundleIdentifier</key>
+           	<string>com.google.android.studio</string>
+           	<key>CFBundleInfoDictionaryVersion</key>
+           	<string>6.0</string>
+           	<key>CFBundleName</key>
+           	<string>Android Studio</string>
+           	<key>CFBundlePackageType</key>
+           	<string>APPL</string>
+           	<key>CFBundleShortVersionString</key>
+           	<string>2025.2</string>
+           	<key>CFBundleURLTypes</key>
+           	<array>
+           		<dict>
+           			<key>CFBundleTypeRole</key>
+           			<string>Editor</string>
+           			<key>CFBundleURLName</key>
+           			<string>Stacktrace</string>
+           			<key>CFBundleURLSchemes</key>
+           			<array>
+           				<string>idea</string>
+           			</array>
+           		</dict>
+           	</array>
+           	<key>CFBundleVersion</key>
+           	<string>AI-252.25557.131.2521.14344949</string>
+           	<key>LSApplicationCategoryType</key>
+           	<string>public.app-category.developer-tools</string>
+           	<key>LSArchitecturePriority</key>
+           	<array>
+           		<string>x86_64</string>
+           	</array>
+           	<key>LSMinimumSystemVersion</key>
+           	<string>10.13</string>
+           	<key>LSRequiresNativeExecution</key>
+           	<string>YES</string>
+           	<key>NSAppleEventsUsageDescription</key>
+           	<string>An application in Android Studio requests the ability to send Apple events.</string>
+           	<key>NSBluetoothAlwaysUsageDescription</key>
+           	<string>An application in Android Studio requests access to Bluetooth.</string>
+           	<key>NSCameraUsageDescription</key>
+           	<string>An application in Android Studio requests access to the device's camera.</string>
+           	<key>NSDesktopFolderUsageDescription</key>
+           	<string>An application in Android Studio requests access to the user's Desktop folder.</string>
+           	<key>NSDocumentsFolderUsageDescription</key>
+           	<string>An application in Android Studio requests access to the user's Documents folder.</string>
+           	<key>NSDownloadsFolderUsageDescription</key>
+           	<string>An application in Android Studio requests access to the user's Downloads folder.</string>
+           	<key>NSHighResolutionCapable</key>
+           	<true/>
+           	<key>NSLocalNetworkUsageDescription</key>
+           	<string>Android Studio's features, such as SSH and database connectivity, require permissions for accessing the local network and sending broadcast requests.</string>
+           	<key>NSLocationUsageDescription</key>
+           	<string>An application in Android Studio requests access to the user's location information.</string>
+           	<key>NSMicrophoneUsageDescription</key>
+           	<string>An application in Android Studio requests access to the device's microphone.</string>
+           	<key>NSNetworkVolumesUsageDescription</key>
+           	<string>An application in Android Studio requests access to files on a network volume.</string>
+           	<key>NSRemovableVolumesUsageDescription</key>
+           	<string>An application in Android Studio requests access to files on a removable volume.</string>
+           	<key>NSSupportsAutomaticGraphicsSwitching</key>
+           	<true/>
+           </dict>
+           </plist>
+[  +13 ms] executing: /Applications/Android Studio.app/Contents/jbr/Contents/Home/bin/java -version
+[ +122 ms] Exit code 0 from: /Applications/Android Studio.app/Contents/jbr/Contents/Home/bin/java -version
+[        ] openjdk version "21.0.8" 2025-07-15
+           OpenJDK Runtime Environment (build 21.0.8+-14196175-b1038.72)
+           OpenJDK 64-Bit Server VM (build 21.0.8+-14196175-b1038.72, mixed mode)
+[  +24 ms] executing: /Applications/Android Studio.app/Contents/jbr/Contents/Home/bin/java --version
+[ +137 ms] Exit code 0 from: /Applications/Android Studio.app/Contents/jbr/Contents/Home/bin/java --version
+[        ] openjdk 21.0.8 2025-07-15
+           OpenJDK Runtime Environment (build 21.0.8+-14196175-b1038.72)
+           OpenJDK 64-Bit Server VM (build 21.0.8+-14196175-b1038.72, mixed mode)
+[   +3 ms] Version of Java is different than impacted version, no migration attempted.
+[  +35 ms] CMake project not found, skipping support Android 15 16k page size migration.
+[   +4 ms] Using gradle from /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/gradlew.
+[  +23 ms] LocalFile: '/Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/build.gradle' doesn't provide an AGP version. Checking settings.
+[   +1 ms] LocalFile: '/Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/settings.gradle' provides AGP version: 8.7.3
+[   +1 ms] Running Gradle task 'assembleRelease'...
+[   +1 ms] executing: [/Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/] /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/gradlew --full-stacktrace --info -Pverbose=true -Ptarget-platform=android-arm,android-arm64,android-x64 -Ptarget=lib/main.dart -Pbase-application-name=android.app.Application -Pdart-defines=RkxVVFRFUl9WRVJTSU9OPTMuMzguNQ==,RkxVVFRFUl9DSEFOTkVMPVt1c2VyLWJyYW5jaF0=,RkxVVFRFUl9HSVRfVVJMPXVua25vd24gc291cmNl,RkxVVFRFUl9GUkFNRVdPUktfUkVWSVNJT049ZjZmZjE1MjlmZA==,RkxVVFRFUl9FTkdJTkVfUkVWSVNJT049MTUyN2FlMGVjNQ==,RkxVVFRFUl9EQVJUX1ZFUlNJT049My4xMC40 -Pdart-obfuscation=false -Ptrack-widget-creation=true -Ptree-shake-icons=true assembleRelease
+[ +684 ms] Initialized native services in: /Users/rafaelguzman/.gradle/native
+[        ] Initialized jansi services in: /Users/rafaelguzman/.gradle/native
+[ +114 ms] Welcome to Gradle 8.12!
+[        ] Here are the highlights of this release:
+[        ]  - Enhanced error and warning reporting with the Problems API
+[        ]  - File-system watching support on Alpine Linux
+[        ]  - Build and test Swift 6 libraries and apps
+[        ] For more details see https://docs.gradle.org/8.12/release-notes.html
+[ +198 ms] Found daemon DaemonInfo{pid=79392, address=[ba3b8278-5f33-4ee2-aa57-2f3cf5687e78 port:63772, addresses:[/127.0.0.1]], state=Idle, lastBusy=1771012529869, context=DefaultDaemonContext[uid=b1cdbb7f-25c4-4cd2-a33a-8ddb20d14023,javaHome=/usr/local/Cellar/openjdk/25/libexec/openjdk.jdk/Contents/Home,javaVersion=25,javaVendor=Homebrew,daemonRegistryDir=/Users/rafaelguzman/.gradle/daemon,pid=79392,idleTimeout=10800000,priority=NORMAL,applyInstrumentationAgent=true,nativeServicesMode=ENABLED,daemonOpts=-Xmx6144m,-Dfile.encoding=UTF-8,-Duser.country=US,-Duser.language=en,-Duser.variant]} however its context does not match the desired criteria.
+[        ] JVM is incompatible.
+[        ] Wanted: DaemonRequestContext{jvmCriteria=/Applications/Android Studio.app/Contents/jbr/Contents/Home (no JDK specified, using current Java home), daemonOpts=[-Xmx6144m, -Dfile.encoding=UTF-8, -Duser.country=US, -Duser.language=en, -Duser.variant], applyInstrumentationAgent=true, nativeServicesMode=ENABLED, priority=NORMAL}
+[        ] Actual: DefaultDaemonContext[uid=b1cdbb7f-25c4-4cd2-a33a-8ddb20d14023,javaHome=/usr/local/Cellar/openjdk/25/libexec/openjdk.jdk/Contents/Home,javaVersion=25,javaVendor=Homebrew,daemonRegistryDir=/Users/rafaelguzman/.gradle/daemon,pid=79392,idleTimeout=10800000,priority=NORMAL,applyInstrumentationAgent=true,nativeServicesMode=ENABLED,daemonOpts=-Xmx6144m,-Dfile.encoding=UTF-8,-Duser.country=US,-Duser.language=en,-Duser.variant]
+[        ]   Looking for a different daemon...
+[        ] The client will now receive all logging from the daemon (pid: 85792). The daemon log file: /Users/rafaelguzman/.gradle/daemon/8.12/daemon-85792.out.log
+[        ] Starting 12th build in daemon [uptime: 48 mins 10.968 secs, performance: 100%, GC rate: 0.00/s, heap usage: 0% of 6 GiB]
+[        ] Using 12 worker leases.
+[        ] Now considering [/Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android, /usr/local/share/flutter/packages/flutter_tools/gradle] as hierarchies to watch
+[        ] Watching the file system is configured to be enabled if available
+[        ] File system watching is active
+[        ] Starting Build
+[  +86 ms] Now considering [/usr/local/share/flutter/packages/flutter_tools/gradle, /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android] as hierarchies to watch
+[ +110 ms] > Configure project :gradle
+[        ] Evaluating project ':gradle' using build file '/usr/local/share/flutter/packages/flutter_tools/gradle/build.gradle.kts'.
+[        ] Resolved plugin [id: 'org.gradle.java-gradle-plugin']
+[        ] Resolved plugin [id: 'org.gradle.groovy']
+[        ] Resolved plugin [id: 'org.gradle.kotlin.kotlin-dsl', version: '5.1.2']
+[        ] Resolved plugin [id: 'org.jetbrains.kotlin.jvm', version: '1.9.20']
+[        ] Using Kotlin Gradle Plugin gradle85 variant
+[        ] kotlin scripting plugin: created the scripting discovery configuration: kotlinScriptDef
+[        ] kotlin scripting plugin: created the scripting discovery configuration: testKotlinScriptDef
+[        ] file or directory '/usr/local/share/flutter/packages/flutter_tools/gradle/src/main/java', not found
+[        ] Resolved plugin [id: 'dev.flutter.flutter-gradle-plugin', version: '1.0.0', apply: false]
+[        ] Resolved plugin [id: 'com.android.application', version: '8.7.3', apply: false]
+[        ] Resolved plugin [id: 'org.jetbrains.kotlin.android', version: '2.1.0', apply: false]
+[        ] Resolved plugin [id: 'com.google.gms.google-services', version: '4.3.8', apply: false]
+[        ] Resolve mutations for :gradle:checkKotlinGradlePluginConfigurationErrors (Thread[#1546,Execution worker,5,main]) started.
+[        ] :gradle:checkKotlinGradlePluginConfigurationErrors (Thread[#1546,Execution worker,5,main]) started.
+[        ] > Task :gradle:checkKotlinGradlePluginConfigurationErrors SKIPPED
+[        ] Skipping task ':gradle:checkKotlinGradlePluginConfigurationErrors' as task onlyIf 'errorDiagnostics are present' is false.
+[        ] Resolve mutations for :gradle:compileKotlin (Thread[#1546,Execution worker,5,main]) started.
+[        ] :gradle:compileKotlin (Thread[#1546,Execution worker,5,main]) started.
+[  +94 ms] > Task :gradle:compileKotlin UP-TO-DATE
+[        ] Caching disabled for task ':gradle:compileKotlin' because:
+[        ]   Build cache is disabled
+[        ] Skipping task ':gradle:compileKotlin' as it is up-to-date.
+[        ] Resolve mutations for :gradle:compileJava (Thread[#1546,Execution worker,5,main]) started.
+[        ] :gradle:compileJava (Thread[#1546,Execution worker,5,main]) started.
+[        ] > Task :gradle:compileJava NO-SOURCE
+[        ] Skipping task ':gradle:compileJava' as it has no source files and no previous output files.
+[        ] Resolve mutations for :gradle:compileGroovy (Thread[#1546,Execution worker,5,main]) started.
+[        ] :gradle:compileGroovy (Thread[#1546,Execution worker,5,main]) started.
+[        ] > Task :gradle:compileGroovy NO-SOURCE
+[        ] Skipping task ':gradle:compileGroovy' as it has no source files and no previous output files.
+[        ] Resolve mutations for :gradle:pluginDescriptors (Thread[#1546,Execution worker,5,main]) started.
+[        ] :gradle:pluginDescriptors (Thread[#1546,Execution worker,5,main]) started.
+[        ] > Task :gradle:pluginDescriptors UP-TO-DATE
+[        ] Caching disabled for task ':gradle:pluginDescriptors' because:
+[        ]   Build cache is disabled
+[        ]   Not worth caching
+[        ] Skipping task ':gradle:pluginDescriptors' as it is up-to-date.
+[        ] Resolve mutations for :gradle:processResources (Thread[#1546,Execution worker,5,main]) started.
+[        ] :gradle:processResources (Thread[#1546,Execution worker,5,main]) started.
+[        ] > Task :gradle:processResources UP-TO-DATE
+[        ] Caching disabled for task ':gradle:processResources' because:
+[        ]   Build cache is disabled
+[        ]   Not worth caching
+[        ] Skipping task ':gradle:processResources' as it is up-to-date.
+[        ] Resolve mutations for :gradle:classes (Thread[#1546,Execution worker,5,main]) started.
+[        ] :gradle:classes (Thread[#1546,Execution worker,5,main]) started.
+[        ] > Task :gradle:classes UP-TO-DATE
+[        ] Skipping task ':gradle:classes' as it has no actions.
+[        ] Resolve mutations for :gradle:jar (Thread[#1546,Execution worker,5,main]) started.
+[        ] :gradle:jar (Thread[#1546,Execution worker,5,main]) started.
+[        ] > Task :gradle:jar UP-TO-DATE
+[        ] Caching disabled for task ':gradle:jar' because:
+[        ]   Build cache is disabled
+[        ]   Not worth caching
+[        ] Skipping task ':gradle:jar' as it is up-to-date.
+[ +186 ms] Settings evaluated using settings file '/Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/settings.gradle'.
+[        ] Projects loaded. Root project using build file '/Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/build.gradle'.
+[        ] Included projects: [root project 'android', project ':app']
+[ +308 ms] > Configure project :app
+[        ] Evaluating project ':app' using build file '/Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/build.gradle'.
+[        ] Resolved plugin [id: 'com.android.application']
+[        ] Resolved plugin [id: 'kotlin-android']
+[        ] Resolved plugin [id: 'dev.flutter.flutter-gradle-plugin']
+[        ] Resolved plugin [id: 'com.google.gms.google-services']
+[        ] WARNING: The option 'android.enableR8' is deprecated.
+[        ] It was removed in version 7.0 of the Android Gradle plugin.
+[        ] Please remove it from `gradle.properties`.
+[        ] Using default execution profile
+[        ] Using Kotlin Gradle Plugin gradle85 variant
+[        ] C/C++: android.ndkVersion from module build.gradle is [27.0.12077973]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is /Users/rafaelguzman/Library/Android/sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [27.0.12077973]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is /Users/rafaelguzman/Library/Android/sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [27.0.12077973]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is /Users/rafaelguzman/Library/Android/sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [27.0.12077973]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is /Users/rafaelguzman/Library/Android/sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [27.0.12077973]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is /Users/rafaelguzman/Library/Android/sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [27.0.12077973]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is /Users/rafaelguzman/Library/Android/sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [27.0.12077973]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is /Users/rafaelguzman/Library/Android/sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [27.0.12077973]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is /Users/rafaelguzman/Library/Android/sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [27.0.12077973]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is /Users/rafaelguzman/Library/Android/sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [27.0.12077973]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is /Users/rafaelguzman/Library/Android/sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [27.0.12077973]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is /Users/rafaelguzman/Library/Android/sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [27.0.12077973]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is /Users/rafaelguzman/Library/Android/sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [27.0.12077973]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is /Users/rafaelguzman/Library/Android/sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [27.0.12077973]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is /Users/rafaelguzman/Library/Android/sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [27.0.12077973]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is /Users/rafaelguzman/Library/Android/sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [27.0.12077973]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is /Users/rafaelguzman/Library/Android/sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [27.0.12077973]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is /Users/rafaelguzman/Library/Android/sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [27.0.12077973]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is /Users/rafaelguzman/Library/Android/sdk
+[        ] C/C++: android.ndkVersion from module build.gradle is [27.0.12077973]
+[        ] C/C++: android.ndkPath from module build.gradle is not set
+[        ] C/C++: ndk.dir in local.properties is not set
+[        ] C/C++: Not considering ANDROID_NDK_HOME because support was removed after deprecation period.
+[        ] C/C++: sdkFolder is /Users/rafaelguzman/Library/Android/sdk
+[        ] > Configure project :
+[        ] Evaluating root project 'android' using build file '/Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/build.gradle'.
+[        ] All projects evaluated.
+[        ] Task name matched 'assembleRelease'
+[        ] Selected primary task 'assembleRelease' from project :
+[  +80 ms] Tasks to be executed: [task ':app:ReleaseMinSdkCheck', task ':app:compileFlutterBuildRelease', task ':app:packJniLibsflutterBuildRelease', task ':app:preBuild', task ':app:preReleaseBuild', task ':app:configureCMakeRelease[arm64-v8a]', task ':app:buildCMakeRelease[arm64-v8a]', task ':app:configureCMakeRelease[armeabi-v7a]', task ':app:buildCMakeRelease[armeabi-v7a]', task ':app:configureCMakeRelease[x86_64]', task ':app:buildCMakeRelease[x86_64]', task ':app:mergeReleaseJniLibFolders', task ':app:mergeReleaseNativeLibs', task ':app:stripReleaseDebugSymbols', task ':app:extractReleaseNativeSymbolTables', task ':app:mergeReleaseNativeDebugMetadata', task ':app:mergeReleaseArtProfile', task ':app:expandReleaseL8ArtProfileWildcards', task ':app:buildKotlinToolingMetadata', task ':app:checkReleaseDuplicateClasses', task ':app:checkKotlinGradlePluginConfigurationErrors', task ':app:checkReleaseAarMetadata', task ':app:cleanMergeReleaseAssets', task ':app:mergeReleaseShaders', task ':app:compileReleaseShaders', task ':app:generateReleaseAssets', task ':app:mergeReleaseAssets', task ':app:copyFlutterAssetsRelease', task ':app:generateReleaseResValues', task ':app:processReleaseGoogleServices', task ':app:mapReleaseSourceSetPaths', task ':app:generateReleaseResources', task ':app:mergeReleaseResources', task ':app:packageReleaseResources', task ':app:parseReleaseLocalResources', task ':app:createReleaseCompatibleScreenManifests', task ':app:extractDeepLinksRelease', task ':app:processReleaseMainManifest', task ':app:outputReleaseAppLinkSettings', task ':app:processReleaseManifest', task ':app:processReleaseManifestForPackage', task ':app:processReleaseResources', task ':app:compileReleaseKotlin', task ':app:javaPreCompileRelease', task ':app:compileReleaseJavaWithJavac', task ':app:expandReleaseArtProfileWildcards', task ':app:extractProguardFiles', task ':app:mergeReleaseGeneratedProguardFiles', task ':app:processReleaseJavaRes', task ':app:mergeReleaseJavaResource', task ':app:mergeReleaseStartupProfile', task ':app:minifyReleaseWithR8', task ':app:l8DexDesugarLibRelease', task ':app:compileReleaseArtProfile', task ':app:compressReleaseAssets', task ':app:extractReleaseVersionControlInfo', task ':app:convertLinkedResourcesToProtoRelease', task ':app:shrinkReleaseRes', task ':app:convertShrunkResourcesToBinaryRelease', task ':app:optimizeReleaseResources', task ':app:collectReleaseDependencies', task ':app:sdkReleaseDependencyData', task ':app:validateSigningRelease', task ':app:writeReleaseAppMetadata', task ':app:writeReleaseSigningConfigVersions', task ':app:packageRelease', task ':app:createReleaseApkListingFileRedirect', task ':app:assembleRelease']
+[        ] Tasks that were excluded: []
+[        ] Resolve mutations for :app:ReleaseMinSdkCheck (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] :app:ReleaseMinSdkCheck (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] > Task :app:ReleaseMinSdkCheck
+[        ] Caching disabled for task ':app:ReleaseMinSdkCheck' because:
+[        ]   Build cache is disabled
+[        ] Task ':app:ReleaseMinSdkCheck' is not up-to-date because:
+[        ]   Task has not declared any outputs despite executing actions.
+[        ] Resolve mutations for :app:compileFlutterBuildRelease (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] :app:compileFlutterBuildRelease (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[+1995 ms] > Task :app:compileFlutterBuildRelease
+[        ] Caching disabled for task ':app:compileFlutterBuildRelease' because:
+[        ]   Build cache is disabled
+[        ]   Caching has not been enabled for the task
+[        ] Task ':app:compileFlutterBuildRelease' is not up-to-date because:
+[        ]   Value of input property 'verbose' has changed for task ':app:compileFlutterBuildRelease'
+[        ] Starting process 'command '/usr/local/share/flutter/bin/flutter''. Working directory: /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v Command: /usr/local/share/flutter/bin/flutter --verbose assemble --no-version-check --depfile /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/build/app/intermediates/flutter/release/flutter_build.d --output /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/build/app/intermediates/flutter/release -dTargetFile=lib/main.dart -dTargetPlatform=android -dBuildMode=release -dTrackWidgetCreation=true -dTreeShakeIcons=true --DartDefines=RkxVVFRFUl9WRVJTSU9OPTMuMzguNQ==,RkxVVFRFUl9DSEFOTkVMPVt1c2VyLWJyYW5jaF0=,RkxVVFRFUl9HSVRfVVJMPXVua25vd24gc291cmNl,RkxVVFRFUl9GUkFNRVdPUktfUkVWSVNJT049ZjZmZjE1MjlmZA==,RkxVVFRFUl9FTkdJTkVfUkVWSVNJT049MTUyN2FlMGVjNQ==,RkxVVFRFUl9EQVJUX1ZFUlNJT049My4xMC40 -dFlavor= -dAndroidArchs=android-arm android-arm64 android-x64 -dMinSdkVersion=24 android_aot_bundle_release_android-arm android_aot_bundle_release_android-arm64 android_aot_bundle_release_android-x64
+[        ] Successfully started process 'command '/usr/local/share/flutter/bin/flutter''
+[        ] [  +86 ms] executing: sysctl hw.optional.arm64
+[        ] [   +9 ms] Exit code 1 from: sysctl hw.optional.arm64
+[        ] [        ] sysctl: unknown oid 'hw.optional.arm64'
+[        ] [  +13 ms] Artifact Instance of 'MaterialFonts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'GradleWrapper' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'AndroidGenSnapshotArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'AndroidInternalBuildArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'IOSEngineArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'FlutterWebSdk' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'LegacyCanvasKitRemover' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'FlutterSdk' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'WindowsEngineArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'MacOSEngineArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'LinuxEngineArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'LinuxFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'MacOSFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'FlutterRunnerSDKArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'FlutterRunnerDebugSymbols' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'FontSubsetArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'PubDependencies' is not required, skipping update.
+[        ] [  +12 ms] Artifact Instance of 'AndroidGenSnapshotArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'AndroidInternalBuildArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'IOSEngineArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'FlutterWebSdk' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'FlutterEngineStamp' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'LegacyCanvasKitRemover' is not required, skipping update.
+[        ] [   +1 ms] Artifact Instance of 'WindowsEngineArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'MacOSEngineArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'LinuxEngineArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'LinuxFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'MacOSFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'FlutterRunnerSDKArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'FlutterRunnerDebugSymbols' is not required, skipping update.
+[        ] [  +67 ms] Artifact Instance of 'MaterialFonts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'GradleWrapper' is not required, skipping update.
+[        ] [   +1 ms] Artifact Instance of 'AndroidInternalBuildArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'IOSEngineArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'FlutterWebSdk' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'FlutterEngineStamp' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'LegacyCanvasKitRemover' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'FlutterSdk' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'WindowsEngineArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'MacOSEngineArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'LinuxEngineArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'LinuxFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'MacOSFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'FlutterRunnerSDKArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'FlutterRunnerDebugSymbols' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'FontSubsetArtifacts' is not required, skipping update.
+[        ] [        ] Artifact Instance of 'PubDependencies' is not required, skipping update.
+[        ] [  +41 ms] Initializing file store
+[        ] [  +14 ms] Done initializing file store
+[        ] [ +168 ms] Skipping target: gen_dart_plugin_registrant
+[        ] [   +2 ms] Skipping target: dart_build
+[        ] [        ] Skipping target: gen_localizations
+[        ] [   +2 ms] Skipping target: install_code_assets
+[        ] [+1143 ms] Skipping target: kernel_snapshot_program
+[        ] [  +47 ms] Skipping target: android_aot_release_android-arm
+[        ] [   +1 ms] invalidated build due to missing files: /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/DOES_NOT_EXIST_RERUN_FOR_WILDCARD454235133
+[  +96 ms] [ +147 ms] Skipping target: android_aot_release_android-arm64
+[        ] [  +40 ms] Skipping target: android_aot_release_android-x64
+[        ] [   +1 ms] aot_android_asset_bundle: Starting due to {InvalidatedReasonKind.inputMissing: The following inputs were missing: /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/DOES_NOT_EXIST_RERUN_FOR_WILDCARD454235133}
+[ +300 ms] [ +234 ms] Manifest contained wildcard assets. Inserting missing file into build graph to force rerun. for more information see #56466.
+[        ] [  +14 ms] shaderc command: [/usr/local/share/flutter/bin/cache/artifacts/engine/darwin-x64/impellerc, --sksl, --runtime-stage-gles, --runtime-stage-gles3, --runtime-stage-vulkan, --iplr, --sl=/Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/build/app/intermediates/flutter/release/flutter_assets/shaders/ink_sparkle.frag, --spirv=/Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/build/app/intermediates/flutter/release/flutter_assets/shaders/ink_sparkle.frag.spirv, --input=/usr/local/share/flutter/packages/flutter/lib/src/material/shaders/ink_sparkle.frag, --input-type=frag, --include=/usr/local/share/flutter/packages/flutter/lib/src/material/shaders, --include=/usr/local/share/flutter/bin/cache/artifacts/engine/darwin-x64/shader_lib]
+[        ] [   +1 ms] shaderc command: [/usr/local/share/flutter/bin/cache/artifacts/engine/darwin-x64/impellerc, --sksl, --runtime-stage-gles, --runtime-stage-gles3, --runtime-stage-vulkan, --iplr, --sl=/Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/build/app/intermediates/flutter/release/flutter_assets/shaders/stretch_effect.frag, --spirv=/Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/build/app/intermediates/flutter/release/flutter_assets/shaders/stretch_effect.frag.spirv, --input=/usr/local/share/flutter/packages/flutter/lib/src/material/shaders/stretch_effect.frag, --input-type=frag, --include=/usr/local/share/flutter/packages/flutter/lib/src/material/shaders, --include=/usr/local/share/flutter/bin/cache/artifacts/engine/darwin-x64/shader_lib]
+[  +98 ms] [  +63 ms] Running command: /usr/local/share/flutter/bin/cache/dart-sdk/bin/dart /usr/local/share/flutter/bin/cache/artifacts/engine/darwin-x64/const_finder.dart.snapshot --kernel-file /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/.dart_tool/flutter_build/261645bfe250de39b39c5567142d0ed3/app.dill --class-library-uri package:flutter/src/widgets/icon_data.dart --class-name IconData --annotation-class-name _StaticIconProvider --annotation-class-library-uri package:flutter/src/widgets/icon_data.dart
+[+1493 ms] [+1526 ms] Expected to find fontFamily for constant IconData with codepoint: 128842, but found fontFamily: null. This usually means you are relying on the system font. Alternatively, font families in an IconData class can be provided in the assets section of your pubspec.yaml, or you are missing "uses-material-design: true".
+[        ] [   +2 ms] Running font-subset: /usr/local/share/flutter/bin/cache/artifacts/engine/darwin-x64/font-subset /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/build/app/intermediates/flutter/release/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf /Users/rafaelguzman/.pub-cache/hosted/pub.dev/cupertino_icons-1.0.8/assets/CupertinoIcons.ttf, using codepoints 62415
+[        ] [   +1 ms] Running font-subset: /usr/local/share/flutter/bin/cache/artifacts/engine/darwin-x64/font-subset /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/build/app/intermediates/flutter/release/flutter_assets/fonts/MaterialIcons-Regular.otf /usr/local/share/flutter/bin/cache/artifacts/material_fonts/MaterialIcons-Regular.otf, using codepoints 57490 62832 57706 58332 57502 57501 58372 58571 58492 58886 58136 58727 58751 57947 58172 58247 58121 58389 58381 58853 57506 59015 58965 58866 57696 58713 984847 57690 58291 58686 57772 57770 57694 57695
+[        ] [  +35 ms] Font asset "CupertinoIcons.ttf" was tree-shaken, reducing it from 257628 to 848 bytes (99.7% reduction). Tree-shaking can be disabled by providing the --no-tree-shake-icons flag when building your app.
+[        ] [        ] Font asset "MaterialIcons-Regular.otf" was tree-shaken, reducing it from 1645184 to 4676 bytes (99.7% reduction). Tree-shaking can be disabled by providing the --no-tree-shake-icons flag when building your app.
+[        ] [   +3 ms] aot_android_asset_bundle: Complete
+[ +104 ms] [  +83 ms] Skipping target: android_aot_bundle_release_android-arm
+[ +101 ms] [  +43 ms] Skipping target: android_aot_bundle_release_android-arm64
+[        ] [  +39 ms] Skipping target: android_aot_bundle_release_android-x64
+[        ] [        ] Skipping target: _composite
+[        ] [        ] Persisting file store
+[        ] [  +19 ms] Done persisting file store
+[        ] [  +35 ms] build succeeded.
+[  +98 ms] [   +8 ms] "flutter assemble" took 3,808ms.
+[        ] [  +11 ms] Running 1 shutdown hook
+[        ] [        ] Shutdown hooks complete
+[        ] [        ] exiting with code 0
+[        ] Resolve mutations for :app:packJniLibsflutterBuildRelease (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] :app:packJniLibsflutterBuildRelease (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] > Task :app:packJniLibsflutterBuildRelease UP-TO-DATE
+[        ] Caching disabled for task ':app:packJniLibsflutterBuildRelease' because:
+[        ]   Build cache is disabled
+[        ]   Not worth caching
+[        ] Skipping task ':app:packJniLibsflutterBuildRelease' as it is up-to-date.
+[        ] Resolve mutations for :app:preBuild (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] :app:preBuild (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] > Task :app:preBuild UP-TO-DATE
+[        ] Skipping task ':app:preBuild' as it has no actions.
+[        ] Resolve mutations for :app:preReleaseBuild (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] :app:preReleaseBuild (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] > Task :app:preReleaseBuild UP-TO-DATE
+[        ] Skipping task ':app:preReleaseBuild' as it has no actions.
+[        ] Resolve mutations for :app:configureCMakeRelease[arm64-v8a] (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] :app:configureCMakeRelease[arm64-v8a] (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] > Task :app:configureCMakeRelease[arm64-v8a]
+[        ] Caching disabled for task ':app:configureCMakeRelease[arm64-v8a]' because:
+[        ]   Build cache is disabled
+[        ]   Caching has been disabled for the task
+[        ] Task ':app:configureCMakeRelease[arm64-v8a]' is not up-to-date because:
+[        ]   Task.upToDateWhen is false.
+[        ] C/C++: /usr/local/share/flutter/packages/flutter_tools/gradle/src/main/scripts/CMakeLists.txt release|arm64-v8a : Start JSON generation. Platform version: 24 min SDK version: arm64-v8a
+[        ] C/C++: /usr/local/share/flutter/packages/flutter_tools/gradle/src/main/scripts/CMakeLists.txt release|arm64-v8a : JSON '/Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/build/.cxx/release/62701044/arm64-v8a/android_gradle_build.json' was up-to-date
+[        ] C/C++: /usr/local/share/flutter/packages/flutter_tools/gradle/src/main/scripts/CMakeLists.txt release|arm64-v8a : JSON generation completed without problems
+[        ] C/C++: /usr/local/share/flutter/packages/flutter_tools/gradle/src/main/scripts/CMakeLists.txt release|arm64-v8a : Writing build model to /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/build/app/intermediates/cxx/release/62701044/logs/arm64-v8a/build_model.json
+[        ] Resolve mutations for :app:buildCMakeRelease[arm64-v8a] (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] :app:buildCMakeRelease[arm64-v8a] (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] > Task :app:buildCMakeRelease[arm64-v8a]
+[        ] Caching disabled for task ':app:buildCMakeRelease[arm64-v8a]' because:
+[        ]   Build cache is disabled
+[        ]   Caching has been disabled for the task
+[        ] Task ':app:buildCMakeRelease[arm64-v8a]' is not up-to-date because:
+[        ]   Task.upToDateWhen is false.
+[        ] C/C++: starting build
+[        ] C/C++: reading expected JSONs
+[        ] C/C++: done reading expected JSONs
+[        ] C/C++: executing build commands for targets that produce .so files or executables
+[        ] C/C++: evaluate miniconfig
+[        ] C/C++: no libraries
+[        ] Resolve mutations for :app:configureCMakeRelease[armeabi-v7a] (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] :app:configureCMakeRelease[armeabi-v7a] (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] > Task :app:configureCMakeRelease[armeabi-v7a]
+[        ] Caching disabled for task ':app:configureCMakeRelease[armeabi-v7a]' because:
+[        ]   Build cache is disabled
+[        ]   Caching has been disabled for the task
+[        ] Task ':app:configureCMakeRelease[armeabi-v7a]' is not up-to-date because:
+[        ]   Task.upToDateWhen is false.
+[        ] C/C++: /usr/local/share/flutter/packages/flutter_tools/gradle/src/main/scripts/CMakeLists.txt release|armeabi-v7a : Start JSON generation. Platform version: 24 min SDK version: armeabi-v7a
+[        ] C/C++: /usr/local/share/flutter/packages/flutter_tools/gradle/src/main/scripts/CMakeLists.txt release|armeabi-v7a : JSON '/Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/build/.cxx/release/62701044/armeabi-v7a/android_gradle_build.json' was up-to-date
+[        ] C/C++: /usr/local/share/flutter/packages/flutter_tools/gradle/src/main/scripts/CMakeLists.txt release|armeabi-v7a : JSON generation completed without problems
+[        ] C/C++: /usr/local/share/flutter/packages/flutter_tools/gradle/src/main/scripts/CMakeLists.txt release|armeabi-v7a : Writing build model to /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/build/app/intermediates/cxx/release/62701044/logs/armeabi-v7a/build_model.json
+[        ] Resolve mutations for :app:buildCMakeRelease[armeabi-v7a] (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] :app:buildCMakeRelease[armeabi-v7a] (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] > Task :app:buildCMakeRelease[armeabi-v7a]
+[        ] Caching disabled for task ':app:buildCMakeRelease[armeabi-v7a]' because:
+[        ]   Build cache is disabled
+[        ]   Caching has been disabled for the task
+[        ] Task ':app:buildCMakeRelease[armeabi-v7a]' is not up-to-date because:
+[        ]   Task.upToDateWhen is false.
+[        ] C/C++: starting build
+[        ] C/C++: reading expected JSONs
+[        ] C/C++: done reading expected JSONs
+[        ] C/C++: executing build commands for targets that produce .so files or executables
+[        ] C/C++: evaluate miniconfig
+[        ] C/C++: no libraries
+[        ] Resolve mutations for :app:configureCMakeRelease[x86_64] (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] :app:configureCMakeRelease[x86_64] (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] > Task :app:configureCMakeRelease[x86_64]
+[        ] Caching disabled for task ':app:configureCMakeRelease[x86_64]' because:
+[        ]   Build cache is disabled
+[        ]   Caching has been disabled for the task
+[        ] Task ':app:configureCMakeRelease[x86_64]' is not up-to-date because:
+[        ]   Task.upToDateWhen is false.
+[        ] C/C++: /usr/local/share/flutter/packages/flutter_tools/gradle/src/main/scripts/CMakeLists.txt release|x86_64 : Start JSON generation. Platform version: 24 min SDK version: x86_64
+[        ] C/C++: /usr/local/share/flutter/packages/flutter_tools/gradle/src/main/scripts/CMakeLists.txt release|x86_64 : JSON '/Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/build/.cxx/release/62701044/x86_64/android_gradle_build.json' was up-to-date
+[        ] C/C++: /usr/local/share/flutter/packages/flutter_tools/gradle/src/main/scripts/CMakeLists.txt release|x86_64 : JSON generation completed without problems
+[        ] C/C++: /usr/local/share/flutter/packages/flutter_tools/gradle/src/main/scripts/CMakeLists.txt release|x86_64 : Writing build model to /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/build/app/intermediates/cxx/release/62701044/logs/x86_64/build_model.json
+[        ] Resolve mutations for :app:buildCMakeRelease[x86_64] (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] :app:buildCMakeRelease[x86_64] (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] > Task :app:buildCMakeRelease[x86_64]
+[        ] Caching disabled for task ':app:buildCMakeRelease[x86_64]' because:
+[        ]   Build cache is disabled
+[        ]   Caching has been disabled for the task
+[        ] Task ':app:buildCMakeRelease[x86_64]' is not up-to-date because:
+[        ]   Task.upToDateWhen is false.
+[        ] C/C++: starting build
+[        ] C/C++: reading expected JSONs
+[        ] C/C++: done reading expected JSONs
+[        ] C/C++: executing build commands for targets that produce .so files or executables
+[        ] C/C++: evaluate miniconfig
+[        ] C/C++: no libraries
+[        ] Resolve mutations for :app:mergeReleaseJniLibFolders (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] :app:mergeReleaseJniLibFolders (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] > Task :app:mergeReleaseJniLibFolders UP-TO-DATE
+[        ] Caching disabled for task ':app:mergeReleaseJniLibFolders' because:
+[        ]   Build cache is disabled
+[        ]   Simple merging task
+[        ] Skipping task ':app:mergeReleaseJniLibFolders' as it is up-to-date.
+[        ] Resolve mutations for :app:mergeReleaseNativeLibs (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] :app:mergeReleaseNativeLibs (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[  +80 ms] > Task :app:mergeReleaseNativeLibs UP-TO-DATE
+[        ] Caching disabled for task ':app:mergeReleaseNativeLibs' because:
+[        ]   Build cache is disabled
+[        ]   Caching has been disabled for the task
+[        ] Skipping task ':app:mergeReleaseNativeLibs' as it is up-to-date.
+[        ] Resolve mutations for :app:stripReleaseDebugSymbols (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] :app:stripReleaseDebugSymbols (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] > Task :app:stripReleaseDebugSymbols UP-TO-DATE
+[        ] Caching disabled for task ':app:stripReleaseDebugSymbols' because:
+[        ]   Build cache is disabled
+[        ]   Caching has been disabled for the task
+[        ] Skipping task ':app:stripReleaseDebugSymbols' as it is up-to-date.
+[        ] Resolve mutations for :app:extractReleaseNativeSymbolTables (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] :app:extractReleaseNativeSymbolTables (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] > Task :app:extractReleaseNativeSymbolTables UP-TO-DATE
+[        ] Caching disabled for task ':app:extractReleaseNativeSymbolTables' because:
+[        ]   Build cache is disabled
+[        ] Skipping task ':app:extractReleaseNativeSymbolTables' as it is up-to-date.
+[        ] Resolve mutations for :app:mergeReleaseNativeDebugMetadata (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] :app:mergeReleaseNativeDebugMetadata (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] > Task :app:mergeReleaseNativeDebugMetadata UP-TO-DATE
+[        ] Caching disabled for task ':app:mergeReleaseNativeDebugMetadata' because:
+[        ]   Build cache is disabled
+[        ]   Caching has been disabled for the task
+[        ] Skipping task ':app:mergeReleaseNativeDebugMetadata' as it is up-to-date.
+[        ] Resolve mutations for :app:mergeReleaseArtProfile (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] :app:mergeReleaseArtProfile (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] > Task :app:mergeReleaseArtProfile UP-TO-DATE
+[        ] Caching disabled for task ':app:mergeReleaseArtProfile' because:
+[        ]   Build cache is disabled
+[        ]   Simple merging task
+[        ] Skipping task ':app:mergeReleaseArtProfile' as it is up-to-date.
+[        ] Resolve mutations for :app:expandReleaseL8ArtProfileWildcards (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] :app:expandReleaseL8ArtProfileWildcards (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] > Task :app:expandReleaseL8ArtProfileWildcards UP-TO-DATE
+[        ] Caching disabled for task ':app:expandReleaseL8ArtProfileWildcards' because:
+[        ]   Build cache is disabled
+[        ] Skipping task ':app:expandReleaseL8ArtProfileWildcards' as it is up-to-date.
+[        ] Resolve mutations for :app:buildKotlinToolingMetadata (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] :app:buildKotlinToolingMetadata (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] > Task :app:buildKotlinToolingMetadata UP-TO-DATE
+[        ] Caching disabled for task ':app:buildKotlinToolingMetadata' because:
+[        ]   Build cache is disabled
+[        ]   Caching has been disabled for the task
+[        ] Skipping task ':app:buildKotlinToolingMetadata' as it is up-to-date.
+[        ] Resolve mutations for :app:checkReleaseDuplicateClasses (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] :app:checkReleaseDuplicateClasses (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] > Task :app:checkReleaseDuplicateClasses UP-TO-DATE
+[        ] Caching disabled for task ':app:checkReleaseDuplicateClasses' because:
+[        ]   Build cache is disabled
+[        ]   Caching has been disabled for the task
+[        ] Skipping task ':app:checkReleaseDuplicateClasses' as it is up-to-date.
+[        ] Resolve mutations for :app:checkKotlinGradlePluginConfigurationErrors (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] :app:checkKotlinGradlePluginConfigurationErrors (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] > Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+[        ] Skipping task ':app:checkKotlinGradlePluginConfigurationErrors' as task onlyIf 'errorDiagnostics are present' is false.
+[        ] Resolve mutations for :app:checkReleaseAarMetadata (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] :app:checkReleaseAarMetadata (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] > Task :app:checkReleaseAarMetadata UP-TO-DATE
+[        ] Caching disabled for task ':app:checkReleaseAarMetadata' because:
+[        ]   Build cache is disabled
+[        ]   Caching has been disabled for the task
+[        ] Skipping task ':app:checkReleaseAarMetadata' as it is up-to-date.
+[        ] Resolve mutations for :app:cleanMergeReleaseAssets (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] :app:cleanMergeReleaseAssets (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] > Task :app:cleanMergeReleaseAssets
+[        ] Caching disabled for task ':app:cleanMergeReleaseAssets' because:
+[        ]   Build cache is disabled
+[        ] Task ':app:cleanMergeReleaseAssets' is not up-to-date because:
+[        ]   Task has not declared any outputs despite executing actions.
+[        ] Resolve mutations for :app:mergeReleaseShaders (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] :app:mergeReleaseShaders (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] > Task :app:mergeReleaseShaders UP-TO-DATE
+[        ] Caching disabled for task ':app:mergeReleaseShaders' because:
+[        ]   Build cache is disabled
+[        ]   Simple merging task
+[        ] Skipping task ':app:mergeReleaseShaders' as it is up-to-date.
+[        ] Resolve mutations for :app:compileReleaseShaders (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] :app:compileReleaseShaders (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] > Task :app:compileReleaseShaders NO-SOURCE
+[        ] Skipping task ':app:compileReleaseShaders' as it has no source files and no previous output files.
+[        ] Resolve mutations for :app:generateReleaseAssets (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] :app:generateReleaseAssets (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] > Task :app:generateReleaseAssets UP-TO-DATE
+[        ] Skipping task ':app:generateReleaseAssets' as it has no actions.
+[        ] Resolve mutations for :app:mergeReleaseAssets (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] :app:mergeReleaseAssets (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] > Task :app:mergeReleaseAssets
+[        ] Caching disabled for task ':app:mergeReleaseAssets' because:
+[        ]   Build cache is disabled
+[        ]   Simple merging task
+[        ] Task ':app:mergeReleaseAssets' is not up-to-date because:
+[        ]   Output property 'outputDir' file /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/build/app/intermediates/assets/release/mergeReleaseAssets has been removed.
+[        ] The input changes require a full rebuild for incremental task ':app:mergeReleaseAssets'.
+[        ] Resolve mutations for :app:copyFlutterAssetsRelease (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] :app:copyFlutterAssetsRelease (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] > Task :app:copyFlutterAssetsRelease
+[        ] Caching disabled for task ':app:copyFlutterAssetsRelease' because:
+[        ]   Build cache is disabled
+[        ]   Not worth caching
+[        ] Task ':app:copyFlutterAssetsRelease' is not up-to-date because:
+[        ]   Output property 'destinationDir' file /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/build/app/intermediates/assets/release/mergeReleaseAssets/flutter_assets has been removed.
+[        ]   Output property 'destinationDir' file /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/build/app/intermediates/assets/release/mergeReleaseAssets/flutter_assets/AssetManifest.bin has been removed.
+[        ]   Output property 'destinationDir' file /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/build/app/intermediates/assets/release/mergeReleaseAssets/flutter_assets/FontManifest.json has been removed.
+[        ]   and more...
+[        ] Resolve mutations for :app:generateReleaseResValues (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] :app:generateReleaseResValues (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] > Task :app:generateReleaseResValues UP-TO-DATE
+[        ] Caching disabled for task ':app:generateReleaseResValues' because:
+[        ]   Build cache is disabled
+[        ] Skipping task ':app:generateReleaseResValues' as it is up-to-date.
+[        ] Resolve mutations for :app:processReleaseGoogleServices (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] :app:processReleaseGoogleServices (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] > Task :app:processReleaseGoogleServices UP-TO-DATE
+[        ] Caching disabled for task ':app:processReleaseGoogleServices' because:
+[        ]   Build cache is disabled
+[        ]   Caching has not been enabled for the task
+[        ] Skipping task ':app:processReleaseGoogleServices' as it is up-to-date.
+[        ] Resolve mutations for :app:mapReleaseSourceSetPaths (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] :app:mapReleaseSourceSetPaths (Thread[#1547,Execution worker Thread 2,5,main]) started.
+[        ] > Task :app:mapReleaseSourceSetPaths UP-TO-DATE
+[        ] Caching disabled for task ':app:mapReleaseSourceSetPaths' because:
+[        ]   Build cache is disabled
+[        ]   Caching has been disabled for the task
+[        ] Skipping task ':app:mapReleaseSourceSetPaths' as it is up-to-date.
+[        ] Resolve mutations for :app:generateReleaseResources (Thread[#1547,Execution worker Thread 2,5,main]) started.
+[        ] :app:generateReleaseResources (Thread[#1547,Execution worker Thread 2,5,main]) started.
+[  +70 ms] > Task :app:generateReleaseResources UP-TO-DATE
+[        ] Caching disabled for task ':app:generateReleaseResources' because:
+[        ]   Build cache is disabled
+[        ] Skipping task ':app:generateReleaseResources' as it is up-to-date.
+[        ] Resolve mutations for :app:mergeReleaseResources (Thread[#1547,Execution worker Thread 2,5,main]) started.
+[        ] :app:mergeReleaseResources (Thread[#1547,Execution worker Thread 2,5,main]) started.
+[        ] > Task :app:mergeReleaseResources UP-TO-DATE
+[        ] Caching disabled for task ':app:mergeReleaseResources' because:
+[        ]   Build cache is disabled
+[        ] Skipping task ':app:mergeReleaseResources' as it is up-to-date.
+[        ] Resolve mutations for :app:packageReleaseResources (Thread[#1547,Execution worker Thread 2,5,main]) started.
+[        ] :app:packageReleaseResources (Thread[#1547,Execution worker Thread 2,5,main]) started.
+[        ] > Task :app:packageReleaseResources UP-TO-DATE
+[        ] Caching disabled for task ':app:packageReleaseResources' because:
+[        ]   Build cache is disabled
+[        ] Skipping task ':app:packageReleaseResources' as it is up-to-date.
+[        ] Resolve mutations for :app:parseReleaseLocalResources (Thread[#1547,Execution worker Thread 2,5,main]) started.
+[        ] :app:parseReleaseLocalResources (Thread[#1547,Execution worker Thread 2,5,main]) started.
+[        ] > Task :app:parseReleaseLocalResources UP-TO-DATE
+[        ] Caching disabled for task ':app:parseReleaseLocalResources' because:
+[        ]   Build cache is disabled
+[        ] Skipping task ':app:parseReleaseLocalResources' as it is up-to-date.
+[        ] Resolve mutations for :app:createReleaseCompatibleScreenManifests (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] :app:createReleaseCompatibleScreenManifests (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] > Task :app:createReleaseCompatibleScreenManifests UP-TO-DATE
+[        ] Caching disabled for task ':app:createReleaseCompatibleScreenManifests' because:
+[        ]   Build cache is disabled
+[        ]   Caching has been disabled for the task
+[        ] Skipping task ':app:createReleaseCompatibleScreenManifests' as it is up-to-date.
+[        ] Resolve mutations for :app:extractDeepLinksRelease (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] :app:extractDeepLinksRelease (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] > Task :app:extractDeepLinksRelease UP-TO-DATE
+[        ] Caching disabled for task ':app:extractDeepLinksRelease' because:
+[        ]   Build cache is disabled
+[        ] Skipping task ':app:extractDeepLinksRelease' as it is up-to-date.
+[        ] Resolve mutations for :app:processReleaseMainManifest (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] :app:processReleaseMainManifest (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] > Task :app:processReleaseMainManifest UP-TO-DATE
+[        ] Caching disabled for task ':app:processReleaseMainManifest' because:
+[        ]   Build cache is disabled
+[        ] Skipping task ':app:processReleaseMainManifest' as it is up-to-date.
+[        ] Resolve mutations for :app:outputReleaseAppLinkSettings (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] :app:outputReleaseAppLinkSettings (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] > Task :app:outputReleaseAppLinkSettings UP-TO-DATE
+[        ] Caching disabled for task ':app:outputReleaseAppLinkSettings' because:
+[        ]   Build cache is disabled
+[        ]   Caching has not been enabled for the task
+[        ] Skipping task ':app:outputReleaseAppLinkSettings' as it is up-to-date.
+[        ] Resolve mutations for :app:processReleaseManifest (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] :app:processReleaseManifest (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] > Task :app:processReleaseManifest UP-TO-DATE
+[        ] Caching disabled for task ':app:processReleaseManifest' because:
+[        ]   Build cache is disabled
+[        ] Skipping task ':app:processReleaseManifest' as it is up-to-date.
+[        ] Resolve mutations for :app:processReleaseManifestForPackage (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] :app:processReleaseManifestForPackage (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] > Task :app:processReleaseManifestForPackage UP-TO-DATE
+[        ] Custom actions are attached to task ':app:processReleaseManifestForPackage'.
+[        ] Caching disabled for task ':app:processReleaseManifestForPackage' because:
+[        ]   Build cache is disabled
+[        ] Skipping task ':app:processReleaseManifestForPackage' as it is up-to-date.
+[        ] Resolve mutations for :app:processReleaseResources (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] :app:processReleaseResources (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] > Task :app:processReleaseResources UP-TO-DATE
+[        ] Registered task dependencies: app:releaseCompileClasspath
+[        ] Starting dependency analysis
+[        ] Caching disabled for task ':app:processReleaseResources' because:
+[        ]   Build cache is disabled
+[        ] Skipping task ':app:processReleaseResources' as it is up-to-date.
+[        ] Resolve mutations for :app:compileReleaseKotlin (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] :app:compileReleaseKotlin (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] > Task :app:compileReleaseKotlin NO-SOURCE
+[        ] Skipping task ':app:compileReleaseKotlin' as it has no source files and no previous output files.
+[        ] Resolve mutations for :app:javaPreCompileRelease (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] :app:javaPreCompileRelease (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] > Task :app:javaPreCompileRelease UP-TO-DATE
+[        ] Caching disabled for task ':app:javaPreCompileRelease' because:
+[        ]   Build cache is disabled
+[        ] Skipping task ':app:javaPreCompileRelease' as it is up-to-date.
+[        ] Resolve mutations for :app:compileReleaseJavaWithJavac (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[        ] :app:compileReleaseJavaWithJavac (Thread[#1550,Execution worker Thread 5,5,main]) started.
+[  +94 ms] > Task :app:compileReleaseJavaWithJavac FAILED
+[        ] Custom actions are attached to task ':app:compileReleaseJavaWithJavac'.
+[        ] Caching disabled for task ':app:compileReleaseJavaWithJavac' because:
+[        ]   Build cache is disabled
+[        ] Task ':app:compileReleaseJavaWithJavac' is not up-to-date because:
+[        ]   Task has failed previously.
+[        ] The input changes require a full rebuild for incremental task ':app:compileReleaseJavaWithJavac'.
+[        ] Java compiler version 21 has deprecated support for compiling with source/target version 8.
+[        ] Try one of the following options:
+[        ]     1. [Recommended] Use Java toolchain with a lower language version
+[        ]     2. Set a higher source/target version
+[        ]     3. Use a lower version of the JDK running the build (if you're not using Java toolchain)
+[        ] For more details on how to configure these settings, see https://developer.android.com/build/jdks.
+[        ] To suppress this warning, set android.javaCompile.suppressSourceTargetDeprecationWarning=true in gradle.properties.
+[        ] Compilation mode: in-process compilation
+[        ] Full recompilation is required because no incremental change information is available. This is usually caused by clean builds or changing compiler arguments.
+[        ] Compiling with toolchain '/Applications/Android Studio.app/Contents/jbr/Contents/Home'.
+[        ] file or directory '/Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/kotlin', not found
+[        ] file or directory '/Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/release/java', not found
+[        ] Compiling with JDK Java compiler API.
+[        ] [Incubating] Problems report is available at: file:///Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/build/reports/problems/problems-report.html
+[   +1 ms] HOOK: Checking/Patching GeneratedPluginRegistrant.java...
+[   +3 ms] HOOK: Patched GeneratedPluginRegistrant.java with imports and Log fixes.
+[        ] warning: [options] source value 8 is obsolete and will be removed in a future release
+[        ] warning: [options] target value 8 is obsolete and will be removed in a future release
+[        ] warning: [options] To suppress warnings about obsolete options, use -Xlint:-options.
+[        ] /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java:3: error: cannot find symbol
+[        ] import androidx.annotation.Keep;
+[        ]                           ^
+[        ]   symbol:   class Keep
+[        ]   location: package androidx.annotation
+[        ] /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java:4: error: cannot find symbol
+[        ] import androidx.annotation.NonNull;
+[        ]                           ^
+[        ]   symbol:   class NonNull
+[        ]   location: package androidx.annotation
+[        ] /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java:5: error: cannot find symbol
+[        ] import io.flutter.Log;
+[        ]                  ^
+[        ]   symbol:   class Log
+[        ]   location: package io.flutter
+[        ] /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java:7: error: package io.flutter.embedding.engine does not exist
+[        ] import io.flutter.embedding.engine.FlutterEngine;
+[        ]                                   ^
+[        ] /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java:14: error: cannot find symbol
+[        ] @Keep
+[        ]  ^
+[        ]   symbol: class Keep
+[        ] /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java:17: error: cannot find symbol
+[        ]   public static void registerWith(@NonNull FlutterEngine flutterEngine) {
+[        ]                                            ^
+[        ]   symbol:   class FlutterEngine
+[        ]   location: class GeneratedPluginRegistrant
+[        ] /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/com/mycompany/proyecto1608xprodigitaltv/MainActivity.java:3: error: package io.flutter.embedding.android does not exist
+[        ] import io.flutter.embedding.android.FlutterActivity;
+[        ]                                    ^
+[        ] /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/com/mycompany/proyecto1608xprodigitaltv/MainActivity.java:5: error: cannot find symbol
+[        ] public class MainActivity extends FlutterActivity {
+[        ]                                   ^
+[        ]   symbol: class FlutterActivity
+[        ] /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java:17: error: cannot find symbol
+[        ]   public static void registerWith(@NonNull FlutterEngine flutterEngine) {
+[        ]                                    ^
+[        ]   symbol:   class NonNull
+[        ]   location: class GeneratedPluginRegistrant
+[        ] /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java:19: error: package io.flutter.plugins.firebase.firestore does not exist
+[        ]       flutterEngine.getPlugins().add(new io.flutter.plugins.firebase.firestore.FlutterFirebaseFirestorePlugin());
+[        ]                                                                               ^
+[        ] /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java:24: error: package io.flutter.plugins.firebase.functions does not exist
+[        ]       flutterEngine.getPlugins().add(new io.flutter.plugins.firebase.functions.FlutterFirebaseFunctionsPlugin());
+[        ]                                                                               ^
+[        ] /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java:29: error: package io.flutter.plugins.firebase.auth does not exist
+[        ]       flutterEngine.getPlugins().add(new io.flutter.plugins.firebase.auth.FlutterFirebaseAuthPlugin());
+[        ]                                                                          ^
+[        ] /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java:34: error: package io.flutter.plugins.firebase.core does not exist
+[        ]       flutterEngine.getPlugins().add(new io.flutter.plugins.firebase.core.FlutterFirebaseCorePlugin());
+[        ]                                                                          ^
+[        ] /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java:39: error: package io.flutter.plugins.firebase.performance does not exist
+[        ]       flutterEngine.getPlugins().add(new io.flutter.plugins.firebase.performance.FlutterFirebasePerformancePlugin());
+[        ]                                                                                 ^
+[        ] /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java:44: error: package net.jonhanson.flutter_native_splash does not exist
+[        ]       flutterEngine.getPlugins().add(new net.jonhanson.flutter_native_splash.FlutterNativeSplashPlugin());
+[        ]                                                                             ^
+[        ] /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java:49: error: package io.endigo.plugins.pdfviewflutter does not exist
+[        ]       flutterEngine.getPlugins().add(new io.endigo.plugins.pdfviewflutter.PDFViewFlutterPlugin());
+[        ]                                                                          ^
+[        ] /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java:54: error: package io.flutter.plugins.pathprovider does not exist
+[        ]       flutterEngine.getPlugins().add(new io.flutter.plugins.pathprovider.PathProviderPlugin());
+[        ]                                                                         ^
+[        ] /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java:59: error: package io.flutter.plugins.sharedpreferences does not exist
+[        ]       flutterEngine.getPlugins().add(new io.flutter.plugins.sharedpreferences.SharedPreferencesPlugin());
+[        ]                                                                              ^
+[        ] /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java:64: error: package com.tekartik.sqflite does not exist
+[        ]       flutterEngine.getPlugins().add(new com.tekartik.sqflite.SqflitePlugin());
+[        ]                                                              ^
+[        ] /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java:69: error: package io.flutter.plugins.urllauncher does not exist
+[        ]       flutterEngine.getPlugins().add(new io.flutter.plugins.urllauncher.UrlLauncherPlugin());
+[        ]                                                                        ^
+[        ] /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java:74: error: package io.flutter.plugins.videoplayer does not exist
+[        ]       flutterEngine.getPlugins().add(new io.flutter.plugins.videoplayer.VideoPlayerPlugin());
+[        ]                                                                        ^
+[        ] 21 errors
+[        ] 3 warnings
+[        ] FAILURE: Build failed with an exception.
+[        ] * What went wrong:
+[        ] Execution failed for task ':app:compileReleaseJavaWithJavac'.
+[        ] > Compilation failed; see the compiler output below.
+[        ]   /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java:14: error: cannot find symbol
+[        ]   @Keep
+[        ]    ^
+[        ]     symbol: class Keep
+[        ]   /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/com/mycompany/proyecto1608xprodigitaltv/MainActivity.java:5: error: cannot find symbol
+[        ]   public class MainActivity extends FlutterActivity {
+[        ]                                     ^
+[        ]     symbol: class FlutterActivitywarning: [options] To suppress warnings about obsolete options, use -Xlint:-options./Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java:7: error: package io.flutter.embedding.engine does not exist
+[        ]   import io.flutter.embedding.engine.FlutterEngine;
+[        ]                                     ^
+[        ]   /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/com/mycompany/proyecto1608xprodigitaltv/MainActivity.java:3: error: package io.flutter.embedding.android does not exist
+[        ]   import io.flutter.embedding.android.FlutterActivity;
+[        ]                                      ^
+[        ]   /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java:19: error: package io.flutter.plugins.firebase.firestore does not exist
+[        ]         flutterEngine.getPlugins().add(new io.flutter.plugins.firebase.firestore.FlutterFirebaseFirestorePlugin());
+[        ]                                                                                 ^
+[        ]   /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java:24: error: package io.flutter.plugins.firebase.functions does not exist
+[        ]         flutterEngine.getPlugins().add(new io.flutter.plugins.firebase.functions.FlutterFirebaseFunctionsPlugin());
+[        ]                                                                                 ^
+[        ]   /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java:29: error: package io.flutter.plugins.firebase.auth does not exist
+[        ]         flutterEngine.getPlugins().add(new io.flutter.plugins.firebase.auth.FlutterFirebaseAuthPlugin());
+[        ]                                                                            ^
+[        ]   /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java:34: error: package io.flutter.plugins.firebase.core does not exist
+[        ]         flutterEngine.getPlugins().add(new io.flutter.plugins.firebase.core.FlutterFirebaseCorePlugin());
+[        ]                                                                            ^
+[        ]   /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java:39: error: package io.flutter.plugins.firebase.performance does not exist
+[        ]         flutterEngine.getPlugins().add(new io.flutter.plugins.firebase.performance.FlutterFirebasePerformancePlugin());
+[        ]                                                                                   ^
+[        ]   /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java:44: error: package net.jonhanson.flutter_native_splash does not exist
+[        ]         flutterEngine.getPlugins().add(new net.jonhanson.flutter_native_splash.FlutterNativeSplashPlugin());
+[        ]                                                                               ^
+[        ]   /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java:49: error: package io.endigo.plugins.pdfviewflutter does not exist
+[        ]         flutterEngine.getPlugins().add(new io.endigo.plugins.pdfviewflutter.PDFViewFlutterPlugin());
+[        ]                                                                            ^
+[        ]   /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java:54: error: package io.flutter.plugins.pathprovider does not exist
+[        ]         flutterEngine.getPlugins().add(new io.flutter.plugins.pathprovider.PathProviderPlugin());
+[        ]                                                                           ^
+[        ]   /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java:59: error: package io.flutter.plugins.sharedpreferences does not exist
+[        ]         flutterEngine.getPlugins().add(new io.flutter.plugins.sharedpreferences.SharedPreferencesPlugin());
+[        ]                                                                                ^
+[        ]   /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java:64: error: package com.tekartik.sqflite does not exist
+[        ]         flutterEngine.getPlugins().add(new com.tekartik.sqflite.SqflitePlugin());
+[        ]                                                                ^
+[        ]   /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java:69: error: package io.flutter.plugins.urllauncher does not exist
+[        ]         flutterEngine.getPlugins().add(new io.flutter.plugins.urllauncher.UrlLauncherPlugin());
+[        ]                                                                          ^
+[        ]   /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java:74: error: package io.flutter.plugins.videoplayer does not exist
+[        ]         flutterEngine.getPlugins().add(new io.flutter.plugins.videoplayer.VideoPlayerPlugin());
+[        ]                                                                          ^/Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java:3: error: cannot find symbol
+[        ]   import androidx.annotation.Keep;
+[        ]                             ^
+[        ]     symbol:   class Keep
+[        ]     location: package androidx.annotation
+[        ]   /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java:4: error: cannot find symbol
+[        ]   import androidx.annotation.NonNull;
+[        ]                             ^
+[        ]     symbol:   class NonNull
+[        ]     location: package androidx.annotation
+[        ]   /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java:5: error: cannot find symbol
+[        ]   import io.flutter.Log;
+[        ]                    ^
+[        ]     symbol:   class Log
+[        ]     location: package io.flutter
+[        ]   /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java:17: error: cannot find symbol
+[        ]     public static void registerWith(@NonNull FlutterEngine flutterEngine) {
+[        ]                                              ^
+[        ]     symbol:   class FlutterEngine
+[        ]     location: class GeneratedPluginRegistrant
+[        ]   /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java:17: error: cannot find symbol
+[        ]     public static void registerWith(@NonNull FlutterEngine flutterEngine) {
+[        ]                                      ^
+[        ]     symbol:   class NonNull
+[        ]     location: class GeneratedPluginRegistrantwarning: [options] source value 8 is obsolete and will be removed in a future releasewarning: [options] target value 8 is obsolete and will be removed in a future release
+[        ]   21 errors
+[        ]   3 warnings
+[        ] * Try:
+[        ] > Check your code and dependencies to fix the compilation error(s)
+[        ] > Run with --scan to get full insights.
+[        ] * Exception is:
+[        ] org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':app:compileReleaseJavaWithJavac'.
+[        ] 	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.lambda$executeIfValid$1(ExecuteActionsTaskExecuter.java:130)
+[        ] 	at org.gradle.internal.Try$Failure.ifSuccessfulOrElse(Try.java:293)
+[        ] 	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:128)
+[        ] 	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.execute(ExecuteActionsTaskExecuter.java:116)
+[        ] 	at org.gradle.api.internal.tasks.execution.ProblemsTaskPathTrackingTaskExecuter.execute(ProblemsTaskPathTrackingTaskExecuter.java:40)
+[        ] 	at org.gradle.api.internal.tasks.execution.FinalizePropertiesTaskExecuter.execute(FinalizePropertiesTaskExecuter.java:46)
+[        ] 	at org.gradle.api.internal.tasks.execution.ResolveTaskExecutionModeExecuter.execute(ResolveTaskExecutionModeExecuter.java:51)
+[        ] 	at org.gradle.api.internal.tasks.execution.SkipTaskWithNoActionsExecuter.execute(SkipTaskWithNoActionsExecuter.java:57)
+[        ] 	at org.gradle.api.internal.tasks.execution.SkipOnlyIfTaskExecuter.execute(SkipOnlyIfTaskExecuter.java:74)
+[        ] 	at org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter.execute(CatchExceptionTaskExecuter.java:36)
+[        ] 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.executeTask(EventFiringTaskExecuter.java:77)
+[        ] 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:55)
+[        ] 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:52)
+[        ] 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:209)
+[        ] 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)
+[        ] 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+[        ] 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+[        ] 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:166)
+[        ] 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+[        ] 	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
+[        ] 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter.execute(EventFiringTaskExecuter.java:52)
+[        ] 	at org.gradle.execution.plan.LocalTaskNodeExecutor.execute(LocalTaskNodeExecutor.java:42)
+[        ] 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:331)
+[        ] 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:318)
+[        ] 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.lambda$execute$0(DefaultTaskExecutionGraph.java:314)
+[        ] 	at org.gradle.internal.operations.CurrentBuildOperationRef.with(CurrentBuildOperationRef.java:85)
+[        ] 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:314)
+[        ] 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:303)
+[        ] 	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.execute(DefaultPlanExecutor.java:459)
+[        ] 	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:376)
+[        ] 	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
+[        ] 	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:48)
+[        ] 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+[        ] 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+[        ] 	at java.base/java.lang.Thread.run(Unknown Source)
+[        ] Caused by: org.gradle.api.internal.tasks.compile.CompilationFailedException: Compilation failed; see the compiler output below.
+[        ] /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java:14: error: cannot find symbol
+[        ] @Keep
+[        ]  ^
+[        ]   symbol: class Keep
+[        ] /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/com/mycompany/proyecto1608xprodigitaltv/MainActivity.java:5: error: cannot find symbol
+[        ] public class MainActivity extends FlutterActivity {
+[        ]                                   ^
+[        ]   symbol: class FlutterActivitywarning: [options] To suppress warnings about obsolete options, use -Xlint:-options./Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java:7: error: package io.flutter.embedding.engine does not exist
+[        ] import io.flutter.embedding.engine.FlutterEngine;
+[        ]                                   ^
+[        ] /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/com/mycompany/proyecto1608xprodigitaltv/MainActivity.java:3: error: package io.flutter.embedding.android does not exist
+[        ] import io.flutter.embedding.android.FlutterActivity;
+[        ]                                    ^
+[        ] /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java:19: error: package io.flutter.plugins.firebase.firestore does not exist
+[        ]       flutterEngine.getPlugins().add(new io.flutter.plugins.firebase.firestore.FlutterFirebaseFirestorePlugin());
+[        ]                                                                               ^
+[        ] /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java:24: error: package io.flutter.plugins.firebase.functions does not exist
+[        ]       flutterEngine.getPlugins().add(new io.flutter.plugins.firebase.functions.FlutterFirebaseFunctionsPlugin());
+[        ]                                                                               ^
+[        ] /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java:29: error: package io.flutter.plugins.firebase.auth does not exist
+[        ]       flutterEngine.getPlugins().add(new io.flutter.plugins.firebase.auth.FlutterFirebaseAuthPlugin());
+[        ]                                                                          ^
+[        ] /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java:34: error: package io.flutter.plugins.firebase.core does not exist
+[        ]       flutterEngine.getPlugins().add(new io.flutter.plugins.firebase.core.FlutterFirebaseCorePlugin());
+[        ]                                                                          ^
+[        ] /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java:39: error: package io.flutter.plugins.firebase.performance does not exist
+[        ]       flutterEngine.getPlugins().add(new io.flutter.plugins.firebase.performance.FlutterFirebasePerformancePlugin());
+[        ]                                                                                 ^
+[        ] /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java:44: error: package net.jonhanson.flutter_native_splash does not exist
+[        ]       flutterEngine.getPlugins().add(new net.jonhanson.flutter_native_splash.FlutterNativeSplashPlugin());
+[        ]                                                                             ^
+[   +1 ms] /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java:49: error: package io.endigo.plugins.pdfviewflutter does not exist
+[        ]       flutterEngine.getPlugins().add(new io.endigo.plugins.pdfviewflutter.PDFViewFlutterPlugin());
+[        ]                                                                          ^
+[        ] /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java:54: error: package io.flutter.plugins.pathprovider does not exist
+[        ]       flutterEngine.getPlugins().add(new io.flutter.plugins.pathprovider.PathProviderPlugin());
+[        ]                                                                         ^
+[        ] /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java:59: error: package io.flutter.plugins.sharedpreferences does not exist
+[        ]       flutterEngine.getPlugins().add(new io.flutter.plugins.sharedpreferences.SharedPreferencesPlugin());
+[        ]                                                                              ^
+[        ] /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java:64: error: package com.tekartik.sqflite does not exist
+[        ]       flutterEngine.getPlugins().add(new com.tekartik.sqflite.SqflitePlugin());
+[        ]                                                              ^
+[        ] /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java:69: error: package io.flutter.plugins.urllauncher does not exist
+[        ]       flutterEngine.getPlugins().add(new io.flutter.plugins.urllauncher.UrlLauncherPlugin());
+[        ]                                                                        ^
+[        ] /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java:74: error: package io.flutter.plugins.videoplayer does not exist
+[        ]       flutterEngine.getPlugins().add(new io.flutter.plugins.videoplayer.VideoPlayerPlugin());
+[        ]                                                                        ^/Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java:3: error: cannot find symbol
+[        ] import androidx.annotation.Keep;
+[        ]                           ^
+[        ]   symbol:   class Keep
+[        ]   location: package androidx.annotation
+[        ] /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java:4: error: cannot find symbol
+[        ] import androidx.annotation.NonNull;
+[        ]                           ^
+[        ]   symbol:   class NonNull
+[        ]   location: package androidx.annotation
+[        ] /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java:5: error: cannot find symbol
+[        ] import io.flutter.Log;
+[        ]                  ^
+[        ]   symbol:   class Log
+[        ]   location: package io.flutter
+[        ] /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java:17: error: cannot find symbol
+[        ]   public static void registerWith(@NonNull FlutterEngine flutterEngine) {
+[        ]                                            ^
+[        ]   symbol:   class FlutterEngine
+[        ]   location: class GeneratedPluginRegistrant
+[        ] /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java:17: error: cannot find symbol
+[        ]   public static void registerWith(@NonNull FlutterEngine flutterEngine) {
+[        ]                                    ^
+[        ]   symbol:   class NonNull
+[        ]   location: class GeneratedPluginRegistrantwarning: [options] source value 8 is obsolete and will be removed in a future releasewarning: [options] target value 8 is obsolete and will be removed in a future release
+[        ] 21 errors
+[        ] 3 warnings
+[        ] 	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:84)
+[        ] 	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:46)
+[        ] 	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.delegateAndHandleErrors(NormalizingJavaCompiler.java:98)
+[        ] 	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.execute(NormalizingJavaCompiler.java:52)
+[        ] 	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.execute(NormalizingJavaCompiler.java:38)
+[        ] 	at org.gradle.api.internal.tasks.compile.AnnotationProcessorDiscoveringCompiler.execute(AnnotationProcessorDiscoveringCompiler.java:52)
+[        ] 	at org.gradle.api.internal.tasks.compile.AnnotationProcessorDiscoveringCompiler.execute(AnnotationProcessorDiscoveringCompiler.java:38)
+[        ] 	at org.gradle.api.internal.tasks.compile.ModuleApplicationNameWritingCompiler.execute(ModuleApplicationNameWritingCompiler.java:46)
+[        ] 	at org.gradle.api.internal.tasks.compile.ModuleApplicationNameWritingCompiler.execute(ModuleApplicationNameWritingCompiler.java:36)
+[        ] 	at org.gradle.jvm.toolchain.internal.DefaultToolchainJavaCompiler.execute(DefaultToolchainJavaCompiler.java:57)
+[        ] 	at org.gradle.api.tasks.compile.JavaCompile.lambda$createToolchainCompiler$3(JavaCompile.java:205)
+[        ] 	at org.gradle.api.internal.tasks.compile.CleaningJavaCompiler.execute(CleaningJavaCompiler.java:53)
+[        ] 	at org.gradle.api.internal.tasks.compile.incremental.IncrementalCompilerFactory.lambda$createRebuildAllCompiler$0(IncrementalCompilerFactory.java:52)
+[        ] 	at org.gradle.api.internal.tasks.compile.incremental.SelectiveCompiler.execute(SelectiveCompiler.java:70)
+[        ] 	at org.gradle.api.internal.tasks.compile.incremental.SelectiveCompiler.execute(SelectiveCompiler.java:44)
+[        ] 	at org.gradle.api.internal.tasks.compile.incremental.IncrementalResultStoringCompiler.execute(IncrementalResultStoringCompiler.java:66)
+[        ] 	at org.gradle.api.internal.tasks.compile.incremental.IncrementalResultStoringCompiler.execute(IncrementalResultStoringCompiler.java:52)
+[        ] 	at org.gradle.api.internal.tasks.compile.CompileJavaBuildOperationReportingCompiler$1.call(CompileJavaBuildOperationReportingCompiler.java:64)
+[        ] 	at org.gradle.api.internal.tasks.compile.CompileJavaBuildOperationReportingCompiler$1.call(CompileJavaBuildOperationReportingCompiler.java:48)
+[        ] 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:209)
+[        ] 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)
+[        ] 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+[        ] 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+[        ] 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:166)
+[        ] 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+[        ] 	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
+[        ] 	at org.gradle.api.internal.tasks.compile.CompileJavaBuildOperationReportingCompiler.execute(CompileJavaBuildOperationReportingCompiler.java:48)
+[        ] 	at org.gradle.api.tasks.compile.JavaCompile.performCompilation(JavaCompile.java:223)
+[        ] 	at org.gradle.api.tasks.compile.JavaCompile.performIncrementalCompilation(JavaCompile.java:164)
+[        ] 	at org.gradle.api.tasks.compile.JavaCompile.compile(JavaCompile.java:149)
+[        ] 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(Unknown Source)
+[        ] 	at java.base/java.lang.reflect.Method.invoke(Unknown Source)
+[        ] 	at org.gradle.internal.reflect.JavaMethod.invoke(JavaMethod.java:125)
+[        ] 	at org.gradle.api.internal.project.taskfactory.IncrementalTaskAction.doExecute(IncrementalTaskAction.java:45)
+[        ] 	at org.gradle.api.internal.project.taskfactory.StandardTaskAction.execute(StandardTaskAction.java:51)
+[        ] 	at org.gradle.api.internal.project.taskfactory.IncrementalTaskAction.execute(IncrementalTaskAction.java:26)
+[        ] 	at org.gradle.api.internal.project.taskfactory.StandardTaskAction.execute(StandardTaskAction.java:29)
+[        ] 	at org.gradle.api.internal.tasks.execution.TaskExecution$3.run(TaskExecution.java:244)
+[        ] 	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:29)
+[        ] 	at org.gradle.internal.operations.DefaultBuildOperationRunner$1.execute(DefaultBuildOperationRunner.java:26)
+[        ] 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+[        ] 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+[        ] 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:166)
+[   +2 ms] 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+[        ] 	at org.gradle.internal.operations.DefaultBuildOperationRunner.run(DefaultBuildOperationRunner.java:47)
+[        ] 	at org.gradle.api.internal.tasks.execution.TaskExecution.executeAction(TaskExecution.java:229)
+[        ] 	at org.gradle.api.internal.tasks.execution.TaskExecution.executeActions(TaskExecution.java:212)
+[        ] 	at org.gradle.api.internal.tasks.execution.TaskExecution.executeWithPreviousOutputFiles(TaskExecution.java:195)
+[        ] 	at org.gradle.api.internal.tasks.execution.TaskExecution.execute(TaskExecution.java:162)
+[        ] 	at org.gradle.internal.execution.steps.ExecuteStep.executeInternal(ExecuteStep.java:105)
+[        ] 	at org.gradle.internal.execution.steps.ExecuteStep.access$000(ExecuteStep.java:44)
+[        ] 	at org.gradle.internal.execution.steps.ExecuteStep$1.call(ExecuteStep.java:59)
+[        ] 	at org.gradle.internal.execution.steps.ExecuteStep$1.call(ExecuteStep.java:56)
+[        ] 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:209)
+[        ] 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)
+[        ] 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+[        ] 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+[        ] 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:166)
+[        ] 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+[        ] 	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
+[        ] 	at org.gradle.internal.execution.steps.ExecuteStep.execute(ExecuteStep.java:56)
+[        ] 	at org.gradle.internal.execution.steps.ExecuteStep.execute(ExecuteStep.java:44)
+[        ] 	at org.gradle.internal.execution.steps.CancelExecutionStep.execute(CancelExecutionStep.java:42)
+[        ] 	at org.gradle.internal.execution.steps.TimeoutStep.executeWithoutTimeout(TimeoutStep.java:75)
+[        ] 	at org.gradle.internal.execution.steps.TimeoutStep.execute(TimeoutStep.java:55)
+[        ] 	at org.gradle.internal.execution.steps.PreCreateOutputParentsStep.execute(PreCreateOutputParentsStep.java:50)
+[        ] 	at org.gradle.internal.execution.steps.PreCreateOutputParentsStep.execute(PreCreateOutputParentsStep.java:28)
+[        ] 	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.execute(RemovePreviousOutputsStep.java:67)
+[        ] 	at org.gradle.internal.execution.steps.RemovePreviousOutputsStep.execute(RemovePreviousOutputsStep.java:37)
+[        ] 	at org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:61)
+[        ] 	at org.gradle.internal.execution.steps.BroadcastChangingOutputsStep.execute(BroadcastChangingOutputsStep.java:26)
+[        ] 	at org.gradle.internal.execution.steps.CaptureOutputsAfterExecutionStep.execute(CaptureOutputsAfterExecutionStep.java:69)
+[        ] 	at org.gradle.internal.execution.steps.CaptureOutputsAfterExecutionStep.execute(CaptureOutputsAfterExecutionStep.java:46)
+[        ] 	at org.gradle.internal.execution.steps.ResolveInputChangesStep.execute(ResolveInputChangesStep.java:40)
+[        ] 	at org.gradle.internal.execution.steps.ResolveInputChangesStep.execute(ResolveInputChangesStep.java:29)
+[        ] 	at org.gradle.internal.execution.steps.BuildCacheStep.executeWithoutCache(BuildCacheStep.java:189)
+[        ] 	at org.gradle.internal.execution.steps.BuildCacheStep.lambda$execute$1(BuildCacheStep.java:75)
+[        ] 	at org.gradle.internal.Either$Right.fold(Either.java:175)
+[        ] 	at org.gradle.internal.execution.caching.CachingState.fold(CachingState.java:62)
+[        ] 	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:73)
+[        ] 	at org.gradle.internal.execution.steps.BuildCacheStep.execute(BuildCacheStep.java:48)
+[        ] 	at org.gradle.internal.execution.steps.StoreExecutionStateStep.execute(StoreExecutionStateStep.java:46)
+[        ] 	at org.gradle.internal.execution.steps.StoreExecutionStateStep.execute(StoreExecutionStateStep.java:35)
+[        ] 	at org.gradle.internal.execution.steps.SkipUpToDateStep.executeBecause(SkipUpToDateStep.java:75)
+[        ] 	at org.gradle.internal.execution.steps.SkipUpToDateStep.lambda$execute$2(SkipUpToDateStep.java:53)
+[        ] 	at java.base/java.util.Optional.orElseGet(Unknown Source)
+[        ] 	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:53)
+[        ] 	at org.gradle.internal.execution.steps.SkipUpToDateStep.execute(SkipUpToDateStep.java:35)
+[        ] 	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:37)
+[        ] 	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsFinishedStep.execute(MarkSnapshottingInputsFinishedStep.java:27)
+[        ] 	at org.gradle.internal.execution.steps.ResolveIncrementalCachingStateStep.executeDelegate(ResolveIncrementalCachingStateStep.java:49)
+[        ] 	at org.gradle.internal.execution.steps.ResolveIncrementalCachingStateStep.executeDelegate(ResolveIncrementalCachingStateStep.java:27)
+[        ] 	at org.gradle.internal.execution.steps.AbstractResolveCachingStateStep.execute(AbstractResolveCachingStateStep.java:71)
+[        ] 	at org.gradle.internal.execution.steps.AbstractResolveCachingStateStep.execute(AbstractResolveCachingStateStep.java:39)
+[        ] 	at org.gradle.internal.execution.steps.ResolveChangesStep.execute(ResolveChangesStep.java:65)
+[        ] 	at org.gradle.internal.execution.steps.ResolveChangesStep.execute(ResolveChangesStep.java:36)
+[        ] 	at org.gradle.internal.execution.steps.ValidateStep.execute(ValidateStep.java:107)
+[        ] 	at org.gradle.internal.execution.steps.ValidateStep.execute(ValidateStep.java:56)
+[        ] 	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:64)
+[        ] 	at org.gradle.internal.execution.steps.AbstractCaptureStateBeforeExecutionStep.execute(AbstractCaptureStateBeforeExecutionStep.java:43)
+[        ] 	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.executeWithNonEmptySources(AbstractSkipEmptyWorkStep.java:125)
+[        ] 	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.execute(AbstractSkipEmptyWorkStep.java:61)
+[        ] 	at org.gradle.internal.execution.steps.AbstractSkipEmptyWorkStep.execute(AbstractSkipEmptyWorkStep.java:36)
+[        ] 	at org.gradle.internal.execution.steps.legacy.MarkSnapshottingInputsStartedStep.execute(MarkSnapshottingInputsStartedStep.java:38)
+[        ] 	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:36)
+[        ] 	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:23)
+[        ] 	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.execute(HandleStaleOutputsStep.java:75)
+[        ] 	at org.gradle.internal.execution.steps.HandleStaleOutputsStep.execute(HandleStaleOutputsStep.java:41)
+[        ] 	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.lambda$execute$0(AssignMutableWorkspaceStep.java:35)
+[        ] 	at org.gradle.api.internal.tasks.execution.TaskExecution$4.withWorkspace(TaskExecution.java:289)
+[        ] 	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.execute(AssignMutableWorkspaceStep.java:31)
+[        ] 	at org.gradle.internal.execution.steps.AssignMutableWorkspaceStep.execute(AssignMutableWorkspaceStep.java:22)
+[        ] 	at org.gradle.internal.execution.steps.ChoosePipelineStep.execute(ChoosePipelineStep.java:40)
+[        ] 	at org.gradle.internal.execution.steps.ChoosePipelineStep.execute(ChoosePipelineStep.java:23)
+[        ] 	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.lambda$execute$2(ExecuteWorkBuildOperationFiringStep.java:67)
+[        ] 	at java.base/java.util.Optional.orElseGet(Unknown Source)
+[        ] 	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.execute(ExecuteWorkBuildOperationFiringStep.java:67)
+[        ] 	at org.gradle.internal.execution.steps.ExecuteWorkBuildOperationFiringStep.execute(ExecuteWorkBuildOperationFiringStep.java:39)
+[        ] 	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:46)
+[        ] 	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:34)
+[        ] 	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:48)
+[        ] 	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:35)
+[        ] 	at org.gradle.internal.execution.impl.DefaultExecutionEngine$1.execute(DefaultExecutionEngine.java:61)
+[        ] 	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:127)
+[        ] 	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.execute(ExecuteActionsTaskExecuter.java:116)
+[        ] 	at org.gradle.api.internal.tasks.execution.ProblemsTaskPathTrackingTaskExecuter.execute(ProblemsTaskPathTrackingTaskExecuter.java:40)
+[        ] 	at org.gradle.api.internal.tasks.execution.FinalizePropertiesTaskExecuter.execute(FinalizePropertiesTaskExecuter.java:46)
+[        ] 	at org.gradle.api.internal.tasks.execution.ResolveTaskExecutionModeExecuter.execute(ResolveTaskExecutionModeExecuter.java:51)
+[        ] 	at org.gradle.api.internal.tasks.execution.SkipTaskWithNoActionsExecuter.execute(SkipTaskWithNoActionsExecuter.java:57)
+[        ] 	at org.gradle.api.internal.tasks.execution.SkipOnlyIfTaskExecuter.execute(SkipOnlyIfTaskExecuter.java:74)
+[        ] 	at org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter.execute(CatchExceptionTaskExecuter.java:36)
+[        ] 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.executeTask(EventFiringTaskExecuter.java:77)
+[        ] 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:55)
+[        ] 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:52)
+[        ] 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:209)
+[        ] 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)
+[        ] 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+[        ] 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+[        ] 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:166)
+[        ] 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+[        ] 	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
+[        ] 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter.execute(EventFiringTaskExecuter.java:52)
+[        ] 	at org.gradle.execution.plan.LocalTaskNodeExecutor.execute(LocalTaskNodeExecutor.java:42)
+[        ] 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:331)
+[        ] 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:318)
+[        ] 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.lambda$execute$0(DefaultTaskExecutionGraph.java:314)
+[        ] 	at org.gradle.internal.operations.CurrentBuildOperationRef.with(CurrentBuildOperationRef.java:85)
+[        ] 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:314)
+[        ] 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:303)
+[        ] 	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.execute(DefaultPlanExecutor.java:459)
+[        ] 	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:376)
+[        ] 	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
+[        ] 	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:48)
+[        ] 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+[        ] 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+[        ] 	at java.base/java.lang.Thread.run(Unknown Source)
+[        ] BUILD FAILED in 6s
+[   +1 ms] Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+[        ] You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+[        ] For more on this, please refer to https://docs.gradle.org/8.12/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+[        ] 43 actionable tasks: 12 executed, 31 up-to-date
+[        ] Watched directory hierarchies: [/usr/local/share/flutter/packages/flutter_tools/gradle, /Users/rafaelguzman/Desktop/proyectos/proyecto_1608_xpro_digital_t_v/android]
+[  +43 ms] Running Gradle task 'assembleRelease'... (completed in 6.6s)
+[   +3 ms] "flutter apk" took 8,083ms.
+[  +12 ms] Gradle task assembleRelease failed with exit code 1
+[        ] 
+           #0      throwToolExit (package:flutter_tools/src/base/common.dart:34:3)
+           #1      AndroidGradleBuilder.buildGradleApp (package:flutter_tools/src/android/gradle.dart:592:7)
+           <asynchronous suspension>
+           #2      AndroidGradleBuilder.buildApk (package:flutter_tools/src/android/gradle.dart:234:5)
+           <asynchronous suspension>
+           #3      BuildApkCommand.runCommand (package:flutter_tools/src/commands/build_apk.dart:131:5)
+           <asynchronous suspension>
+           #4      FlutterCommand.run.<anonymous closure> (package:flutter_tools/src/runner/flutter_command.dart:1559:27)
+           <asynchronous suspension>
+           #5      AppContext.run.<anonymous closure> (package:flutter_tools/src/base/context.dart:154:19)
+           <asynchronous suspension>
+           #6      CommandRunner.runCommand (package:args/command_runner.dart:212:13)
+           <asynchronous suspension>
+           #7      FlutterCommandRunner.runCommand.<anonymous closure> (package:flutter_tools/src/runner/flutter_command_runner.dart:487:9)
+           <asynchronous suspension>
+           #8      AppContext.run.<anonymous closure> (package:flutter_tools/src/base/context.dart:154:19)
+           <asynchronous suspension>
+           #9      FlutterCommandRunner.runCommand (package:flutter_tools/src/runner/flutter_command_runner.dart:422:5)
+           <asynchronous suspension>
+           #10     run.<anonymous closure>.<anonymous closure> (package:flutter_tools/runner.dart:104:11)
+           <asynchronous suspension>
+           #11     AppContext.run.<anonymous closure> (package:flutter_tools/src/base/context.dart:154:19)
+           <asynchronous suspension>
+           #12     main (package:flutter_tools/executable.dart:103:3)
+           <asynchronous suspension>
+
+
+[        ] Running 1 shutdown hook
+[        ] Shutdown hooks complete
+[   +1 ms] exiting with code 1
