@@ -10,6 +10,7 @@ import 'auth/custom_auth/auth_util.dart';
 import 'auth/custom_auth/custom_auth_user_provider.dart';
 
 import '/backend/backend.dart';
+import '/backend/update_service.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'flutter_flow/flutter_flow_util.dart';
 
@@ -88,6 +89,8 @@ class MyAppState extends State<MyApp> {
         _appStateNotifier.update(user);
         if (user.loggedIn) {
           _startSubscriptionMonitoring();
+          // Trigger update check when user logs in successfully
+          UpdateService.checkForUpdates();
         } else {
           _stopSubscriptionMonitoring();
         }
@@ -96,6 +99,11 @@ class MyAppState extends State<MyApp> {
     if (loggedIn) {
       _startSubscriptionMonitoring();
     }
+
+    // Check for updates on startup with a slight delay to ensure navigator is ready
+    Future.delayed(const Duration(seconds: 1), () {
+      UpdateService.checkForUpdates();
+    });
 
     _appStateNotifier.stopShowingSplashImage();
   }

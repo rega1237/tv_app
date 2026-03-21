@@ -92,6 +92,8 @@ dependencies:
 
   http: any
   rxdart: any
+  package_info_plus: ^9.0.0
+  in_app_update: ^4.2.5
 dependency_overrides:
   http: 1.4.0
   uuid: ^4.0.0
