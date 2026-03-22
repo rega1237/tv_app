@@ -16,6 +16,7 @@ import 'schema/playlist_individuals_record.dart';
 import 'schema/channels_client_record.dart';
 import 'schema/channels_branch_record.dart';
 import 'schema/channels_record.dart';
+import 'schema/app_versions_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart' hide Order;
@@ -38,6 +39,7 @@ export 'schema/playlist_individuals_record.dart';
 export 'schema/channels_client_record.dart';
 export 'schema/channels_branch_record.dart';
 export 'schema/channels_record.dart';
+export 'schema/app_versions_record.dart';
 
 /// Functions to query ClientsRecords (as a Stream and as a Future).
 Future<int> queryClientsRecordCount({
@@ -561,6 +563,43 @@ Future<List<ChannelsRecord>> queryChannelsRecordOnce({
     queryCollectionOnce(
       ChannelsRecord.collection(parent),
       ChannelsRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query AppVersionsRecords (as a Stream and as a Future).
+Future<int> queryAppVersionsRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      AppVersionsRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<AppVersionsRecord>> queryAppVersionsRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      AppVersionsRecord.collection,
+      AppVersionsRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<AppVersionsRecord>> queryAppVersionsRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      AppVersionsRecord.collection,
+      AppVersionsRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,

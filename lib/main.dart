@@ -10,6 +10,8 @@ import 'auth/custom_auth/auth_util.dart';
 import 'auth/custom_auth/custom_auth_user_provider.dart';
 
 import '/backend/backend.dart';
+import '/backend/update_service.dart';
+import '/backend/firebase/firebase_config.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'flutter_flow/flutter_flow_util.dart';
 
@@ -17,6 +19,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   GoRouter.optionURLReflectsImperativeAPIs = true;
   usePathUrlStrategy();
+
+  await initFirebase();
 
   final initialUser = Proyecto1608XproDigitalTVAuthUser(loggedIn: false);
   final appState = FFAppState();
@@ -46,7 +50,7 @@ class MyAppScrollBehavior extends MaterialScrollBehavior {
       };
 }
 
-class MyAppState extends State<MyApp> {
+class MyAppState extends State<MyApp> with WidgetsBindingObserver {
   ThemeMode _themeMode = ThemeMode.system;
 
   late AppStateNotifier _appStateNotifier;
@@ -54,6 +58,7 @@ class MyAppState extends State<MyApp> {
 
   late Stream<Proyecto1608XproDigitalTVAuthUser> userStream;
 
+  late StreamSubscription<Proyecto1608XproDigitalTVAuthUser> authUserSub;
   StreamSubscription? _subscriptionListener;
   Timer? _dailyCheckTimer;
 
@@ -74,6 +79,7 @@ class MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
 
     _appStateNotifier = AppStateNotifier.instance;
 
@@ -83,21 +89,47 @@ class MyAppState extends State<MyApp> {
 
     _router = createRouter(_appStateNotifier);
 
-    userStream = proyecto1608XproDigitalTVAuthUserStream()
-      ..listen((user) {
-        _appStateNotifier.update(user);
-        if (user.loggedIn) {
-          _startSubscriptionMonitoring();
-        } else {
-          _stopSubscriptionMonitoring();
-        }
-      });
+    userStream = proyecto1608XproDigitalTVAuthUserStream();
+    authUserSub = userStream.listen((user) {
+      _appStateNotifier.update(user);
+      if (user.loggedIn) {
+        _startSubscriptionMonitoring();
+        // Trigger update check when user logs in successfully
+        UpdateService.checkForUpdates(source: 'Login');
+      } else {
+        _stopSubscriptionMonitoring();
+      }
+    });
 
     if (loggedIn) {
       _startSubscriptionMonitoring();
     }
 
+    // Check for updates on startup with a 5s delay to ensure navigator is fully settled
+    Future.delayed(const Duration(seconds: 5), () {
+      if (mounted) UpdateService.checkForUpdates(source: 'Startup');
+    });
+
     _appStateNotifier.stopShowingSplashImage();
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    authUserSub.cancel();
+    _stopSubscriptionMonitoring();
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    debugPrint('App Lifecycle: State changed to ${state.name}');
+    if (state == AppLifecycleState.resumed) {
+      debugPrint('App Lifecycle: Resumed - Waiting 5s before checking for updates...');
+      Future.delayed(const Duration(seconds: 5), () {
+        if (mounted) UpdateService.checkForUpdates(source: 'Resume');
+      });
+    }
   }
 
   void _startSubscriptionMonitoring() {
@@ -169,11 +201,6 @@ class MyAppState extends State<MyApp> {
     _dailyCheckTimer = Timer(timeUntilTarget, _performDailyCheck);
   }
 
-  @override
-  void dispose() {
-    _stopSubscriptionMonitoring();
-    super.dispose();
-  }
 
   void setThemeMode(ThemeMode mode) => safeSetState(() {
         _themeMode = mode;
