@@ -17,6 +17,7 @@ class UpdateAvailableDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    debugPrint('UpdateAvailableDialog: Build ejecutado.');
     return AlertDialog(
       backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
       title: Text(
