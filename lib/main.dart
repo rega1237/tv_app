@@ -11,6 +11,7 @@ import 'auth/custom_auth/custom_auth_user_provider.dart';
 
 import '/backend/backend.dart';
 import '/backend/update_service.dart';
+import '/backend/firebase/firebase_config.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'flutter_flow/flutter_flow_util.dart';
 
@@ -18,6 +19,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   GoRouter.optionURLReflectsImperativeAPIs = true;
   usePathUrlStrategy();
+
+  await initFirebase();
 
   final initialUser = Proyecto1608XproDigitalTVAuthUser(loggedIn: false);
   final appState = FFAppState();
