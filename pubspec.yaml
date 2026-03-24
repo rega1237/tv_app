@@ -94,6 +94,7 @@ dependencies:
   rxdart: any
   package_info_plus: ^9.0.0
   in_app_update: ^4.2.5
+  wakelock_plus: ^1.5.1
 dependency_overrides:
   http: 1.4.0
   uuid: ^4.0.0

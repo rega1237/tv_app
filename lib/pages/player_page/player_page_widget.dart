@@ -7,6 +7,7 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart'; // Import for Cache Manager
+import 'package:wakelock_plus/wakelock_plus.dart';
 
 class PlayerPageWidget extends StatefulWidget {
   const PlayerPageWidget({
@@ -33,6 +34,7 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> {
   void initState() {
     super.initState();
     FFAppState().lastChannelRef = widget.channelRef;
+    WakelockPlus.enable();
     _initializePlayer();
   }
 
@@ -49,6 +51,7 @@ class _PlayerPageWidgetState extends State<PlayerPageWidget> {
   void dispose() {
     _pollingTimer?.cancel();
     _videoController?.dispose();
+    WakelockPlus.disable();
     super.dispose();
   }
 
