@@ -30,6 +30,7 @@ class AppStateNotifier extends ChangeNotifier {
   Proyecto1608XproDigitalTVAuthUser? user;
   bool showSplashImage = true;
   String? _redirectLocation;
+  bool isSubscriptionActive = true;
 
   /// Determines whether the app will refresh and build again when a sign
   /// in or sign out happens. This is useful when the app is launched or
@@ -71,6 +72,13 @@ class AppStateNotifier extends ChangeNotifier {
     showSplashImage = false;
     notifyListeners();
   }
+
+  void updateSubscriptionStatus(bool active) {
+    if (isSubscriptionActive != active) {
+      isSubscriptionActive = active;
+      notifyListeners();
+    }
+  }
 }
 
 GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
@@ -85,7 +93,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           : const OrientationSelectionPageWidget(),
       redirect: (context, state) {
         final loggedIn = appStateNotifier.loggedIn;
-        final subscriptionActive = FFAppState().isSubscriptionActive;
+        final subscriptionActive = appStateNotifier.isSubscriptionActive;
 
         if (state.matchedLocation == '/') {
           return null;
@@ -99,7 +107,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         final isGoingToPublicRoute =
             publicRoutes.contains(state.matchedLocation);
         final isGoingToExpiredPage =
-            state.matchedLocation == ExpiredSubscriptionPageWidget.routePath;
+            state.uri.path == ExpiredSubscriptionPageWidget.routePath;
+
+        print('[XPRO_ROUTER] Evaluando ruta: ${state.uri.path}. ¿Logueado?: $loggedIn. ¿Sub activa?: $subscriptionActive');
 
         // If user is not logged in and tries to access a protected route, redirect to login flow.
         if (!loggedIn && !isGoingToPublicRoute) {
@@ -116,7 +126,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           if (subscriptionActive && isGoingToExpiredPage) {
             return InicioWidget.routePath;
           }
-          // ...and they are trying to go to a public page, send them home.
+          // ...and they are trying to go to a public page (like orientation or login), send them home.
           if (isGoingToPublicRoute) {
             return InicioWidget.routePath;
           }

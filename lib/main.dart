@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:provider/provider.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +13,6 @@ import 'auth/custom_auth/custom_auth_user_provider.dart';
 import '/backend/backend.dart';
 import '/backend/update_service.dart';
 import '/backend/firebase/firebase_config.dart';
-import '/flutter_flow/custom_functions.dart' as functions;
 import 'flutter_flow/flutter_flow_util.dart';
 
 void main() async {
@@ -24,6 +24,7 @@ void main() async {
 
   final initialUser = Proyecto1608XproDigitalTVAuthUser(loggedIn: false);
   final appState = FFAppState();
+  await appState.initializePersistedState();
 
   runApp(ChangeNotifierProvider(
     create: (context) => appState,
@@ -93,11 +94,17 @@ class MyAppState extends State<MyApp> with WidgetsBindingObserver {
     authUserSub = userStream.listen((user) {
       _appStateNotifier.update(user);
       if (user.loggedIn) {
-        _startSubscriptionMonitoring();
+        // --- SEGURO ANTI-REINICIO ---
+        // Solo iniciamos si no hay un listener activo ya.
+        if (_subscriptionListener == null) {
+          _startSubscriptionMonitoring();
+        }
         // Trigger update check when user logs in successfully
         UpdateService.checkForUpdates(source: 'Login');
       } else {
-        _stopSubscriptionMonitoring();
+        // Si cerramos sesión, limpiamos el monitor por seguridad
+        _subscriptionListener?.cancel();
+        _subscriptionListener = null;
       }
     });
 
@@ -125,7 +132,8 @@ class MyAppState extends State<MyApp> with WidgetsBindingObserver {
   void didChangeAppLifecycleState(AppLifecycleState state) {
     debugPrint('App Lifecycle: State changed to ${state.name}');
     if (state == AppLifecycleState.resumed) {
-      debugPrint('App Lifecycle: Resumed - Waiting 5s before checking for updates...');
+      debugPrint(
+          'App Lifecycle: Resumed - Waiting 5s before checking for updates...');
       Future.delayed(const Duration(seconds: 5), () {
         if (mounted) UpdateService.checkForUpdates(source: 'Resume');
       });
@@ -133,32 +141,51 @@ class MyAppState extends State<MyApp> with WidgetsBindingObserver {
   }
 
   void _startSubscriptionMonitoring() {
-    _stopSubscriptionMonitoring();
+    // Si ya existe un listener, no hacemos nada más (conexión de hierro)
+    if (_subscriptionListener != null) return;
 
     final sucursalRef = FFAppState().loggedSucursal;
     if (sucursalRef == null) {
+      print('[XPRO_SUBSCRIPTION] Sucursal es NULL. No se puede monitorear.');
       return;
     }
 
-    final subscriptionQuery = querySubscriptionRecord(
-      queryBuilder: (q) => q.where('sucursalRef', isEqualTo: sucursalRef),
-      singleRecord: true,
-    );
-
-    _subscriptionListener = subscriptionQuery.listen((subs) {
-      final sub = subs.firstOrNull;
+    print('[XPRO_SUBSCRIPTION] Iniciando monitoreo nativo para sucursal: ${sucursalRef.id}');
+    
+    // Usamos snapshots nativos para asegurar que la conexión no se pierda entre navegaciones
+    _subscriptionListener = FirebaseFirestore.instance
+        .collection('subscription')
+        .where('sucursalRef', isEqualTo: sucursalRef)
+        .snapshots()
+        .listen((snapshot) {
+      final doc = snapshot.docs.firstOrNull;
       bool isActive = false;
-      if (sub != null && sub.endDate != null) {
-        isActive = (functions.daysUntilSubscriptionEnds(sub.endDate!) ?? 0) > 0;
+
+      print('[XPRO_SUBSCRIPTION] Update recibido. ¿Documento existe?: ${doc != null}');
+
+      if (doc != null) {
+        final data = doc.data();
+        final fieldIsActive = data['isActive'] as bool? ?? true;
+        final endDate = data['endDate'] as Timestamp?;
+        final now = DateTime.now();
+
+        // REGLA SIMPLE: Activa si el admin dice true Y la fecha no ha pasado (ni 1 segundo)
+        if (fieldIsActive == false) {
+          isActive = false;
+        } else if (endDate != null) {
+          isActive = endDate.toDate().isAfter(now);
+        } else {
+          isActive = true; // Si no hay fecha pero el admin dice que sí, pasa
+        }
       }
+
+      print('[SUBSCRIPCIÓN] Estado: ${isActive ? "ACTIVO" : "EXPIRADO"}');
+
       if (FFAppState().isSubscriptionActive != isActive) {
         FFAppState().isSubscriptionActive = isActive;
-        // --- LA CORRECCIÓN ---
-        // Notificamos manualmente al listener del router para forzar la redirección.
-        // ignore: invalid_use_of_protected_member, invalid_use_of_visible_for_testing_member
-        _appStateNotifier.notifyListeners();
+        _appStateNotifier.updateSubscriptionStatus(isActive);
       }
-    });
+    }, onError: (e) => print('[SUBSCRIPCIÓN] Error: $e'));
 
     _scheduleNextDailyCheck();
   }
@@ -177,15 +204,16 @@ class MyAppState extends State<MyApp> with WidgetsBindingObserver {
       ).then((subs) {
         final sub = subs.firstOrNull;
         bool isActive = false;
-        if (sub != null && sub.endDate != null) {
-          isActive =
-              (functions.daysUntilSubscriptionEnds(sub.endDate!) ?? 0) > 0;
+        if (sub != null) {
+          if (sub.hasIsActive() && !sub.isActive) {
+            isActive = false;
+          } else if (sub.hasEndDate()) {
+            isActive = sub.endDate!.isAfter(DateTime.now());
+          }
         }
         if (FFAppState().isSubscriptionActive != isActive) {
           FFAppState().isSubscriptionActive = isActive;
-          // --- LA CORRECCIÓN ---
-          // ignore: invalid_use_of_protected_member, invalid_use_of_visible_for_testing_member
-          _appStateNotifier.notifyListeners();
+          _appStateNotifier.updateSubscriptionStatus(isActive);
         }
       });
     }
@@ -200,7 +228,6 @@ class MyAppState extends State<MyApp> with WidgetsBindingObserver {
 
     _dailyCheckTimer = Timer(timeUntilTarget, _performDailyCheck);
   }
-
 
   void setThemeMode(ThemeMode mode) => safeSetState(() {
         _themeMode = mode;

@@ -1,4 +1,4 @@
-package com.mycompany.proyecto1608xprodigitaltv;
+package com.xprodigital.app;
 
 import io.flutter.embedding.android.FlutterActivity;
 

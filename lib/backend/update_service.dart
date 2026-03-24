@@ -1,5 +1,5 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:in_app_update/in_app_update.dart';
 import 'package:go_router/go_router.dart';
@@ -11,7 +11,7 @@ class UpdateService {
   static bool _isDialogShowing = false;
 
   static Future<void> checkForUpdates({String source = 'Unknown'}) async {
-    if (!Platform.isAndroid) return;
+    if (kIsWeb || defaultTargetPlatform != TargetPlatform.android) return;
 
     // Reset de seguridad si volvemos del fondo para evitar bloqueos
     if (source == 'Resume') {
