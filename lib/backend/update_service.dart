@@ -9,6 +9,8 @@ import '/flutter_flow/nav/nav.dart';
 
 class UpdateService {
   static bool _isDialogShowing = false;
+  static const String _storeType =
+      String.fromEnvironment('STORE', defaultValue: 'google');
 
   static Future<void> checkForUpdates({String source = 'Unknown'}) async {
     if (kIsWeb || defaultTargetPlatform != TargetPlatform.android) return;
@@ -50,7 +52,8 @@ class UpdateService {
           'UpdateService: Versión actual del build: $currentBuildNumber');
 
       final updateRecords = await queryAppVersionsRecordOnce(
-        queryBuilder: (q) => q.where('platform', isEqualTo: 'android'),
+        queryBuilder: (q) =>
+            q.where('platform', isEqualTo: 'android_$_storeType'),
         singleRecord: true,
       );
 
