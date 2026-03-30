@@ -16,6 +16,13 @@ subprojects {
                 }
             }
         }
+        if (project.hasProperty("android")) {
+            project.android {
+                if (defaultConfig.minSdkVersion != null && defaultConfig.minSdkVersion.apiLevel > 22) {
+                    defaultConfig.minSdkVersion 22
+                }
+            }
+        }
     }
 }
 

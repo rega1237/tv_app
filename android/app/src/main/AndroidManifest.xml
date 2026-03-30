@@ -7,7 +7,7 @@
     <uses-feature android:name="android.hardware.type.television" android:required="false"/>
     <uses-feature android:name="android.hardware.touchscreen" android:required="false"/>
 
-
+    <uses-sdk tools:overrideLibrary="com.google.firebase.auth, com.google.firebase.firestore, com.google.firebase.perf, com.google.firebase.functions, com.google.firebase.messaging, com.google.firebase.iid, com.google.firebase.database, com.google.firebase.appcheck, com.google.firebase.common, com.google.android.gms.tasks, com.google.android.gms.common, dev.fluttercommunity.plus.wakelock, androidx.media3.common, androidx.media3.exoplayer, androidx.media3.exoplayer.rtsp, androidx.media3.exoplayer.smoothstreaming, io.flutter.plugins.firebase.auth, io.flutter.plugins.firebase.firestore, io.flutter.plugins.firebase.functions, io.flutter.plugins.firebase.perf, io.flutter.plugins.firebase.core, com.google.firebase.auth.ktx, com.google.firebase.firestore.ktx, com.google.firebase.functions.ktx, com.google.firebase.perf.ktx"/>
     <application
         android:label="Xpro Digital Menu"
         tools:replace="android:label"
